@@ -8,6 +8,7 @@ class Index
     public function index($name = 'thinkphp')
     {
         $list = Db::table('user')
+            ->where('user_index', '1')
             ->select();
         dump($list);
         return 'hello ' . $name;

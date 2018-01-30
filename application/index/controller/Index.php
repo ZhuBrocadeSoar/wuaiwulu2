@@ -9,8 +9,8 @@ class Index
     {
         $list = Db::table('user')
             ->where('user_index', '1')
-            ->select('user_index', 'user_date', 'user_email');
-        dump($list);
+            ->select();
+        dump($list['user_date']);
         return 'hello ' . $name;
     }
 }

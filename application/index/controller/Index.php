@@ -10,7 +10,7 @@ class Index
         $list = Db::table('user')
             ->where('user_index', '1')
             ->select();
-        dump($list);
+        dump($list[0]['user_date']);
         return 'hello ' . $name;
     }
 }

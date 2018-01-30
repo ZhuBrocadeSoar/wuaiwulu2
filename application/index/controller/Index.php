@@ -8,9 +8,10 @@ class Index
     public function index($name = 'thinkphp')
     {
         $list = Db::table('user')
+            ->field('user_index, user_date')
             ->where('user_index', '1')
             ->select();
-        dump($list[0]['user_date']);
+        dump($list);
         return 'hello ' . $name;
     }
 }

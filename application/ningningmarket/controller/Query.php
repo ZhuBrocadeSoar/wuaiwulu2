@@ -4,6 +4,12 @@ namespace app\ningningmarket\controller;
 use think\Db;
 
 class Query{
+    public function items(){
+        $rows = Db::name('items')
+            ->select();
+        dump($rows);
+    }
+
     public function item($id){
         $row = Db::name('items')
             ->where('id', $id)

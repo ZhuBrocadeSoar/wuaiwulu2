@@ -13,7 +13,6 @@ class Query{
         $rows = Db::name('items')
             ->select();
         foreach($rows as &$val){
-            dump($val);
             Query::base64FieldsConv($val);
         }
         dump($rows);

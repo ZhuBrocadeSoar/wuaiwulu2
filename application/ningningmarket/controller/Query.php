@@ -28,7 +28,7 @@ class Query{
             ->select();
         Query::base64FieldsConv($row[0]);
         // dump($row);
-        $retval = json_encode($rows, JSON_FORCE_OBJECT);
+        $retval = json_encode($row, JSON_FORCE_OBJECT);
         return $retval;
     }
 

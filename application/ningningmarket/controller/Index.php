@@ -9,7 +9,7 @@ class Index{
         return $retval;
     }
 
-    public function hello($msg){
+    public function hello($msg = 'hello'){
         $retval = json_encode(array("function" => "hello", "data" => array("state" => "this is your hello msg", "msg" => $msg), "timeStamp" => time()));
         return $retval;
     }

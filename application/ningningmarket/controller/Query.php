@@ -21,7 +21,7 @@ class Query{
             ->select();
         // $row[0]["name"] = base64_decode($row[0]["name"]);
         // $row[0]["price"] = base64_decode($row[0]["price"]);
-        base64FieldsConv($row[0]);
+        Query::base64FieldsConv($row[0]);
         dump($row);
     }
 

@@ -22,6 +22,13 @@ class Query{
         $counts = Db::name('items')->insert($datas);
         dump($counts);
     }
+
+    public function removeItem($id){
+        $counts = Db::name('items')
+            ->where('id', $id)
+            ->delete();
+        dump($counts);
+    }
 }
 
 ?>

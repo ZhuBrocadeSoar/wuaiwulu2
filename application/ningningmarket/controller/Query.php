@@ -12,6 +12,9 @@ class Query{
     public function items(){
         $rows = Db::name('items')
             ->select();
+        foreach($rows as $key){
+            Query::base64FieldsConv($rows[$key]);
+        }
         dump($rows);
     }
 
@@ -19,8 +22,6 @@ class Query{
         $row = Db::name('items')
             ->where('id', $id)
             ->select();
-        // $row[0]["name"] = base64_decode($row[0]["name"]);
-        // $row[0]["price"] = base64_decode($row[0]["price"]);
         Query::base64FieldsConv($row[0]);
         dump($row);
     }

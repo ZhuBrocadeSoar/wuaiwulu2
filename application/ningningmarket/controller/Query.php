@@ -4,7 +4,7 @@ namespace app\ningningmarket\controller;
 use think\Db;
 
 class Query{
-    private function base64FieldsConv($oneRow){
+    public function base64FieldsConv($oneRow){
         $oneRow["name"] = base64_decode($oneRow["name"]);
         $oneRow["price"] = base64_decode($oneRow["price"]);
     }

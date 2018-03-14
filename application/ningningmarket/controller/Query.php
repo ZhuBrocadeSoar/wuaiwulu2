@@ -4,6 +4,11 @@ namespace app\ningningmarket\controller;
 use think\Db;
 
 class Query{
+    private function base64FieldsConv($oneRow){
+        $oneRow["name"] = base64_decode($oneRow["name"]);
+        $oneRow["price"] = base64_decode($oneRow["price"]);
+    }
+
     public function items(){
         $rows = Db::name('items')
             ->select();
@@ -14,8 +19,9 @@ class Query{
         $row = Db::name('items')
             ->where('id', $id)
             ->select();
-        $row[0]["name"] = base64_decode($row[0]["name"]);
-        $row[0]["price"] = base64_decode($row[0]["price"]);
+        // $row[0]["name"] = base64_decode($row[0]["name"]);
+        // $row[0]["price"] = base64_decode($row[0]["price"]);
+        base64FieldsConv($row[0]);
         dump($row);
     }
 

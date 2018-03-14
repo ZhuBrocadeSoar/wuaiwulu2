@@ -12,8 +12,8 @@ class Query{
     public function items(){
         $rows = Db::name('items')
             ->select();
-        foreach($rows as $key){
-            Query::base64FieldsConv($rows[$key]);
+        foreach($rows as $val){
+            Query::base64FieldsConv($val);
         }
         dump($rows);
     }

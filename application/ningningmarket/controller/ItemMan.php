@@ -14,7 +14,7 @@ class ItemMan{
         $rows = Db::name('items')
             ->select();
         foreach($rows as &$val){
-            Query::base64FieldsConv($val);
+            ItemMan::base64FieldsConv($val);
         }
         // dump($rows);
         $retval = json_encode($rows, JSON_FORCE_OBJECT);
@@ -26,7 +26,7 @@ class ItemMan{
         $row = Db::name('items')
             ->where('id', $id)
             ->select();
-        Query::base64FieldsConv($row[0]);
+        ItemMan::base64FieldsConv($row[0]);
         // dump($row);
         $retval = json_encode($row, JSON_FORCE_OBJECT);
         return $retval;

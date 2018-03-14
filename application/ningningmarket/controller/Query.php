@@ -5,7 +5,7 @@ use think\Db;
 
 class Query{
     public function item($id){
-        $row = Db::table('items')
+        $row = Db::name('items')
             ->where('id', $id)
             ->select();
         dump($row);

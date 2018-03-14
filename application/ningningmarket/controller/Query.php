@@ -17,6 +17,8 @@ class Query{
             Query::base64FieldsConv($val);
         }
         // dump($rows);
+        $retval = json_encode($rows);
+        return $retval;
     }
 
     public function item($id){
@@ -25,7 +27,9 @@ class Query{
             ->where('id', $id)
             ->select();
         Query::base64FieldsConv($row[0]);
-        dump($row);
+        // dump($row);
+        $retval = json_encode($rows);
+        return $retval;
     }
 
     public function registerItem($name, $price, $stock){
@@ -36,7 +40,13 @@ class Query{
             'register_time_stamp' => date('Y-m-d H:i:s', time())
         );
         $counts = Db::name('items')->insert($datas);
-        dump($counts);
+        // dump($counts);
+        if($counts > 0){
+            $retval = array("state" => "success", "rows" => $counts);
+        }else{
+            $retval = array("state" => "error", "errorMsg" => "Something is wrong");
+        }
+        return json_encode($retval);
     }
 
     public function removeItem($id){
@@ -44,7 +54,13 @@ class Query{
         $counts = Db::name('items')
             ->where('id', $id)
             ->delete();
-        dump($counts);
+        // dump($counts);
+        if($counts > 0){
+            $retval = array("state" => "success", "rows" => $counts);
+        }else{
+            $retval = array("state" => "error", "errorMsg" => "Something is wrong");
+        }
+        return json_encode($retval);
     }
 }
 

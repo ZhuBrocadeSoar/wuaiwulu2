@@ -10,15 +10,17 @@ class Query{
     }
 
     public function items(){
+        // 权限检查
         $rows = Db::name('items')
             ->select();
         foreach($rows as &$val){
             Query::base64FieldsConv($val);
         }
-        dump($rows);
+        // dump($rows);
     }
 
     public function item($id){
+        // 权限检查
         $row = Db::name('items')
             ->where('id', $id)
             ->select();
@@ -27,6 +29,7 @@ class Query{
     }
 
     public function registerItem($name, $price, $stock){
+        // 权限检查
         $datas = array('name' => base64_encode($name), 
             'price' => base64_encode($price), 
             'stock' => $stock,
@@ -37,6 +40,7 @@ class Query{
     }
 
     public function removeItem($id){
+        // 权限检查
         $counts = Db::name('items')
             ->where('id', $id)
             ->delete();

@@ -3,7 +3,7 @@ namespace app\ningningmarket\controller;
 
 use think\Db;
 
-class Query{
+class ItemMan{
     private function base64FieldsConv(&$oneRow){
         $oneRow["name"] = base64_decode($oneRow["name"]);
         $oneRow["price"] = base64_decode($oneRow["price"]);

@@ -18,3 +18,7 @@
    + https://brocadesoar.cn/ningningmarket/Auth/...
 
 * Thu Mar 15 17:10:42 GMT 2018 最迫切的任务是数据库创建事件，来确保30min掉线机制
+
+* Thu Mar 15 20:00:08 GMT 2018 定时事件创建完成且有效，signIn方法完成但未测试
+
+* Thu Mar 15 20:06:06 GMT 2018 Auth::isUser()尚未完成，该方法依赖于如何设计用户表，暂且不做

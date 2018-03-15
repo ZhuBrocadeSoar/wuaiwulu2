@@ -12,9 +12,8 @@ class ItemMan{
 
     public function items(){
         // 权限检查
-        // $rows = Db::name('items')
-        //     ->select();
-        $rows = Items::get();
+        $rows = Db::name('items')
+            ->select();
         foreach($rows as &$val){
             ItemMan::base64FieldsConv($val);
         }

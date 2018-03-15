@@ -34,7 +34,7 @@ class ItemMan{
             $id = NULL;
         }
         if($id == NULL){
-            $retval = array("state" => "error", "errorMsg" => "No id requied");
+            $retval = array("state" => "error", "errorMsg" => "Param error");
         }else if($row == NULL){
             $retval = array("state" => "error", "errorMsg" => "No such item");
         }else{
@@ -45,16 +45,26 @@ class ItemMan{
         return json_encode($retval, JSON_FORCE_OBJECT);
     }
 
-    public function registerItem($name, $price, $stock){
+    public function registerItem(){
         // 权限检查
-        $datas = array('name' => base64_encode($name), 
-            'price' => base64_encode($price), 
-            'stock' => $stock,
-            'register_time_stamp' => date('Y-m-d H:i:s', time())
-        );
-        $counts = Db::name('items')->insert($datas);
+        // 获取参数
+        if(Request::instance()->has('name', 'price', 'stock')){
+            $name = Request::instance()->param('name');
+            $price = Request::instance()->param('price');
+            $stock = Request::instance()->param('stock');
+            $datas = array('name' => base64_encode($name), 
+                'price' => base64_encode($price), 
+                'stock' => $stock,
+                'register_time_stamp' => date('Y-m-d H:i:s', time())
+            );
+            $counts = Db::name('items')->insert($datas);
+        }else{
+            $datas = NULL;
+        }
         // dump($counts);
-        if($counts > 0){
+        if($datas == NULL){
+            $retval = array("state" => "error", "errorMsg" => "Param error");
+        }else if($counts > 0){
             $retval = array("state" => "success", "rows" => $counts);
         }else{
             $retval = array("state" => "error", "errorMsg" => "Something is wrong");
@@ -62,13 +72,21 @@ class ItemMan{
         return json_encode($retval);
     }
 
-    public function removeItem($id){
+    public function removeItem(){
         // 权限检查
-        $counts = Db::name('items')
-            ->where('id', $id)
-            ->delete();
+        // 获取参数
+        if(Request::instance()->has('id')){
+            $id = Request::instance()->param('id');
+            $counts = Db::name('items')
+                ->where('id', $id)
+                ->delete();
+        }else{
+            $id = NULL;
+        }
         // dump($counts);
-        if($counts > 0){
+        if($id == NULL){
+            $retval = array("state" => "error", "errorMsg" => "Param error");
+        }else if($counts > 0){
             $retval = array("state" => "success", "rows" => $counts);
         }else{
             $retval = array("state" => "error", "errorMsg" => "Something is wrong");

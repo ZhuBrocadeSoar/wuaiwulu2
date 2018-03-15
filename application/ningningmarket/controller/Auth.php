@@ -60,7 +60,7 @@ class Auth{
         return $retval;
     }
 
-    PUBLIC FUnction signIn(){
+    public function signIn(){
         // 获取参数code
         if(Request::instance()->has('code')){
             $code = Request::instance()->param('code');

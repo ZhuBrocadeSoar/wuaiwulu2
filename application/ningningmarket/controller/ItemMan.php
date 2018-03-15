@@ -2,7 +2,7 @@
 namespace app\ningningmarket\controller;
 
 use think\Db;
-use app\ningningmarket\model;
+// use app\ningningmarket\model;
 
 class ItemMan{
     private function base64FieldsConv(&$oneRow){

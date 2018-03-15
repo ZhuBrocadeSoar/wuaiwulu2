@@ -48,12 +48,11 @@ class ItemMan{
     public function registerItem(){
         // 权限检查
         // 获取参数
-        if(Request::instance()->has('name', 'price', 'stock')){
+        $request = Request::instance();
+        if($request->has('name') && $request->has('price') && $request->has('stock')){
             $name = Request::instance()->param('name');
-            // $price = Request::instance()->param('price');
-            // $stock = Request::instance()->param('stock');
-            $price = 'test';
-            $stock = 100;
+            $price = Request::instance()->param('price');
+            $stock = Request::instance()->param('stock');
             $datas = array('name' => base64_encode($name), 
                 'price' => base64_encode($price), 
                 'stock' => $stock,

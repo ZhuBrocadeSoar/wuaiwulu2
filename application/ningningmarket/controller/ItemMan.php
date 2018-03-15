@@ -2,6 +2,7 @@
 namespace app\ningningmarket\controller;
 
 use think\Db;
+use app\ningningmarket\model;
 
 class ItemMan{
     private function base64FieldsConv(&$oneRow){
@@ -11,8 +12,9 @@ class ItemMan{
 
     public function items(){
         // 权限检查
-        $rows = Db::name('items')
-            ->select();
+        // $rows = Db::name('items')
+        //     ->select();
+        $rows = Items::get();
         foreach($rows as &$val){
             ItemMan::base64FieldsConv($val);
         }

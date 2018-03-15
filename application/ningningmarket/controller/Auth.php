@@ -6,11 +6,21 @@ use think\Request;
 
 class Auth{
     public static function isUser($hash){
-        return true;
+        if($hash == NULL){
+            $retval = false;
+        }else{
+            $retval = true;
+        }
+        return $retval;
     }
 
     public static function isAdmin($hash){
-        return true;
+        if($hash == NULL){
+            $retval = false;
+        }else{
+            $retval = true;
+        }
+        return $retval;
     }
 
     public function signIn($code){

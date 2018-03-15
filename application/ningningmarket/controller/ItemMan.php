@@ -10,8 +10,18 @@ class ItemMan{
         $oneRow["price"] = base64_decode($oneRow["price"]);
     }
 
+    private function getHash(&$hash){
+        if(Request::instance()->has('hash')){
+            $hash = Request::instance()->param('hash');
+        }else{
+            $hash = NULL;
+        }
+    }
+
     public function items(){
         // 权限检查
+        $hash = NULL;
+        ItemMan::getHash($hash);
         if(Auth::isUser($hash)){
             $rows = Db::name('items')
                 ->select();
@@ -28,6 +38,8 @@ class ItemMan{
 
     public function item(){
         // 权限检查
+        $hash = NULL;
+        ItemMan::getHash($hash);
         if(Auth::isUser($hash)){
             // 获取参数
             if(Request::instance()->has('id')){
@@ -55,6 +67,8 @@ class ItemMan{
 
     public function registerItem(){
         // 权限检查
+        $hash = NULL;
+        ItemMan::getHash($hash);
         if(Auth::isAdmin($hash)){
             // 获取参数
             $request = Request::instance();
@@ -87,6 +101,8 @@ class ItemMan{
 
     public function removeItem(){
         // 权限检查
+        $hash = NULL;
+        ItemMan::getHash($hash);
         if(Auth::isAdmin($hash)){
             // 获取参数
             if(Request::instance()->has('id')){

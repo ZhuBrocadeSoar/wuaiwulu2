@@ -27,10 +27,14 @@ class ItemMan{
         $row = Db::name('items')
             ->where('id', $id)
             ->select();
-        ItemMan::base64FieldsConv($row[0]);
-        // dump($row);
-        $retval = json_encode($row, JSON_FORCE_OBJECT);
-        return $retval;
+        if($row == NULL){
+            $retval = array("state" => "error", "errorMsg" => "No such item");
+        }else{
+            ItemMan::base64FieldsConv($row[0]);
+            // dump($row);
+            $retval = array("state" => "success", "item" => $row[0]);
+        }
+        return json_encode($retval, JSON_FORCE_OBJECT);
     }
 
     public function registerItem($name, $price, $stock){

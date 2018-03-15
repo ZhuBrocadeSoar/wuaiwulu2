@@ -49,10 +49,11 @@ class ItemMan{
         // 权限检查
         // 获取参数
         if(Request::instance()->has('name', 'price', 'stock')){
-            $post = Request::instance();
-            $name = $post->param('name');
-            $price = $post->param('price');
-            $stock = $post->param('stock');
+            $name = Request::instance()->param('name');
+            // $price = Request::instance()->param('price');
+            // $stock = Request::instance()->param('stock');
+            $price = 'test';
+            $stock = 100;
             $datas = array('name' => base64_encode($name), 
                 'price' => base64_encode($price), 
                 'stock' => $stock,

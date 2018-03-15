@@ -2,7 +2,7 @@
 namespace app\ningningmarket\controller;
 
 use think\Db;
-use app\ningningmarket\model\Items;
+use think\Request;
 
 class ItemMan{
     private function base64FieldsConv(&$oneRow){
@@ -22,12 +22,20 @@ class ItemMan{
         return $retval;
     }
 
-    public function item($id){
+    public function item(){
         // 权限检查
-        $row = Db::name('items')
-            ->where('id', $id)
-            ->select();
-        if($row == NULL){
+        // 获取参数
+        if(Request::instance()->has('id')){
+            $id = Request::instance()->param('id');
+            $row = Db::name('items')
+                ->where('id', $id)
+                ->select();
+        }else{
+            $id = NULL;
+        }
+        if($id == NULL){
+            $retval = array("state" => "error", "errorMsg" => "No id requied");
+        }else if($row == NULL){
             $retval = array("state" => "error", "errorMsg" => "No such item");
         }else{
             ItemMan::base64FieldsConv($row[0]);

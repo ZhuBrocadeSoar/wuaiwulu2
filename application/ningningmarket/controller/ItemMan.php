@@ -17,7 +17,7 @@ class ItemMan{
         foreach($rows as &$val){
             ItemMan::base64FieldsConv($val);
         }
-        $retval = array("state" => "success", "items" => $row);
+        $retval = array("state" => "success", "items" => $rows);
         // dump($rows);
         return json_encode($retval, JSON_FORCE_OBJECT);
     }

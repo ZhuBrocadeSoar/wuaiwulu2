@@ -2,16 +2,12 @@
 namespace app\index\controller;
 
 use think\Db;
+use think\Request;
+use think\View;
 
 class Index
 {
-    public function index($name = 'thinkphp')
-    {
-        $list = Db::table('user')
-            ->field('user_index, user_date')
-            ->where('user_index', '1')
-            ->select();
-        dump($list);
-        return 'hello ' . $name;
+    public function index(){
+        return $this->fetch();
     }
 }

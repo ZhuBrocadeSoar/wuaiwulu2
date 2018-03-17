@@ -9,6 +9,7 @@ class Index
 {
     public function index(){
         $view = new View();
+        $view->assign('title', '吾爱吾庐');
         $view->fetch();
     }
 }

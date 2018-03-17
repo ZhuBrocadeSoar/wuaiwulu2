@@ -7,7 +7,10 @@ use think\View;
 
 class Index extends \think\Controller{
     public function index(){
-        $this->assign('title', '吾爱吾庐');
+        $this->assign([
+            'title' => '吾爱吾庐',
+            'selected0' => 'pure-menu-selected',
+        ]);
         return $this->fetch('index');
     }
 }

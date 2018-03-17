@@ -8,6 +8,7 @@ use think\View;
 class Index
 {
     public function index(){
-        return View::fetch();
+        $view = new View();
+        $view->fetch();
     }
 }

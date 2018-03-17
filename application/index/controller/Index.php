@@ -8,6 +8,6 @@ use think\View;
 class Index extends \think\Controller{
     public function index(){
         $this->assign('title', '吾爱吾庐');
-        $this->fetch('index');
+        return $this->fetch('index');
     }
 }

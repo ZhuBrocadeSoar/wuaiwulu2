@@ -10,6 +10,7 @@ class Index extends \think\Controller{
         $this->assign([
             'title' => '吾爱吾庐',
             'selected0' => 'pure-menu-selected',
+            'selected0' => '',
         ]);
         return $this->fetch('index');
     }

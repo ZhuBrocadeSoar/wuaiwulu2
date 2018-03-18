@@ -42,7 +42,7 @@ class Blog extends \think\Controller{
     }
 
     public function art($date, $title){
-        $markdown = new Parsedown();
+        $markdown = new \Parsedown();
         $this->assign([
             'title' => '-博客-' . $title,
             'blog_title' => '[日志]-吾爱吾庐网站开发日志',

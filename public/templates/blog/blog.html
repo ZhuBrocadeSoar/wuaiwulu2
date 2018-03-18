@@ -44,7 +44,7 @@
 
     </head>
 
-    <body onload="renderSelect({$options_num}, {$current_page})">
+    <body id="body_0" onload="renderSelect({$options_num}, {$current_page})">
 
 
         <script>
@@ -95,41 +95,41 @@
             <div id="main">
 
                 <div class="header">
-                    <h1>{$blog_title}</h1>
-                    <h2>{$blog_subtitle}</h2>
+                    <h1 id="blog_title_h1">{$blog_title}</h1>
+                    <h2 id="blog_subtitle_h2">{$blog_subtitle}</h2>
                 </div>
 
                 <div class="content">
                     <div class="posts">
-                        <h1 class="content-subhead">{$subhead_1}</h1>
+                        <h1 id="subhead_h1" class="content-subhead">{$subhead_1}</h1>
                         <section class="post">
                             <header class="post-header">
                                 <div class="pure-g">
                                     <div class="pure-u-1-2">
                                         <div class="pure-g">
                                             <div class="pure-u-1">
-                                                <h2 class="post_title">
+                                                <h2 id="post_title_1_1_h2" class="post_title">
                                                     {$post_title_1_1}
                                                 </h2>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="pure-u-1-2">
-                                        <p align="center"><a class="pure-button pure-button-primary" href="{$post_url_1_1}">阅读</a></p>
+                                        <p align="center"><a id="post_url_1_1_a" class="pure-button pure-button-primary" href="{$post_url_1_1}">阅读</a></p>
                                     </div>
                                 </div>
                             </header>
                             <div class="post-description">
-                                <p class="post-meta" id="date">
+                                <p id="post_date_1_1_p" class="post-meta" id="date">
                                 {$post_date_1_1}
                                 </p>
-                                <p>{$post_description_1_1}</p>
+                                <p id="post_description_1_1_p">{$post_description_1_1}</p>
                             </div>
                         </section>
                     </div>
 
                     <div class="post">
-                        <h1 class="content-subhead">{$subhead_2}</h1>
+                        <h1 id="subhead_2_h1" class="content-subhead">{$subhead_2}</h1>
                         <section class="post">
                             <header class="post-header">
                                 <div class="pure-g">
@@ -257,9 +257,28 @@
                                 <button onclick="prevPage({$current_page})" class="pure-button pure-button-primary">上一页</button>
 <script>
     function prevPage(curr){
-        var toPage = curr - 1;
-        $.get("/blog/?to_page="+toPage, function(data, status){
-            $("#title_0").text("吾爱吾庐"+JSON.parse(data).title);
+        reRender(curr - 1);
+    }
+
+    function nextPage(curr){
+        reRender(curr + 1);
+    }
+
+    function goToPage(toPage){
+        reRender(toPage);
+    }
+
+    function reRender(toPage){
+        $.get("/blog/?to_page="+toPage, function(d, status){
+            $("#title_0").text("吾爱吾庐"+JSON.parse(d).title);
+            $("#blog_title_h1").text(JSON.parse(d).blog_title);
+            $("#blog_subtitle_h2").text(JSON.parse(d).blog_subtitle);
+            $("#subhead_1_h1").text(JSON.parse(d).subhead_1);
+            $("#post_title_1_1_h2").text(JSON.parse(d).post_title_1_1);
+            $("#post_url_1_1_a").attr("href", JSON.parse(d).post_url_1_1);
+            $("#post_date_1_1_p").text(JSON.parse(d).post_date_1_1);
+            $("#post_description_1_1_p").text(JSON.parse(d).post_description_1_1);
+            $("#subhead_2_h1").text(JSON.parse(d).subhead_2);
         });
     }
 </script>

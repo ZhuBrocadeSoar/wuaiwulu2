@@ -248,11 +248,16 @@
                             <div class="pure-u-1-3">
                                 <form class="pure-form">
                                     <fieldset>
-                                <p align="center">
-                                        <select id="page_control_select" onclick="renderSelect({$options_num})">
+                                        <p align="center">
+                                        <select id="page_control_select" onload="renderSelect({$options_num})">
+        <script>
+            function renderSelect(num){
+                $("#page_control_select").append("<option value="+num+">第"+num+"页</option>");
+            }
+        </script>
                                             <option value="{$current_page}">第{$current_page}页</option>
                                         </select>
-                                </p>
+                                        </p>
                                     </fieldset>
                                 </form>
                             </div>

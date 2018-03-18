@@ -54,11 +54,15 @@ class Blog extends \think\Controller{
 ## 该站使用了***尽量少***的js，但是会大量运用php类库
             
 ```C++
+
 #include<stdio.h>
 
 int main(void){
+
   printf("hello world!\n");
+
   return 0;
+
 }
 ```
             '),

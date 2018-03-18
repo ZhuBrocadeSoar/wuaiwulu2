@@ -1,0 +1,146 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="Cache-Control" content="no-siteapp" />
+
+        <title>吾爱吾庐{$title}</title>
+
+        <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css" integrity=sha384-nn4HPE8lTHyVtfCBi5yW9d20FjT8BJwUXyWZT9InLYax14RDjBj46LmSztkmNP9w crossorigin=anonymous />
+        <!--[if lte IE 8]>
+            <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/grids-responsive-old-ie-min.css">
+        <![endif]-->
+        <!--[if gt IE 8]><!-->
+            <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/grids-responsive-min.css" />
+            <!--<![endif]-->
+            <link rel="stylesheet" href="https://purecss.io/combo/1.18.13?/css/main-grid.css&/css/main.css&/css/home.css&/css/rainbow/baby-blue.css" />
+
+
+
+            <!--<script>
+                (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-41480445-1', 'purecss.io');
+    ga('send', 'pageview');
+            </script>-->
+
+    </head>
+
+    <body>
+
+
+        <script>
+            (function (root) {
+                /* -- Data -- */
+                root.YUI_config = {"version":"3.18.1","base":"http:\u002F\u002Fyui.yahooapis.com\u002F3.18.1\u002F","comboBase":"https:\u002F\u002Fyui-s.yahooapis.com\u002Fcombo?","comboSep":"&","root":"3.18.1\u002F","filter":"min","logLevel":"error","combine":true,"patches":[],"maxURLLength":2048,"groups":{"vendor":{"combine":true,"comboBase":"\u002Fcombo\u002F1.18.13?","base":"\u002F","root":"\u002F","modules":{"css-mediaquery":{"path":"vendor\u002Fcss-mediaquery.js"},"handlebars-runtime":{"path":"vendor\u002Fhandlebars.runtime.js"}}},"app":{"combine":true,"comboBase":"\u002Fcombo\u002F1.18.13?","base":"\u002Fjs\u002F","root":"\u002Fjs\u002F"}}};
+                root.app || (root.app = {});
+                root.app.yui = {"use":function () { return this._bootstrap('use', [].slice.call(arguments)); },"require":function () { this._bootstrap('require', [].slice.call(arguments)); },"ready":function (callback) { this.use(function () { callback(); }); },"_bootstrap":function bootstrap(method, args) { var self = this, d = document, head = d.getElementsByTagName('head')[0], ie = /MSIE/.test(navigator.userAgent), callback = [], config = typeof YUI_config != "undefined" ? YUI_config : {}; function flush() { var l = callback.length, i; if (!self.YUI && typeof YUI == "undefined") { throw new Error("YUI was not injected correctly!"); } self.YUI = self.YUI || YUI; for (i = 0; i < l; i++) { callback.shift()(); } } function decrementRequestPending() { self._pending--; if (self._pending <= 0) { setTimeout(flush, 0); } else { load(); } } function createScriptNode(src) { var node = d.createElement('script'); if (node.async) { node.async = false; } if (ie) { node.onreadystatechange = function () { if (/loaded|complete/.test(this.readyState)) { this.onreadystatechange = null; decrementRequestPending(); } }; } else { node.onload = node.onerror = decrementRequestPending; } node.setAttribute('src', src); return node; } function load() { if (!config.seed) { throw new Error('YUI_config.seed array is required.'); } var seed = config.seed, l = seed.length, i, node; if (!self._injected) { self._injected = true; self._pending = seed.length; } for (i = 0; i < l; i++) { node = createScriptNode(seed.shift()); head.appendChild(node); if (node.async !== false) { break; } } } callback.push(function () { var i; if (!self._Y) { self.YUI.Env.core.push.apply(self.YUI.Env.core, config.extendedCore || []); self._Y = self.YUI(); self.use = self._Y.use; if (config.patches && config.patches.length) { for (i = 0; i < config.patches.length; i += 1) { config.patches[i](self._Y, self._Y.Env._loader); } } } self._Y[method].apply(self._Y, args); }); self.YUI = self.YUI || (typeof YUI != "undefined" ? YUI : null); if (!self.YUI && !self._injected) { load(); } else if (self._pending <= 0) { setTimeout(flush, 0); } return this; }};
+                root.YUI_config || (root.YUI_config = {});
+                root.YUI_config.seed = ["https:\u002F\u002Fyui-s.yahooapis.com\u002Fcombo?3.18.1\u002Fyui\u002Fyui-min.js"];
+                root.YUI_config.groups || (root.YUI_config.groups = {});
+                root.YUI_config.groups.app || (root.YUI_config.groups.app = {});
+                root.YUI_config.groups.app.modules = {"start\u002Fapp":{"path":"start\u002Fapp.js","requires":["handlebars-runtime","yui","base-build","router","pjax-base","view","start\u002Fmodels\u002Fgrid","start\u002Fviews\u002Finput","start\u002Fviews\u002Foutput","start\u002Fviews\u002Fdownload"]},"start\u002Fmodels\u002Fgrid":{"path":"start\u002Fmodels\u002Fgrid.js","requires":["yui","querystring","base-build","model","model-sync-rest","start\u002Fmodels\u002Fmq"]},"start\u002Fmodels\u002Fmq":{"path":"start\u002Fmodels\u002Fmq.js","requires":["css-mediaquery","attribute","base-build","model","model-list"]},"start\u002Fviews\u002Fdownload":{"path":"start\u002Fviews\u002Fdownload.js","requires":["yui","base-build","querystring","view"]},"start\u002Fviews\u002Finput":{"path":"start\u002Fviews\u002Finput.js","requires":["base-build","start\u002Fmodels\u002Fmq","start\u002Fviews\u002Ftab"]},"start\u002Fviews\u002Foutput":{"path":"start\u002Fviews\u002Foutput.js","requires":["base-build","escape","start\u002Fviews\u002Ftab"]},"start\u002Fviews\u002Ftab":{"path":"start\u002Fviews\u002Ftab.js","requires":["yui","base-build","view"]}};
+            }(this));
+        </script>
+
+
+        <div id="layout">
+            <a href="#menu" id="menuLink" class="menu-link"><span></span></a>
+
+            <div id="menu">
+                <div class="pure-menu">
+                    <a href="/">
+                        <span class="pure-menu-heading">
+                            <img src="/favicon.ico" />
+                            吾爱吾庐
+                        </span>
+                    </a>
+
+                    <ul class="pure-menu-list">
+                        <li class="pure-menu-item pure-menu-selected"><a href="/blog" class="pure-menu-link">博客</a></li>
+                        <li class="pure-menu-item"><a href="/bbs" class="pure-menu-link">留言</a></li>
+                    </ul>
+
+
+                    <span class="pur-menu-heading">与我联系</span>
+
+                    <ul class="pure-menu-list">
+                        <li class="pure-menu-item"><a href="/msg" class="pure-menu-link">即时消息</a></li>
+                        <li class="pure-menu-item"><a href="/about" class="pure-menu-link">传送门</a></li>
+                    </ul>
+
+                </div>
+
+            </div>
+
+
+            <div id="main">
+
+                <div class="header">
+                    <h1>{$blog_title}</h1>
+                </div>
+
+                <div class="content">
+                </div>
+
+                <div class="footer">
+
+                    <div class="legal pure-g">
+                        <div class="pure-u-1">
+
+                            <span>
+                                <a href="http://creativecommons.org/licenses/by-nc-nd/4.0/" rel="license"><img alt="知识共享许可协议" style="border-width:0"i src="/images/88x31.png" /></a>
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                    <div class="legal pure-g">
+                        <div class="pure-u-1">
+
+                            <span>
+                                本作品采用    <a href="http://creativecommons.org/licenses/by-nc-nd/4.0/" rel="license">知识共享署名-非商业性使用-禁止演绎 4.0 国际许可协议</a>    进行许可。
+                            </span>
+
+                        </div>
+                    </div>
+
+                    <div class="legal pure-g">
+                        <div class="pure-u-1">
+                            <span>
+                            Template Powered by <a href="http://purecss.io" rel="nofollow">Purecss</a>|Site Build by <a href="http://brocadesoar.cn" rel="nofollow">ZhuBrocadeSoar</a>
+                            </span>
+                        </div>
+
+                    </div>
+
+                    <div class="legal pure-g">
+                        <div class="pure-u-1">
+                            <span>
+                            浙ICP备17027825号-1
+                            <a target=" blank " href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33078302100258" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;">
+                                <img src="/images/beianlogo.png" style="float:left;" />浙公网安备 33078302100258号
+                            </a>
+                            </span>
+                        </div>
+                    </div>
+
+                </div>
+
+
+
+            </div>
+            <script src="https://purecss.io/combo/1.18.13?/js/ui.js&/js/rainbow/rainbow.min.js&/js/rainbow/language/generic.js&/js/rainbow/language/html.js&/js/rainbow/language/css.js&/js/rainbow/language/javascript.js&/js/rainbow/language/shell.js"></script>
+
+
+
+        </div>
+
+    </body>
+
+</html>

@@ -24,8 +24,9 @@ class Blog extends \think\Controller{
     public function art($date, $title){
         $this->assign([
             'title' => '-博客-' . $title,
+            'blog_title' => '[日志]-吾爱吾庐网站开发日志',
         ]);
-        return $this->fetch('blog');
+        return $this->fetch('blog_');
     }
 }
 

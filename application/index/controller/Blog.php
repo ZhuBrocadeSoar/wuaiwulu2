@@ -5,11 +5,13 @@ use think\Db;
 use think\Request;
 use think\View;
 
-class Index extends \think\Controller{
+class Blog extends \think\Controller{
     public function index(){
         $this->assign([
-            'title' => '',
+            'title' => '-博客',
         ]);
-        return $this->fetch('index');
+        return $this->fetch('blog');
     }
 }
+
+?>

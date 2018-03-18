@@ -42,10 +42,12 @@ class Blog extends \think\Controller{
     }
 
     public function art($date, $title){
+        $markdown = new Parsedown();
         $this->assign([
             'title' => '-博客-' . $title,
             'blog_title' => '[日志]-吾爱吾庐网站开发日志',
             'blog_date' => 'Sun 18 Mar 2018 13:27:05',
+            'markdown_content' => $markdown->text('## test ***jjj***'),
         ]);
         return $this->fetch('blog_');
     }

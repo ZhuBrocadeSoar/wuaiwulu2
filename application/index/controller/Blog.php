@@ -43,7 +43,7 @@ class Blog extends \think\Controller{
             ]);
             return $this->fetch('blog');
         }else{
-            return json_encode(['title' => '-博客-test']);
+            return json_encode(['title' => '-博客-第测试页']);
         }
     }
 

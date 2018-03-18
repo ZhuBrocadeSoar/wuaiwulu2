@@ -258,7 +258,7 @@
 <script>
     function prevPage(curr){
         $.get("/blog/?curr="+curr, function(data, status){
-            $("#title_0").text("吾爱吾庐"+data.title);
+            $("#title_0").text("吾爱吾庐"+JSON.parse(data).title);
         });
     }
 </script>

@@ -9,7 +9,7 @@ class Blog extends \think\Controller{
     public function index($curr = 'null'){
         if($curr == 'null'){
             $this->assign([
-                'title' => '-博客',
+                'title' => '-博客-' . $curr,
                 'blog_title' => '博客',
                 'blog_subtitle' => '原创、转载、分享  |  随笔、日志、文稿',
                 'subhead_1' => '置顶',
@@ -48,7 +48,7 @@ class Blog extends \think\Controller{
             if(Request::instance()->isGet()){
                 // 返回
                 $retval = json_encode([
-                    'title' => '-博客___测试文本',
+                    'title' => '-博客___测试文本-' . $curr,
                     'blog_title' => '博客',
                     'blog_subtitle' => '原创、转载、分享  |  随笔、日志、文稿',
                     'subhead_1' => '置顶',
@@ -84,7 +84,7 @@ class Blog extends \think\Controller{
             }else{
                 // 渲染
                 $this->assign([
-                    'title' => '-博客',
+                    'title' => '-博客-df' . $curr,
                     'blog_title' => '博客',
                     'blog_subtitle' => '原创、转载、分享  |  随笔、日志、文稿',
                     'subhead_1' => '置顶',

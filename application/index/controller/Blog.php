@@ -45,7 +45,7 @@ class Blog extends \think\Controller{
         }else{
             // 返回指定渲染内容
             // 判定返回还是渲染
-            if(Request::instance()->isGet()){
+            if(true){
                 // 返回
                 $retval = json_encode([
                     'title' => '-博客___测试文本',

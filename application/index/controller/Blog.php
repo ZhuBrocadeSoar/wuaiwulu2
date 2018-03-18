@@ -45,6 +45,7 @@ class Blog extends \think\Controller{
         $this->assign([
             'title' => '-博客-' . $title,
             'blog_title' => '[日志]-吾爱吾庐网站开发日志',
+            'blog_date' => 'Sun 18 Mar 2018 13:27:05',
         ]);
         return $this->fetch('blog_');
     }

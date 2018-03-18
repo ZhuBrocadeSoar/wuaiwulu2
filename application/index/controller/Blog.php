@@ -12,6 +12,13 @@ class Blog extends \think\Controller{
         ]);
         return $this->fetch('blog');
     }
+
+    public function art($date, $title){
+        $this->assign([
+            'title' => '-博客-' . $title,
+        ]);
+        return $this->fetch('blog');
+    }
 }
 
 ?>

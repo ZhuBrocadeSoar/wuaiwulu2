@@ -7,7 +7,7 @@ use think\View;
 
 class Blog extends \think\Controller{
     public function index(){
-        if(!Request::instanc()->isGet()){
+        if(!Request::instance()->isGet()){
             $this->assign([
                 'title' => '-博客',
                 'blog_title' => '博客',

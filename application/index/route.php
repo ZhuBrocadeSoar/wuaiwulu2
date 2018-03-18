@@ -13,8 +13,6 @@ return [
     '__pattern__' => [
         'name' => '\w+',
     ],
-    '[hello]'     => [
-        'blog' => 'index/blog/index',
-    ],
+    'blog' => 'index/blog/index',
 
 ];

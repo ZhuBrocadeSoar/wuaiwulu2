@@ -37,7 +37,7 @@ class Blog extends \think\Controller{
             'post_title_2_5' => '[日志]-吾爱吾庐网站开发日志',
             'post_date_2_5' => 'Sun 18 Mar 2018 13:27:05',
             'post_description_2_5' => 'php/html/css/js这些东西总要先有个大概的认识，给自己定一个目标，比如给自己建立一个博客站，这既是对自己技术的锻炼也作为一份优秀的简历展示自己的想法和梦',
-            'options_arr' => array('1', '2', '3', '4'),
+            'options_arr' => 5,
         ]);
         return $this->fetch('blog');
     }

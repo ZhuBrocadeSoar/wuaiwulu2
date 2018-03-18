@@ -7,7 +7,7 @@ use think\View;
 
 class Blog extends \think\Controller{
     public function index(){
-        if(!Request::instance()->has('curr', 'get')){
+        if(!Request::instance()->has('to_page', 'get')){
             $this->assign([
                 'title' => '-博客',
                 'blog_title' => '博客',
@@ -43,7 +43,10 @@ class Blog extends \think\Controller{
             ]);
             return $this->fetch('blog');
         }else{
-            return json_encode(['title' => '-博客-第测试页']);
+            $toPage = Request::instance()->get('to_page');
+            return json_encode([
+                'title' => '-博客-第' . $toPage . '页',
+            ]);
         }
     }
 

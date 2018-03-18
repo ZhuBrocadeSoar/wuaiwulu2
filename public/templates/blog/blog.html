@@ -257,7 +257,8 @@
                                 <button onclick="prevPage({$current_page})" class="pure-button pure-button-primary">上一页</button>
 <script>
     function prevPage(curr){
-        $.get("/blog/?curr="+curr, function(data, status){
+        var toPage = curr - 1;
+        $.get("/blog/?to_page="+toPage, function(data, status){
             $("#title_0").text("吾爱吾庐"+JSON.parse(data).title);
         });
     }

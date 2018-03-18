@@ -30,9 +30,8 @@
 
             <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.0.js"></script>
             <script>
-                function renderSelect(num){
-                    var curr = $("#page_control_select option:last").val();
-                    $("#page_control_select option:last").remove();
+                function renderSelect(num, curr){
+                    $("#page_control_select").empty();
                     for(var i = 1; i <= num; i++){
                         if(i != curr){
                             $("#page_control_select").append("<option value="+i+">第"+i+"页</option>");
@@ -45,7 +44,7 @@
 
     </head>
 
-    <body onload="renderSelect({$options_num})">
+    <body onload="renderSelect({$options_num}, {$current_page})">
 
 
         <script>

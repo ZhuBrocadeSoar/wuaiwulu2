@@ -8,7 +8,7 @@ use think\View;
 class Blog extends \think\Controller{
     public function index(){
         $this->assign([
-            'title' => '-博客-' . $curr,
+            'title' => '-博客',
             'blog_title' => '博客',
             'blog_subtitle' => '原创、转载、分享  |  随笔、日志、文稿',
             'subhead_1' => '置顶',

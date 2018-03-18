@@ -31,8 +31,9 @@
             <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.0.js"></script>
             <script>
                 function renderSelect(num){
-                    // alert(num);
-                    $("#page_control_select").append("<option value="+num+">第"+num+"页</option>");
+                    for(var i = 1; i <= num; i++){
+                        $("#page_control_select").append("<option value="+i+">第"+i+"页</option>");
+                    }
                 }
             </script>
 

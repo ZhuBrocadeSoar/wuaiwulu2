@@ -48,8 +48,11 @@ class Blog extends \think\Controller{
             'blog_title' => '[日志]-吾爱吾庐网站开发日志',
             'blog_date' => 'Sun 18 Mar 2018 13:27:05',
             'markdown_content' => $markdown->text('
-            ![logo](https://brocadesoar,cn/images/biglogo.png)
-            ## 该站使用了***尽量少***的js，但是会大量运用php类库
+
+![logo](https://brocadesoar,cn/images/biglogo.png)
+
+## 该站使用了***尽量少***的js，但是会大量运用php类库
+            
             '),
         ]);
         return $this->fetch('blog_');

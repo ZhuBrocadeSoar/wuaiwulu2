@@ -12,7 +12,7 @@
 
 * 如果说个人博客站点必须要有一个名字的话，那么一定叫做**吾爱吾庐**。
 
-* 个人博客计划采用Amaze UI作为前端框架，采用ThinkPHP5搭建网站。
+* 个人博客计划采用~~Amaze UI~~PrueCSS作为前端框架，采用ThinkPHP5搭建网站。
 
 * 个人博客开发日志点击进入 [传送门](https://github.com/ZhuBrocadeSoar/wuaiwulu2/tree/master/application/index/docs/log)
 

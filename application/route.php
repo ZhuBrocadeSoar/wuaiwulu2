@@ -19,8 +19,8 @@ return [
     ],
     'blog$' => 'index/blog/index',
     'blog/:date/:title' => 'index/blog/art',
-    'bbs' => 'index/bbs/index',
-    'msg' => 'index/msg/index',
-    'about' => 'index/about/index',
+    'bbs$' => 'index/bbs/index',
+    'msg$' => 'index/msg/index',
+    'about$' => 'index/about/index',
 
 ];

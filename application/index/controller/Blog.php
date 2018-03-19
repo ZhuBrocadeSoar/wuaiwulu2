@@ -59,8 +59,6 @@ class Blog extends \think\Controller{
                     break;
                 }
             }
-            $to_page = ($to_page < 1)?(1):($to_page);
-            $to_page = ($to_page > $options_num)?($options_num):($to_page);
             return json_encode([
                 'title' => '-博客-第' . $to_page . '页',
                 'blog_title' => '博客',

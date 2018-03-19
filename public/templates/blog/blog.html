@@ -266,7 +266,6 @@
     }
 
     function nextPage(curr, max){
-        console.log(max);
         if(curr == max){
             reRender(curr.toString());
         }else{
@@ -282,8 +281,6 @@
     function reRender(toPage){
         var md = forge.md.sha1.create();
         md.update(toPage);
-        console.log(toPage);
-        console.log(md.digest().toHex());
         toPage = md.digest().toHex();
         $.get("/blog/"+toPage, function(d, status){
             $("#title_0").text("吾爱吾庐"+JSON.parse(d).title);

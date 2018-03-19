@@ -11,7 +11,7 @@ class Admin extends \think\Controller{
         $mail = new PHPMailer;
         $mail->isSMTP();
         $mail->SMTPDebug = 2;
-        $mail->Host = "https://smtp.163.com";
+        $mail->Host = "smtp.163.com";
         $mail->Port = 587;
         $mail->setFrom('zhujinteng2012@163.com');
         $mail->addAddress('1422090554@qq.com');

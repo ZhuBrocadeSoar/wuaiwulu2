@@ -15,8 +15,8 @@ class Admin extends \think\Controller{
         $mail->Host = "smtp.163.com";
         $mail->Port = 465;
         $mail->SMTPSecure = 'ssl';
-        $mail->Username = "zhujinteng2012@163.com";
-        $mail->Password = "";
+        $mail->Username = "brocadesoar@163.com";
+        $mail->Password = "zjt123";
         $mail->setFrom('zhujinteng2012@163.com');
         $mail->addAddress('1422090554@qq.com');
         $mail->Subject = '验证码';

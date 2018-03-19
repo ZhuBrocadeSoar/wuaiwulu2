@@ -258,11 +258,11 @@
                                 <button id="current_page_button_prev" onclick="prevPage({$current_page})" class="pure-button pure-button-primary">上一页</button>
 <script>
     function prevPage(curr){
-        reRender(curr - 1);
+        reRender(--curr);
     }
 
     function nextPage(curr){
-        reRender(curr + 1);
+        reRender(++curr);
     }
 
     function goToPage(){

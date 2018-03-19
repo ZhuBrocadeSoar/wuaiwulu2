@@ -259,17 +259,17 @@
 <script>
     function prevPage(curr){
         if(curr == 1){
-            reRender(curr);
+            reRender(curr.toString());
         }else{
-            reRender(curr -1);
+            reRender((curr -1).toString());
         }
     }
 
     function nextPage(curr, max){
         if(curr == max){
-            reRender(curr);
+            reRender(curr.toString());
         }else{
-            reRender(curr + 1);
+            reRender((curr + 1).toString());
         }
     }
 

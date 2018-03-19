@@ -15,7 +15,7 @@ class Admin extends \think\Controller{
         $mail->Port = 25;
         $mail->setFrom('zhujinteng2012@163e.com');
         $mail->addAddress('1422090554@qq.com');
-        $mail->Subject('验证码');
+        $mail->Subject = '验证码';
         $mail->msgHTML('sdf774');
         $mail->AltBody = 'ert';
 

@@ -315,9 +315,9 @@
             $("#post_url_2_5_a").attr('href', JSON.parse(d).post_url_2_5);
             $("#post_date_2_5_p").text(JSON.parse(d).post_date_2_5);
             $("#post_description_2_5_p").text(JSON.parse(d).post_description_2_5);
-            $("#current_page_button_prev").attr('onclick', "prevPage("+JSON.parse(d).current_page+")")
-            renderSelect(JSON.parse(d).options_num, JSON.parse(d).current_page)
-            $("#current_page_button_next").attr('onclick', "nextPage("+JSON.parse(d).current_page+")")
+            $("#current_page_button_prev").attr('onclick', "prevPage("+JSON.parse(d).current_page+")");
+            renderSelect(JSON.parse(d).options_num, JSON.parse(d).current_page);
+            $("#current_page_button_next").attr('onclick', "nextPage("+JSON.parse(d).current_page+", "+JSON.parse(d).options_num+")");
         });
     }
 </script>

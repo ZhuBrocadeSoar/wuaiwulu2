@@ -14,7 +14,7 @@
 
 * 个人博客计划采用~~Amaze UI~~PrueCSS作为前端框架，采用ThinkPHP5搭建网站。
 
-* 个人博客开发日志点击进入 [传送门](https://github.com/ZhuBrocadeSoar/wuaiwulu2/tree/master/application/index/docs/log)
+* 个人博客开发日志点击进入 [传送门](https://github.com/ZhuBrocadeSoar/wuaiwulu2/tree/master/application/index/docs/log.md)
 
 ## ningningmarket
 

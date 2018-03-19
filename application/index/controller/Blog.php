@@ -43,7 +43,7 @@ class Blog extends \think\Controller{
             ]);
             return $this->fetch('blog');
         }else{
-            $toPage = Request::instance()->get('to_page');
+            $toPage = Request::instance()->param('to_page');
             return json_encode([
                 'title' => '-博客-第' . $toPage . '页',
                 'blog_title' => '博客',

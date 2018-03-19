@@ -13,7 +13,7 @@ class Admin extends \think\Controller{
         $mail->SMTPDebug = 2;
         $mail->Host = "smtp.163.com";
         $mail->Port = 587;
-        $mail->setFrom('zhujinteng2012@163e.com');
+        $mail->setFrom('zhujinteng2012@163.com');
         $mail->addAddress('1422090554@qq.com');
         $mail->Subject = '验证码';
         $mail->msgHTML('sdf774');

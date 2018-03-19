@@ -258,11 +258,19 @@
                                 <button id="current_page_button_prev" onclick="prevPage({$current_page})" class="pure-button pure-button-primary">上一页</button>
 <script>
     function prevPage(curr){
-        reRender(curr - 1);
+        if(curr == 1){
+            reRender(curr);
+        }else{
+            reRender(curr -1);
+        }
     }
 
-    function nextPage(curr){
-        reRender(curr + 1);
+    function nextPage(curr, max){
+        if(curr == max){
+            reRender(curr);
+        }else{
+            reRender(curr + 1);
+        }
     }
 
     function goToPage(){
@@ -327,7 +335,7 @@
                             </div>
                             <div class="pure-u-1-3">
                                 <p align="center">
-                                <button id="current_page_button_next" onclick="nextPage({$current_page})" class="pure-button pure-button-primary">下一页</button>
+                                <button id="current_page_button_next" onclick="nextPage({$current_page}, {$options_num})" class="pure-button pure-button-primary">下一页</button>
                                 </p>
                             </div>
                         </div>

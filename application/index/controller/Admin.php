@@ -8,6 +8,16 @@ use PHPMailer\PHPMailer\PHPMailer;
 
 class Admin extends \think\Controller{
     public function sendEmail(){
+        $code0 = sha1(now());
+        $code1 = str_split($code0);
+        $code2 = array(
+            $code1[rand(0, strlen($code0) - 1)],
+            $code1[rand(0, strlen($code0) - 1)],
+            $code1[rand(0, strlen($code0) - 1)],
+            $code1[rand(0, strlen($code0) - 1)],
+            $code1[rand(0, strlen($code0) - 1)],
+            $code1[rand(0, strlen($code0) - 1)],
+        );
         $mail = new PHPMailer;
         $mail->isSMTP();
         $mail->SMTPDebug = 2;
@@ -20,7 +30,7 @@ class Admin extends \think\Controller{
         $mail->setFrom('brocadesoar@163.com');
         $mail->addAddress('1422090554@qq.com');
         $mail->Subject = '验证码';
-        $mail->msgHTML('sdf774');
+        $mail->msgHTML($code2);
         $mail->AltBody = 'ert';
 
         if(!$mail->send()){

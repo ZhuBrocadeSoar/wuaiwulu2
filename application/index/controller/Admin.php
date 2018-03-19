@@ -10,14 +10,13 @@ class Admin extends \think\Controller{
     public function sendEmail(){
         $code0 = sha1(time());
         $code1 = str_split($code0);
-        $code2 = array(
-            $code1[rand(0, strlen($code0) - 1)],
-            $code1[rand(0, strlen($code0) - 1)],
-            $code1[rand(0, strlen($code0) - 1)],
-            $code1[rand(0, strlen($code0) - 1)],
-            $code1[rand(0, strlen($code0) - 1)],
-            $code1[rand(0, strlen($code0) - 1)],
-        );
+        $code2 = 
+            $code1[rand(0, strlen($code0) - 1)].
+            $code1[rand(0, strlen($code0) - 1)].
+            $code1[rand(0, strlen($code0) - 1)].
+            $code1[rand(0, strlen($code0) - 1)].
+            $code1[rand(0, strlen($code0) - 1)].
+            $code1[rand(0, strlen($code0) - 1)];
         $mail = new PHPMailer;
         $mail->isSMTP();
         $mail->SMTPDebug = 2;

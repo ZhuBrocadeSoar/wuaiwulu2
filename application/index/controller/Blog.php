@@ -45,7 +45,7 @@ class Blog extends \think\Controller{
         }else{
             $to_page = Request::instance()->param('to_page');
             return json_encode([
-                'title' => '-博客-第' . $toPage . '页',
+                'title' => '-博客-第' . $to_page . '页',
                 'blog_title' => '博客',
                 'blog_subtitle' => '原创、转载、分享  |  随笔、日志、文稿',
                 'subhead_1' => '置顶',

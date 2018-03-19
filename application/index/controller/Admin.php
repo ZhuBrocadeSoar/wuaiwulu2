@@ -7,7 +7,7 @@ use think\View;
 
 class Admin extends \think\Controller{
     public function sendEmail(){
-        $mail = new \PHPMailer;
+        $mail = new \PHPMailer();
         $mail->isSMTP();
         $mail->SMTPDebug = 2;
         $mail->Host = "zhujinteng2012@163,com";

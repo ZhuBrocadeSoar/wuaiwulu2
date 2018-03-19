@@ -7,6 +7,7 @@ use think\View;
 
 class Blog extends \think\Controller{
     public function index(){
+        $options_num = 5;
         if(!Request::instance()->has('to_page')){
             $this->assign([
                 'title' => '-博客',
@@ -38,12 +39,14 @@ class Blog extends \think\Controller{
                 'post_title_2_5' => '[日志]-吾爱吾庐网站开发日志',
                 'post_date_2_5' => 'Sun 18 Mar 2018 13:27:05',
                 'post_description_2_5' => 'php/html/css/js这些东西总要先有个大概的认识，给自己定一个目标，比如给自己建立一个博客站，这既是对自己技术的锻炼也作为一份优秀的简历展示自己的想法和梦',
-                'options_num' => 5,
-                'current_page' => 3,
+                'options_num' => $options_num,
+                'current_page' => 1,
             ]);
             return $this->fetch('blog');
         }else{
             $to_page = Request::instance()->param('to_page');
+            $to_page = ($to_page < 1)?(1):($to_page);
+            $to_page = ($to_page > $options_num)?($options_num):($to_page);
             return json_encode([
                 'title' => '-博客-第' . $to_page . '页',
                 'blog_title' => '博客',
@@ -74,7 +77,7 @@ class Blog extends \think\Controller{
                 'post_title_2_5' => '[日志]-吾爱吾庐网站开发日志',
                 'post_date_2_5' => 'Sun 18 Mar 2018 13:27:05',
                 'post_description_2_5' => 'php/html/css/js这些东西总要先有个大概的认识，给自己定一个目标，比如给自己建立一个博客站，这既是对自己技术的锻炼也作为一份优秀的简历展示自己的想法和梦',
-                'options_num' => 5,
+                'options_num' => $options_num,
                 'current_page' => $to_page,
             ]);
         }

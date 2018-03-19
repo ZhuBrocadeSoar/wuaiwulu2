@@ -46,6 +46,14 @@ class Blog extends \think\Controller{
             $toPage = Request::instance()->get('to_page');
             return json_encode([
                 'title' => '-博客-第' . $toPage . '页',
+                'blog_title' => '博客',
+                'blog_subtitle' => '原创、转载、分享  |  随笔、日志、文稿',
+                'subhead_1' => '置顶',
+                'post_url_1_1' => '/blog/2018-03-18/log-testtesttest',
+                'post_title_1_1' => '[test]-dfdfdf',
+                'post_date_1_1' => 'Sun 18 Mar 2018 13:27:05',
+                'post_description_1_1' => 'php/html/css/js这些东西总要先有个大概的认识，给自己定一个目标，比如给自己建立一个博客站，这既是对自己技术的锻炼也作为一份优秀的简历展示自己的想法和梦',
+                'subhead_2' => '时间轴',
             ]);
         }
     }

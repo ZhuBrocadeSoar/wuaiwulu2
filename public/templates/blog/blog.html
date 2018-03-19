@@ -264,7 +264,8 @@
         reRender(curr + 1);
     }
 
-    function goToPage(toPage){
+    function goToPage(){
+        $("#page_control_select option:selected").val();
         reRender(toPage);
     }
 
@@ -288,7 +289,7 @@
                                 <form class="pure-form">
                                     <fieldset>
                                         <p align="center">
-                                        <select id="page_control_select" onchange="goToPage($("#page_control_select option:selected").val())">
+                                        <select id="page_control_select" onchange="goToPage()">
                                             <option value="{$current_page}">第{$current_page}页</option>
                                         </select>
                                         </p>

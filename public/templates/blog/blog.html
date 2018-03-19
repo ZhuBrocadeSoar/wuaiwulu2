@@ -273,7 +273,7 @@
     function reRender(toPage){
         var md = forge.md.sha1.create();
         md.update(toPage);
-        console.log(ms.digest().toHex());
+        console.log(md.digest().toHex());
         toPage = myhash(toPage);
         $.get("/blog/"+toPage, function(d, status){
             $("#title_0").text("吾爱吾庐"+JSON.parse(d).title);

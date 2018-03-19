@@ -265,7 +265,7 @@
     }
 
     function goToPage(){
-        $("#page_control_select option:selected").val();
+        var toPage = $("#page_control_select option:selected").val();
         reRender(toPage);
     }
 

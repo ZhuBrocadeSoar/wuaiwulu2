@@ -4,6 +4,7 @@ namespace app\index\controller;
 use think\Db;
 use think\Request;
 use think\View;
+use PHPMailer\PHPMailer\PHPMailer;
 
 class Admin extends \think\Controller{
     public function sendEmail(){

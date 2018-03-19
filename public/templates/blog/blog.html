@@ -270,7 +270,7 @@
     }
 
     function reRender(toPage){
-        $.get("/blog/?to_page="+toPage, function(d, status){
+        $.get("/blog/"+toPage, function(d, status){
             $("#title_0").text("吾爱吾庐"+JSON.parse(d).title);
             $("#blog_title_h1").text(JSON.parse(d).blog_title);
             $("#blog_subtitle_h2").text(JSON.parse(d).blog_subtitle);

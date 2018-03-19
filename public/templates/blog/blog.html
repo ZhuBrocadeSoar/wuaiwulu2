@@ -34,9 +34,9 @@
                     $("#page_control_select").empty();
                     for(var i = 1; i <= num; i++){
                         if(i != curr){
-                            $("#page_control_select").append("<option value="+i+">第"+i+"页</option>");
+                            $("#page_control_select").append("<option onclick='goToPage("+i+")' value="+i+">第"+i+"页</option>");
                         }else{
-                            $("#page_control_select").append("<option selected='selected' value="+i+">第"+i+"页</option>");
+                            $("#page_control_select").append("<option onclick='goToPage("+i+")' selected='selected' value="+i+">第"+i+"页</option>");
                         }
                     }
                 }

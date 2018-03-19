@@ -274,7 +274,7 @@
         var md = forge.md.sha1.create();
         md.update(toPage);
         console.log(md.digest().toHex());
-        toPage = myhash(toPage);
+        toPage = md.digest().toHex();
         $.get("/blog/"+toPage, function(d, status){
             $("#title_0").text("吾爱吾庐"+JSON.parse(d).title);
             $("#blog_title_h1").text(JSON.parse(d).blog_title);

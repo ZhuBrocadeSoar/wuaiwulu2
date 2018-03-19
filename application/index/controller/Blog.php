@@ -52,13 +52,13 @@ class Blog extends \think\Controller{
             ]);
             return $this->fetch('blog');
         }else{
+            $to_page = Request::instance()->param('to_page');
             for($i = 1; $i <= $options_num; $i++){
                 if($to_page == sha1("$i")){
                     $to_page = $i;
                     break;
                 }
             }
-            $to_page = Request::instance()->param('to_page');
             $to_page = ($to_page < 1)?(1):($to_page);
             $to_page = ($to_page > $options_num)?($options_num):($to_page);
             return json_encode([

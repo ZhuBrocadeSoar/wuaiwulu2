@@ -8,7 +8,7 @@ use think\View;
 class Blog extends \think\Controller{
     public function index(){
         $options_num = 5;
-        if(!Request::instance()->has('to_page')){
+        if(!Request::instance()->has('to_page', 'get')){
             $this->assign([
                 'title' => '-博客',
                 'blog_title' => '博客',

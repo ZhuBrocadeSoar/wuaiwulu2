@@ -8,6 +8,9 @@ use PHPMailer\PHPMailer\PHPMailer;
 
 class Admin extends \think\Controller{
     public function index(){
+        $this->assign([
+            'title' => '管理',
+        ]);
         return $this->fetch('admin');
     }
 

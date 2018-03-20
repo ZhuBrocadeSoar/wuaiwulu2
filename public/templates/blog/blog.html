@@ -134,7 +134,7 @@
                     </div>
 
                     <div class="post">
-                        <h1 id="subhead_2_h1" class="content-subhead">{$subhead_2}</h1>
+                        <h1 id="how_time_fly" class="content-subhead">{$subhead_2}</h1>
                         <section class="post">
                             <header class="post-header">
                                 <div class="pure-g">
@@ -303,7 +303,7 @@
                                     }
 
                                     function reRender(toPage){
-                                        location.href = "#subhead_2_h1";
+                                        location.href = "#how_time_fly";
                                         var md = forge.md.sha1.create();
                                         md.update(toPage);
                                         toPage = md.digest().toHex();
@@ -316,7 +316,7 @@
                                             $("#post_url_1_1_a").attr("href", JSON.parse(d).post_url_1_1);
                                             $("#post_date_1_1_p").text(JSON.parse(d).post_date_1_1);
                                             $("#post_description_1_1_p").text(JSON.parse(d).post_description_1_1);
-                                            $("#subhead_2_h1").text(JSON.parse(d).subhead_2);
+                                            $("#how_time_fly").text(JSON.parse(d).subhead_2);
                                             $("#post_title_2_1_h2").text(JSON.parse(d).post_title_2_1);
                                             $("#post_url_2_1_a").attr('href', JSON.parse(d).post_url_2_1);
                                             $("#post_date_2_1_p").text(JSON.parse(d).post_date_2_1);

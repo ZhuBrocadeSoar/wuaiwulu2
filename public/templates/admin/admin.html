@@ -16,6 +16,9 @@
             <!--<![endif]-->
             <link rel="stylesheet" href="https://purecss.io/combo/1.18.13?/css/main-grid.css&/css/main.css&/css/home.css&/css/rainbow/baby-blue.css" />
 
+            <link rel="stylesheet" href="https://lab.lepture.com/editor.css" />
+            <script src="https://lab.lepture.com/editor/editor.js"></script>
+            <script src="https://lab.lepture.com/editor/maked.js"></script>
 
 
             <!--<script>
@@ -28,9 +31,14 @@
     ga('send', 'pageview');
             </script>-->
 
+                    <script>
+                        var editor = new Editor();
+                        editor.render();
+                    </script>
+
     </head>
 
-    <body>
+    <body onload="createEditor()">
 
 
         <script>
@@ -80,6 +88,20 @@
                 </div>
 
                 <div class="content">
+                    <div class="pure-g">
+                        <div class="pure-u-1">
+                        </div>
+                    </div>
+                    <div class="pure-g">
+                        <div class="pure-u-1">
+                            <p align="center"><textarea /></p>
+                        </div>
+                    </div>
+                    <div class="pure-g">
+                        <div class="pure-u-1">
+                            <p align="center"><button class="pure-button pure-button-primary" onclick="submit()">提交</button></p>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="footer">

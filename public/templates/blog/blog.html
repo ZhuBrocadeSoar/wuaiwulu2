@@ -303,6 +303,7 @@
                                     }
 
                                     function reRender(toPage){
+                                        location.href("#subhead_2_h1");
                                         var md = forge.md.sha1.create();
                                         md.update(toPage);
                                         toPage = md.digest().toHex();

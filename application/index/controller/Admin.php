@@ -7,6 +7,10 @@ use think\View;
 use PHPMailer\PHPMailer\PHPMailer;
 
 class Admin extends \think\Controller{
+    public function index(){
+        return $this->fetch('admin');
+    }
+
     public function sendEmail(){
         $code0 = sha1(time());
         $code1 = str_split($code0);

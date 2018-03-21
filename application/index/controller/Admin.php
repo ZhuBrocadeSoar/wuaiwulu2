@@ -42,6 +42,12 @@ class Admin extends \think\Controller{
         }
     }
 
+    public function captcha($timeStamp){
+        require_once '/class.geetestlib.php';
+        $idkey = Gt3idkey::get(1);
+        $GtSdk = new GeetestLib($idkey->gt3idkey_id, $idkey->gt3idkey_key);
+    }
+
     public function insertAdmin(){
         Session::has('check');
         AdminRecord::get(AdminRecord::max('id'))->delete();

@@ -23,7 +23,7 @@ class Admin extends \think\Controller{
     }
 
     public function index(){
-        if(Session::has('check') || true){
+        if(Session::has('check')){
             if(Admin::isSessionEnable(session_id())){
                 // session 有效
                 $this->assign([
@@ -35,7 +35,7 @@ class Admin extends \think\Controller{
                 $this->assign([
                     'title' => '-获取验证码',
                 ]);
-                $this->fetch('index');
+                $this->fetch('captcha');
             }
         }else{
             Session::set('check', 'checked');

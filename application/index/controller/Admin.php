@@ -6,7 +6,7 @@ use think\Request;
 use think\View;
 use think\Session;
 use PHPMailer\PHPMailer\PHPMailer;
-use app\index\model;
+use app\index\model\AdminRecord;
 
 class Admin extends \think\Controller{
     public function index(){

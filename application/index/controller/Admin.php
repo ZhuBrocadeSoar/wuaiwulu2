@@ -44,11 +44,8 @@ class Admin extends \think\Controller{
 
     public function insertAdmin(){
         Session::has('check');
-        $adminRecord = new AdminRecord();
-        $adminRecord->session_id = session_id();
-        $adminRecord->code = 'testjj';
-        $adminRecord->isUpdate(false)->save();
-        dump($adminRecord);
+        $adminRecord = AdminRecord::get(AdminRecord::max('id'));
+        $adminRecord->delete(true);
     }
 
     public function sendEmail(){

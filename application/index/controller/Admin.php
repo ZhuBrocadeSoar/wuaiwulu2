@@ -4,12 +4,14 @@ namespace app\index\controller;
 use think\Db;
 use think\Request;
 use think\View;
+use think\Session;
 use PHPMailer\PHPMailer\PHPMailer;
 
 class Admin extends \think\Controller{
     public function index(){
         $this->assign([
             'title' => '-管理',
+            'session_id' => session_id(),
         ]);
         return $this->fetch('admin');
     }

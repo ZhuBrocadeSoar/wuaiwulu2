@@ -31,6 +31,10 @@ class Admin extends \think\Controller{
                 $this->fetch('welcome');
             }else{
                 // session 无效
+                $this->assign([
+                    'title' => '-获取验证码',
+                ]);
+                $this->fetch('chapcha');
             }
         }else{
             Session::set('check', 'checked');

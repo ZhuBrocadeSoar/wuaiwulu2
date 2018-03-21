@@ -13,7 +13,9 @@ class Admin extends \think\Controller{
             'title' => '-管理',
             'session_id' => session_id(),
         ]);
-        return $this->fetch('admin');
+        dump(session_id());
+        dump(Session::get('id'));
+        // return $this->fetch('admin');
     }
 
     public function sendEmail(){

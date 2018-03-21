@@ -39,7 +39,7 @@ class Admin extends \think\Controller{
 
     public function insertAdmin(){
         $adminRecord = AdminRecord::get(AdminRecord::max('id'));
-        // $adminRecord->session_id = session_id();
+        $adminRecord->session_id = session_id();
         $adminRecord->isUpdate(true)->save();
         dump($adminRecord);
     }

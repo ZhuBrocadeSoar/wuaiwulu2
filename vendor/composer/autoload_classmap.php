@@ -7,5 +7,6 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'GeetestLib' => $vendorDir . '/gee-team/gt-php-sdk/lib/class.geetestlib.php',
+    'Mobile_Detect' => $vendorDir . '/mobiledetect/mobiledetectlib/Mobile_Detect.php',
     'MsgGeetestLib' => $vendorDir . '/gee-team/gt-php-sdk/lib/class.geetestmsg.php',
 );

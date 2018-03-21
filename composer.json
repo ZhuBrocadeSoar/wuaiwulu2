@@ -20,7 +20,8 @@
         "topthink/framework": "5.0.*",
         "erusev/parsedown": "^1.7",
         "phpmailer/phpmailer": "^6.0",
-        "gee-team/gt-php-sdk": "^15.12"
+        "gee-team/gt-php-sdk": "^15.12",
+        "jenssegers/agent": "^2.6"
     },
     "autoload": {
         "psr-4": {

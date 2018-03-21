@@ -20,6 +20,11 @@ class ComposerStaticInit87cb1b67d239d2313e2a1f9ccc423c29
         array (
             'PHPMailer\\PHPMailer\\' => 20,
         ),
+        'J' => 
+        array (
+            'Jenssegers\\Agent\\' => 17,
+            'Jaybizzle\\CrawlerDetect\\' => 24,
+        ),
     );
 
     public static $prefixDirsPsr4 = array (
@@ -39,6 +44,14 @@ class ComposerStaticInit87cb1b67d239d2313e2a1f9ccc423c29
         array (
             0 => __DIR__ . '/..' . '/phpmailer/phpmailer/src',
         ),
+        'Jenssegers\\Agent\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/jenssegers/agent/src',
+        ),
+        'Jaybizzle\\CrawlerDetect\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/jaybizzle/crawler-detect/src',
+        ),
     );
 
     public static $prefixesPsr0 = array (
@@ -49,10 +62,18 @@ class ComposerStaticInit87cb1b67d239d2313e2a1f9ccc423c29
                 0 => __DIR__ . '/..' . '/erusev/parsedown',
             ),
         ),
+        'D' => 
+        array (
+            'Detection' => 
+            array (
+                0 => __DIR__ . '/..' . '/mobiledetect/mobiledetectlib/namespaced',
+            ),
+        ),
     );
 
     public static $classMap = array (
         'GeetestLib' => __DIR__ . '/..' . '/gee-team/gt-php-sdk/lib/class.geetestlib.php',
+        'Mobile_Detect' => __DIR__ . '/..' . '/mobiledetect/mobiledetectlib/Mobile_Detect.php',
         'MsgGeetestLib' => __DIR__ . '/..' . '/gee-team/gt-php-sdk/lib/class.geetestmsg.php',
     );
 

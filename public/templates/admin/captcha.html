@@ -126,7 +126,7 @@
                     */
                     var hadnlerBind = function(captchaObj){
                         captchaObj.onReady(function(){
-                            $("#wait").hide;
+                            $("#wait").className = "hide";
                         }).onSuccess(function(){
                             var result = captchaObj.getValidate();
                             if(!result){

@@ -9,28 +9,39 @@ use PHPMailer\PHPMailer\PHPMailer;
 use app\index\model\AdminRecord;
 
 class Admin extends \think\Controller{
+    private function isSessionEnable($session_id){
+        $adminRecord = new AdminRecord();
+        if($adminRecord->id != NULL){
+            if($adminRecord->session_id == $session_id){
+                if(!$adminRecord->over_time){
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
     public function index(){
         if(Session::has('check')){
-            if(Session::has('check') == 'session_checked');
+            if(sessionEnable(session_id())){
+                // session 有效
+                $this->assign([
+                    'title' => '-欢迎回来-管理员',
+                ]);
+                $this->fetch('welcome');
+            }else{
+                // session 无效
+            }
         }else{
-            Session::set('check', 'nonlogined');
+            Session::set('check', 'checked');
         }
-        $this->assign([
-            'title' => '-管理',
-            'session_id' => session_id(),
-        ]);
-        dump(Session::get('check'));
-        $adminRecord = AdminRecord::get(AdminRecord::max('id'));
-        dump($adminRecord);
-        dump($adminRecord->over_time);
-        // return $this->fetch('admin');
     }
 
     public function insertAdmin(){
-        $adminRecord = new AdminRecord();
-        $adminRecord->session_id = session_id();
-        $adminRecord->code = 'testtt';
-        $adminRecord->isUpdate(false)->save();
+        $adminRecord = AdminRecord::get(AdminRecord::max('id'));
+        // $adminRecord->session_id = session_id();
+        $adminRecord->isUpdate(true)->save();
+        dump($adminRecord);
     }
 
     public function sendEmail(){

@@ -62,8 +62,9 @@ class Admin extends \think\Controller{
         $status = $GtSdk->pre_process($data, 1);
         Session::set('gtserver', $status);
         Session::set('user_id', $data['user_id']);
-        dump($GtSdk->get_response_str());
-        return $GtSdk->get_response_str();
+        // dump($GtSdk->get_response_str());
+        echo $GtSdk->get_response_str();
+        return;
     }
 
     public function insertAdmin(){

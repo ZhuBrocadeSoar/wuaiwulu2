@@ -35,7 +35,7 @@ class Admin extends \think\Controller{
                 $this->assign([
                     'title' => '-获取验证码',
                 ]);
-                $this->fetch('captcha');
+                $this->fetch('index');
             }
         }else{
             Session::set('check', 'checked');

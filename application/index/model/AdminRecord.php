@@ -15,7 +15,8 @@ class AdminRecord extends Model{
             return false;
         }
         */
-        return date('Y-m-d H:i:s') - $data['create_time'];
+        // return date('Y-m-d H:i:s') - $data['create_time'];
+        return $data;
     }
 }
 

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "2775fa503245408b0c25ed786f4449c3",
+    "content-hash": "244f0fa7fd83f03336aaa71fedce42bd",
     "packages": [
         {
             "name": "erusev/parsedown",
@@ -51,6 +51,42 @@
                 "parser"
             ],
             "time": "2018-03-08T01:11:30+00:00"
+        },
+        {
+            "name": "gee-team/gt-php-sdk",
+            "version": "15.12.04",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/GeeTeam/gt-php-sdk.git",
+                "reference": "fd4b1d8cc6aa30f9c2dc5671ebfddc18e39e892e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://files.phpcomposer.com/files/GeeTeam/gt-php-sdk/fd4b1d8cc6aa30f9c2dc5671ebfddc18e39e892e.zip",
+                "reference": "fd4b1d8cc6aa30f9c2dc5671ebfddc18e39e892e",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.0.0"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "lib"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "tanxu1993",
+                    "email": "tanxu1993@gmail.com"
+                }
+            ],
+            "description": "GtWeb Php Demo",
+            "time": "2015-12-04T09:21:56+00:00"
         },
         {
             "name": "phpmailer/phpmailer",

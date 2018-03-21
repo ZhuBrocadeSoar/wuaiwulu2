@@ -51,12 +51,18 @@ class ComposerStaticInit87cb1b67d239d2313e2a1f9ccc423c29
         ),
     );
 
+    public static $classMap = array (
+        'GeetestLib' => __DIR__ . '/..' . '/gee-team/gt-php-sdk/lib/class.geetestlib.php',
+        'MsgGeetestLib' => __DIR__ . '/..' . '/gee-team/gt-php-sdk/lib/class.geetestmsg.php',
+    );
+
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
             $loader->prefixLengthsPsr4 = ComposerStaticInit87cb1b67d239d2313e2a1f9ccc423c29::$prefixLengthsPsr4;
             $loader->prefixDirsPsr4 = ComposerStaticInit87cb1b67d239d2313e2a1f9ccc423c29::$prefixDirsPsr4;
             $loader->prefixesPsr0 = ComposerStaticInit87cb1b67d239d2313e2a1f9ccc423c29::$prefixesPsr0;
+            $loader->classMap = ComposerStaticInit87cb1b67d239d2313e2a1f9ccc423c29::$classMap;
 
         }, null, ClassLoader::class);
     }

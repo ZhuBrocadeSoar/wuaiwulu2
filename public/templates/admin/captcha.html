@@ -116,7 +116,7 @@
                                 e.preventDefault();
                             }
                         });
-                        // captchaObj.appendTo("#embed-captcha");
+                        captchaObj.appendTo("#embed-captcha");
                         captchaObj.verify();
                         captchaObj.onReady(function(){
                             $("#wait")[0].className = "hide";

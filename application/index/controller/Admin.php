@@ -7,6 +7,7 @@ use think\View;
 use think\Session;
 use PHPMailer\PHPMailer\PHPMailer;
 use app\index\model\AdminRecord;
+use app\index\model\Gt3idkey;
 use traits\model\SoftDelete;
 
 class Admin extends \think\Controller{

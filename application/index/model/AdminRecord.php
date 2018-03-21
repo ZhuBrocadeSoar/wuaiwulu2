@@ -9,15 +9,15 @@ class AdminRecord extends Model{
     protected $deleteTime = 'delete_time';
     public function getOverTimeAttr($value, $data){
         /*
-        if(date() - $data > (30 * 60 * 1000)){
+        if((time() - strtotime($data['create_time'])) > (30 * 60)){
             return true;
         }else{
             return false;
         }
-        */
+         */
         // return date('Y-m-d H:i:s') - $data['create_time'];
         // return $data['create_time'];
-        return date('Y-m-d H:i:s');
+        return time() - strtotime($data['create_time']);
     }
 }
 

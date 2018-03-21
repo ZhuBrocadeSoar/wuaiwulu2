@@ -7,6 +7,7 @@ use think\View;
 use think\Session;
 use PHPMailer\PHPMailer\PHPMailer;
 use app\index\model\AdminRecord;
+use traits\model\SoftDelete;
 
 class Admin extends \think\Controller{
     private function isSessionEnable($session_id){
@@ -43,7 +44,10 @@ class Admin extends \think\Controller{
 
     public function insertAdmin(){
         Session::has('check');
-        AdminRecord::withTrashed()->select();
+        $adminRecord = new AdminRecord();
+        $adminRecord->session_id = session_id();
+        $adminRecord->code = 'testjj';
+        $adminRecord->isUpdate(false)->save();
         dump($adminRecord);
     }
 

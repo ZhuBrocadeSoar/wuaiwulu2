@@ -22,6 +22,7 @@ class Admin extends \think\Controller{
         dump(Session::get('check'));
         $adminRecord = AdminRecord::get(AdminRecord::max('id'));
         dump($adminRecord);
+        dump($adminRecord->over_time);
         // return $this->fetch('admin');
     }
 

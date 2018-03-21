@@ -16,6 +16,7 @@ class Admin extends \think\Controller{
         dump(session_id());
         dump(Session::get('id'));
         dump(Session::get('sid'));
+        dump(Session::get('ssid'));
         // return $this->fetch('admin');
     }
 

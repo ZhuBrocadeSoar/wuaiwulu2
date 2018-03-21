@@ -32,6 +32,7 @@ class Admin extends \think\Controller{
                 $this->fetch('welcome');
             }else{
                 // session 无效
+                dump("ddd");
                 $this->assign([
                     'title' => '-获取验证码',
                 ]);

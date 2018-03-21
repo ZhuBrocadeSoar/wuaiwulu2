@@ -48,11 +48,21 @@ class Admin extends \think\Controller{
     public function captcha($timeStamp){
         $idkey = Gt3idkey::get(1);
         $GtSdk = new GeetestLib($idkey->gt3idkey_id, $idkey->gt3idkey_key);
+        $agent = new Agent();
+        if($agent->isMobile()){
+            $client_type = 'h5';
+        }else{
+            $client_type = 'web';
+        }
         $data = array(
             "user_id" => session_id(),
-            "client_type" => "web",
-            "ip_address" => "",
+            "client_type" => $client_type,
+            "ip_address" => Request::instance()->server('REMOTE_ADDR'),
         );
+        $status = $GtSdk->pre_process($data, 1);
+        Session::set('gtserver', $status);
+        Session::set('user_id', $data['user_id']);
+        return $GtSdk->get_response_str();
     }
 
     public function insertAdmin(){

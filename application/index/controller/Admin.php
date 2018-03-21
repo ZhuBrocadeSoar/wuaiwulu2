@@ -13,10 +13,12 @@ class Admin extends \think\Controller{
             'title' => '-管理',
             'session_id' => session_id(),
         ]);
+        Session::set('name', 'ddd');
         dump(session_id());
         dump(Session::get('id'));
         dump(Session::get('sid'));
         dump(Session::get('ssid'));
+        dump(Session::get('name'));
         // return $this->fetch('admin');
     }
 

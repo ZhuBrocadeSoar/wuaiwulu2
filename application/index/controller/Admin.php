@@ -23,7 +23,7 @@ class Admin extends \think\Controller{
 
     public function index(){
         if(Session::has('check')){
-            if(Admin::sessionEnable(session_id())){
+            if(Admin::isSessionEnable(session_id())){
                 // session 有效
                 $this->assign([
                     'title' => '-欢迎回来-管理员',

@@ -116,7 +116,8 @@
                                 e.preventDefault();
                             }
                         });
-                        captchaObj.appendTo("#embed-captcha");
+                        // captchaObj.appendTo("#embed-captcha");
+                        captchaObj.verify();
                         captchaObj.onReady(function(){
                             $("#wait")[0].className = "hide";
                         });
@@ -131,8 +132,9 @@
                                 gt: data.gt,
                                 challenge: data.challenge,
                                 new_captcha: data.new_captcha,
-                                product: "embed",
-                                offline: !data.success
+                                product: "bind",
+                                offline: !data.success,
+                                width: '150px'
                             }, hadnlerEmbed);
                         }
                     });

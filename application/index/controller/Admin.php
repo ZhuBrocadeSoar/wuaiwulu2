@@ -6,20 +6,30 @@ use think\Request;
 use think\View;
 use think\Session;
 use PHPMailer\PHPMailer\PHPMailer;
+use app\index\model;
 
 class Admin extends \think\Controller{
     public function index(){
+        if(Session::has('check')){
+            if(Session::has('check') == 'session_checked');
+        }else{
+            Session::set('check', 'nonlogined');
+        }
         $this->assign([
             'title' => '-管理',
             'session_id' => session_id(),
         ]);
-        Session::set('name', 'ddd');
-        dump(session_id());
-        dump(Session::get('id'));
-        dump(Session::get('sid'));
-        dump(Session::get('ssid'));
-        dump(Session::get('name'));
+        dump(Session::get('check'));
+        $adminRecord = AdminRecord::get(AdminRecord::max('id'));
+        dump($adminRecord);
         // return $this->fetch('admin');
+    }
+
+    public function insertAdmin(){
+        $adminRecord = new AdminRecord();
+        $adminRecord->session_id = session_id();
+        $adminRecord->code = 'testtt';
+        $adminRecord->isUpdate(false)->save();
     }
 
     public function sendEmail(){

@@ -199,9 +199,9 @@ return [
     // +----------------------------------------------------------------------
 
     'session'                => [
-        'id'             => 'ssid',
+        'id'             => '',
         // SESSION_ID的提交变量,解决flash上传跨域
-        'var_session_id' => 'sid',
+        'var_session_id' => '',
         // SESSION 前缀
         'prefix'         => 'auth',
         // 驱动方式 支持redis memcache memcached

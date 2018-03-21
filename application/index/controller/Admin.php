@@ -10,7 +10,7 @@ use app\index\model\AdminRecord;
 
 class Admin extends \think\Controller{
     private function isSessionEnable($session_id){
-        $adminRecord = new AdminRecord();
+        $adminRecord = AdminRecord::get(AdminRecord::max('id'));
         if($adminRecord->id != NULL){
             if($adminRecord->session_id == $session_id){
                 if(!$adminRecord->over_time){

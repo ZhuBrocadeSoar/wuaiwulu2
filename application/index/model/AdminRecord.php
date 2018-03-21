@@ -15,7 +15,7 @@ class AdminRecord extends Model{
             return false;
         }
          */
-        return time() - $value;
+        return date('Y-m-d H:i:s') - $value;
     }
 }
 

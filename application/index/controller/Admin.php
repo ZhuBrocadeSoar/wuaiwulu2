@@ -29,14 +29,14 @@ class Admin extends \think\Controller{
                 $this->assign([
                     'title' => '-欢迎回来-管理员',
                 ]);
-                $this->fetch('welcome');
+                return $this->fetch('welcome');
             }else{
                 // session 无效
                 dump("ddd");
                 $this->assign([
                     'title' => '-获取验证码',
                 ]);
-                $this->fetch('captcha');
+                return $this->fetch('captcha');
             }
         }else{
             Session::set('check', 'checked');

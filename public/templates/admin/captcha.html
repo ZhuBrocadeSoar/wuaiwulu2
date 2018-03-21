@@ -105,6 +105,7 @@
                 </div>
                 <script src="https://static.geetest.com/static/tools/gt.js"></script>
                 <script>
+                    /*
                     var hadnlerEmbed = function(captchaObj){
                         $("#embed-submit").click(function(e){
                             var validate = captchaObj.getValidate();
@@ -122,6 +123,41 @@
                             $("#wait")[0].className = "hide";
                         });
                     };
+                    */
+                    var hadnlerBind = function(captchaObj){
+                        captchaObj.onReady(function(){
+                            $("#wait").hide;
+                        }).onSuccess(function(){
+                            var result = captchaObj.getValidate();
+                            if(!result){
+                                $("#notice").className = "show";
+                            }
+                            $.ajax({
+                                url: '/index/admin/captcha2',
+                                type: 'post',
+                                dataType: 'json',
+                                data: {
+                                    geetest_challenge: result.geetest_challenge,
+                                    geetest_validate: result.geetest_validate,
+                                    geetest_seccode: result.geetest_seccode
+                                },
+                                success: function(data){
+                                    if(data.status == 'success'){
+                                        setTimeout(function(){
+                                        }, 1500);
+                                    }else if(data.status == 'fail'){
+                                        setTimeout(function(){
+                                            $("#notice").className = "show";
+                                            captchaObj.reset();
+                                        }, 1500);
+                                    }
+                                }
+                            });
+                        });
+                        $('#embed-submit').click(function(){
+                            captchaObj.verify();
+                        });
+                    };
                     $.ajax({
                         url: "/index/admin/captcha/"+(new Date()).getTime(),
                         type: "get",
@@ -135,7 +171,7 @@
                                 product: "bind",
                                 offline: !data.success,
                                 width: '150px'
-                            }, hadnlerEmbed);
+                            }, hadnlerBind);
                         }
                     });
                 </script>

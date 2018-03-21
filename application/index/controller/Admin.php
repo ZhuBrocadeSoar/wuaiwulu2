@@ -67,6 +67,38 @@ class Admin extends \think\Controller{
         return;
     }
 
+    public function captcha2(){
+        Session::has('gtserver');
+        $idkey = Gt3idkey::get(1);
+        $GtSdk = new GeetestLib($idkey->gt3idkey_id, $idkey->gt3idkey_key);
+        $agent = new Agent();
+        if($agent->isMobile()){
+            $client_type = 'h5';
+        }else{
+            $client_type = 'web';
+        }
+        $data = array(
+            "user_id" => session_id(),
+            "client_type" => $client_type,
+            "ip_address" => Request::instance()->server('REMOTE_ADDR'),
+        );
+        if(Session::get('gtserver') == 1){
+            $result = $GtSdk->success_validate(Request::instance()->param('geetest_challenge'), Request::instance()->param('geetest_validate'), Request::instance()->param('geetest_seccode'), $data);
+            if($result){
+                echo '{"status" : "success"}';
+            }else{
+                echo '{"status" : "fail"}';
+            }
+        }else{
+            if($GtSdk->fail_validate(Request::instance()->param('geetest_challenge'), Request::instance()->param('geetest_validate'), Request::instance()->param('geetest_seccode'))){
+                echo '{"status" : "success"}';
+            }else{
+                echo '{"status" : "fail"}';
+            }
+        }
+        return;
+    }
+
     public function insertAdmin(){
         Session::has('check');
         AdminRecord::get(AdminRecord::max('id'))->delete();

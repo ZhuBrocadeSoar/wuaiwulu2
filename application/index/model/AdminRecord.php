@@ -7,7 +7,7 @@ use traits\model\SoftDelete;
 class AdminRecord extends Model{
     protected $autoWriteTimestamp = 'datetime';
     protected $deleteTime = 'delete_time';
-    public function getOverTimeAttr($value, $data){
+    public function getOverTimeAttr($data){
         /*
         if(date() - $data > (30 * 60 * 1000)){
             return true;
@@ -15,8 +15,7 @@ class AdminRecord extends Model{
             return false;
         }
          */
-        // return date('Y-m-d H:i:s') - $value;
-        return [$value, $data];
+        return date('Y-m-d H:i:s') - $data['create_time'];
     }
 }
 

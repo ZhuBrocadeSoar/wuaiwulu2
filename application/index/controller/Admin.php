@@ -9,6 +9,7 @@ use PHPMailer\PHPMailer\PHPMailer;
 use app\index\model\AdminRecord;
 use app\index\model\Gt3idkey;
 use traits\model\SoftDelete;
+use GeetestLib;
 
 class Admin extends \think\Controller{
     private function isSessionEnable($session_id){

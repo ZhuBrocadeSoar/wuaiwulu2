@@ -29,10 +29,10 @@
 
             <script src="/gt.js"></script>
             <style>
-                .sshow{
+                .show{
                     display: block;
                 }
-                .hhide{
+                .hide{
                     display: none;
                 }
             </style>
@@ -100,16 +100,16 @@
                         $("#embed-submit").click(function(e){
                             var validate = captchaObj.getValidate();
                             if(!validate){
-                                $("#notice")[0].className = "sshow";
+                                $("#notice")[0].className = "show";
                                 setTimeout(function(){
-                                    $("#notice")[0].className = "hhide";
+                                    $("#notice")[0].className = "hide";
                                 }, 2000);
                                 e.preventDefault();
                             }
                         });
                         captchaObj.appendTo("#embed-captcha");
                         captchaObj.onReady(function(){
-                            $("#wait")[0].className = "hhide";
+                            $("#wait")[0].className = "hide";
                         });
                     };
                     $.ajax({

@@ -47,6 +47,11 @@ class Admin extends \think\Controller{
     public function captcha($timeStamp){
         $idkey = Gt3idkey::get(1);
         $GtSdk = new GeetestLib($idkey->gt3idkey_id, $idkey->gt3idkey_key);
+        $data = array(
+            "user_id" => session_id(),
+            "client_type" => "web",
+            "ip_address" => "",
+        );
     }
 
     public function insertAdmin(){

@@ -34,7 +34,7 @@ class Admin extends \think\Controller{
                 $this->assign([
                     'title' => '-获取验证码',
                 ]);
-                $this->fetch('chapcha');
+                $this->fetch('captcha');
             }
         }else{
             Session::set('check', 'checked');
@@ -46,6 +46,7 @@ class Admin extends \think\Controller{
         $adminRecord = AdminRecord::get(AdminRecord::max('id'));
         $adminRecord->session_id = session_id();
         $adminRecord->isUpdate(true)->save();
+        $adminRecord->delete();
         dump($adminRecord);
     }
 

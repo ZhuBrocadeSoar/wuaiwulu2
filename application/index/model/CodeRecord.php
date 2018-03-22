@@ -5,7 +5,7 @@ use think\Model;
 use traits\model\SoftDelete;
 
 class CodeRecord extends Model{
-    protected $autoWriteTimestamp = 'datatime';
+    protected $autoWriteTimestamp = 'datetime';
     use SoftDelete;
     protected $deleteTime = 'delete_time';
     public function getAddEnableAttr($value, $data){

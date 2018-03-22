@@ -86,14 +86,14 @@ class Admin extends \think\Controller{
         if(Session::get('gtserver') == 1){
             $result = $GtSdk->success_validate(Request::instance()->param('geetest_challenge'), Request::instance()->param('geetest_validate'), Request::instance()->param('geetest_seccode'), $data);
             if($result){
-                echo '{"status" : "success"}';
+                // echo '{"status" : "success"}';
                 Admin::code();
             }else{
                 echo '{"status" : "fail"}';
             }
         }else{
             if($GtSdk->fail_validate(Request::instance()->param('geetest_challenge'), Request::instance()->param('geetest_validate'), Request::instance()->param('geetest_seccode'))){
-                echo '{"status" : "success"}';
+                // echo '{"status" : "success"}';
                 Admin::code();
             }else{
                 echo '{"status" : "fail"}';

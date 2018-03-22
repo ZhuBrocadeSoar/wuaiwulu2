@@ -132,13 +132,11 @@ class Admin extends \think\Controller{
                 return $this->fetch('code');
             }else{
                 // 不发送邮件，啥也不做？再次渲染验证码页面
-                Admin::index();
-                return;
+                return Admin::index();
             }
         }else{
             // 验证不通过，或者跳过验证
-            Admin::index();
-            return;
+            return Admin::index();
         }
     }
 

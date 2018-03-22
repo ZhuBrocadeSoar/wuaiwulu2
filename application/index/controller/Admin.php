@@ -140,6 +140,30 @@ class Admin extends \think\Controller{
         }
     }
 
+    public function code2(){
+        $codeLast = CodeRecord::get(CodeRecord::max('id'));
+        if($codeLast == NULL){
+            return Admin::index();
+        }else{
+            if(Request::instance()->has('code2', 'post') &&
+                !$codeLast->confirmed &&
+                !$codeLast->over_time &&
+                ($codeLast->code == Request::instance()->post('code2'))
+            ){
+                // 登记到admin_record
+                $adminLast = new AdminRecord;
+                Session::has('check');
+                $adminLast->session_id = session_id();
+                $adminLast->code = Request::instance()->post('code2');
+                $adminLast->isUpdate(false)->save();
+            }
+            // 登记 confirmed
+            $codeLast->confirmed = true;
+            $codeLast->isUpdate(true)->save();
+            return Admin::index();
+        }
+    }
+
     private function sendEmail($code2){
         $mail = new PHPMailer;
         $mail->isSMTP();

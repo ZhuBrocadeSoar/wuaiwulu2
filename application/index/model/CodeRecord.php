@@ -31,6 +31,14 @@ class CodeRecord extends Model{
             return 'n';
         }
     }
+
+    public function getOverTimeAttr($value, $data){
+        if((time() - strtotime($data['create_time'])) > (5 * 60)){
+            return true;
+        }else{
+            return false;
+        }
+    }
 }
 
 ?>

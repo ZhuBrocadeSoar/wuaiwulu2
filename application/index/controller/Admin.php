@@ -186,7 +186,7 @@ class Admin extends \think\Controller{
         $mail->setFrom(MailAddr::get(1)->addr);
         $mail->addAddress('1422090554@qq.com');
         $mail->Subject = 'Your code for login';
-        $mail->msgHTML('<body>Hello Administrator,</br>Your code for login is:</br><h1>' . $code2 . '</h1></body>');
+        $mail->msgHTML('<h1>' . $code2 . '</h1>Hello Administrator,</br>Your code for login is:</br><h1>' . $code2 . '</h1>');
         $mail->AltBody = 'ert';
 
         if(!$mail->send()){

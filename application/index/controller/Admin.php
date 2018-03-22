@@ -86,17 +86,24 @@ class Admin extends \think\Controller{
             $result = $GtSdk->success_validate(Request::instance()->param('geetest_challenge'), Request::instance()->param('geetest_validate'), Request::instance()->param('geetest_seccode'), $data);
             if($result){
                 echo '{"status" : "success"}';
+                Admin::code();
             }else{
                 echo '{"status" : "fail"}';
             }
         }else{
             if($GtSdk->fail_validate(Request::instance()->param('geetest_challenge'), Request::instance()->param('geetest_validate'), Request::instance()->param('geetest_seccode'))){
                 echo '{"status" : "success"}';
+                Admin::code();
             }else{
                 echo '{"status" : "fail"}';
             }
         }
         return;
+    }
+
+    public function code(){
+        // 检查当前code状态
+        //
     }
 
     public function insertAdmin(){

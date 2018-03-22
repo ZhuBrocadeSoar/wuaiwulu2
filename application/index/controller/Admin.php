@@ -15,6 +15,15 @@ use GeetestLib;
 use Jenssegers\Agent\Agent;
 
 class Admin extends \think\Controller{
+    public function isAdmin(){
+        Session::has('check');
+        if(Admin::isSessionEnable(session_id())){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
     private function isSessionEnable($session_id){
         $adminRecord = AdminRecord::get(AdminRecord::max('id'));
         if($adminRecord != NULL){

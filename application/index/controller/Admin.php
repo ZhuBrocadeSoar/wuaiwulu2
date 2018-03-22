@@ -140,11 +140,6 @@ class Admin extends \think\Controller{
         }
     }
 
-    public function insertAdmin(){
-        Session::has('check');
-        AdminRecord::get(AdminRecord::max('id'))->delete();
-    }
-
     private function sendEmail($code2){
         $mail = new PHPMailer;
         $mail->isSMTP();

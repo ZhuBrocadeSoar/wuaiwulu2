@@ -33,21 +33,9 @@
     ga('send', 'pageview');
             </script>-->
 
-            <script>
-                function init(){
-                    editor1 = new Editor({
-                        element: document.getElementById('absInputEditor');
-                    });
-                    editor2 = new Editor({
-                        element: document.getElementById('conInputEditor');
-                    });
-                    editor1.render();
-                    editor2.render();
-                }
-            </script>
     </head>
 
-    <body onload="init()">
+    <body>
 
 
         <script>
@@ -120,6 +108,16 @@
                         </fieldset>
                         <button type="submit" class="pure-button pure-input-1-2 pure-button-primary">发布</button>
                     </form>
+            <script>
+                    editor1 = new Editor({
+                        element: document.getElementById('absInputEditor');
+                    });
+                    editor2 = new Editor({
+                        element: document.getElementById('conInputEditor');
+                    });
+                    editor1.render();
+                    editor2.render();
+            </script>
                 </div>
 
                 <div class="footer">

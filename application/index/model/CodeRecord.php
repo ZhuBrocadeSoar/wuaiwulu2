@@ -15,6 +15,22 @@ class CodeRecord extends Model{
             return false;
         }
     }
+
+    public function getConfirmedAttr($value){
+        if($value == 'y'){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    public function setConfirmedAttr($value){
+        if($value){
+            return 'y';
+        }else{
+            return 'n';
+        }
+    }
 }
 
 ?>

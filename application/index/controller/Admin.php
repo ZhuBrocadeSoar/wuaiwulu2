@@ -8,6 +8,7 @@ use think\Session;
 use PHPMailer\PHPMailer\PHPMailer;
 use app\index\model\AdminRecord;
 use app\index\model\Gt3idkey;
+use app\index\model\CodeRecord;
 use traits\model\SoftDelete;
 use GeetestLib;
 use Jenssegers\Agent\Agent;
@@ -103,7 +104,31 @@ class Admin extends \think\Controller{
 
     public function code(){
         // 检查当前code状态
-        //
+        $code = CodeRecord::get(CodeRecord::max('id'));
+        if($code == NULL || $code->add_enable){
+            // 发送邮件，记录code
+            $code0 = sha1(time());
+            $code1 = str_split($code0);
+            $code2 = 
+                $code1[rand(0, strlen($code0) - 1)].
+                $code1[rand(0, strlen($code0) - 1)].
+                $code1[rand(0, strlen($code0) - 1)].
+                $code1[rand(0, strlen($code0) - 1)].
+                $code1[rand(0, strlen($code0) - 1)].
+                $code1[rand(0, strlen($code0) - 1)];
+            $code = new CodeRecord;
+            $code->code = $code2;
+            $code->confirmed = false;
+            $code->isUpdate(false)->save();
+            Admin::sendEmail($code2);
+            $this->assign([
+                'title' => '-验证您的身份',
+            ]);
+            $this->fetch('code');
+        }else{
+            // 不发送邮件，啥也不做？再次渲染验证码页面
+            return;
+        }
     }
 
     public function insertAdmin(){
@@ -111,16 +136,7 @@ class Admin extends \think\Controller{
         AdminRecord::get(AdminRecord::max('id'))->delete();
     }
 
-    private function sendEmail(){
-        $code0 = sha1(time());
-        $code1 = str_split($code0);
-        $code2 = 
-            $code1[rand(0, strlen($code0) - 1)].
-            $code1[rand(0, strlen($code0) - 1)].
-            $code1[rand(0, strlen($code0) - 1)].
-            $code1[rand(0, strlen($code0) - 1)].
-            $code1[rand(0, strlen($code0) - 1)].
-            $code1[rand(0, strlen($code0) - 1)];
+    private function sendEmail($code2){
         $mail = new PHPMailer;
         $mail->isSMTP();
         $mail->SMTPDebug = 2;

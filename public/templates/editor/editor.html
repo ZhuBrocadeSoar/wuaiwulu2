@@ -92,21 +92,21 @@
                 <div class="content">
                     <form class="pure-form" action="/index/editor/update">
                         <fieldset class="pure-group">
-                            <input name="title_route_in" type="text" class="pure-input-1-2" placeholder="Title for route(English Words and - Only)">
-                            <input name="title_view_in" type="text" class="pure-input-1-2" placeholder="Title for View(Chinese and other Char Enable)">
-                            <input name="tag1_in" type="text" class="pure-input-1-2" placeholder="Tag 1(Two Chinese Char Recommended)">
+                            <input name="title_route_in" type="text" class="pure-input-1" placeholder="Title for route(English Words and - Only)">
+                            <input name="title_view_in" type="text" class="pure-input-1" placeholder="Title for View(Chinese and other Char Enable)">
+                            <input name="tag1_in" type="text" class="pure-input-1" placeholder="Tag 1(Two Chinese Char Recommended)">
                         </fieldset>
                         <fieldset class="pure-group">
                             <label for="absInput">Abstract</label>
-                            <div class="pure-input-1-2">
+                            <div class="pure-input-1">
                                 <textarea id="absInputEditor">{$absInputInit}</textarea>
                             </div>
                             <label for="conInput">Content</label>
-                            <div class="pure-input-1-2">
+                            <div class="pure-input-1">
                                 <textarea id="conInputEditor">{$conInputInit}</textarea>
                             </div>
                         </fieldset>
-                        <button type="submit" class="pure-button pure-input-1-2 pure-button-primary">发布</button>
+                        <button type="submit" class="pure-button pure-input-1 pure-button-primary">发布</button>
                     </form>
             <script>
                     editor1 = new Editor({

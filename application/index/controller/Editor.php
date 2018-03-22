@@ -11,7 +11,7 @@ class Editor extends \think\Controller{
     public function index(){
         $this->assign([
             'title' => '-编辑器',
-            'adsInputInit' => 'none',
+            'absInputInit' => 'none',
             'conInputInit' => 'none',
         ]);
         return $this->fetch('editor');

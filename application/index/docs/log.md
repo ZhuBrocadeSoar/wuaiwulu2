@@ -23,3 +23,18 @@
 * Thu Mar 22 21:52:42 GMT 2018 解决了验证管理员和登陆态问题，建立了博客存储和评论存储的数据表，构思了用户评论需要提交的信息，下一步要结合markdown编辑器开始往数据库写入真正的文章
 
 * Thu Mar 22 21:53:21 GMT 2018 再往下应该是博客的路由解决和博客页的渲染
+
+* Thu Mar 22 22:54:20 GMT 2018 
+
+非富文本
+
+title\_route title\_view tag1
+
+富文本
+
+abstract content
+
+自动生成
+
+date\_route
+

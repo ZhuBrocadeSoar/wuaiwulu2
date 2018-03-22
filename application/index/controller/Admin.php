@@ -148,7 +148,7 @@ class Admin extends \think\Controller{
     private function sendEmail($code2){
         $mail = new PHPMailer;
         $mail->isSMTP();
-        $mail->SMTPDebug = 2;
+        $mail->SMTPDebug = 0;
         $mail->SMTPAuth = true;
         $mail->Host = "smtp.163.com";
         $mail->Port = 465;

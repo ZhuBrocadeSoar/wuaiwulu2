@@ -143,13 +143,10 @@
                                 },
                                 success: function(data){
                                     if(data.status == 'success'){
-                                        setTimeout(function(){
-                                        }, 1500);
+                                        // 验证成功页面被服务端刷新
                                     }else if(data.status == 'fail'){
-                                        setTimeout(function(){
-                                            $("#notice").className = "show";
-                                            captchaObj.reset();
-                                        }, 1500);
+                                        // 验证失败, 不反馈
+                                        captchaObj.reset();
                                     }
                                 }
                             });

@@ -104,7 +104,7 @@ class Admin extends \think\Controller{
         AdminRecord::get(AdminRecord::max('id'))->delete();
     }
 
-    public function sendEmail(){
+    private function sendEmail(){
         $code0 = sha1(time());
         $code1 = str_split($code0);
         $code2 = 

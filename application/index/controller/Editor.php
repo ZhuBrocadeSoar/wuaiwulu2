@@ -14,7 +14,7 @@ class Editor extends \think\Controller{
             'adsInputInit' => 'none',
             'conInputInit' => 'none',
         ]);
-        return $this->render('editor');
+        return $this->fetch('editor');
 
     }
 

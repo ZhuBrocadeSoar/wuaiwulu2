@@ -1,5 +1,5 @@
 <?php
-namespace app\think\controller;
+namespace app\wooc\controller;
 
 use think\Db;
 use think\Request;

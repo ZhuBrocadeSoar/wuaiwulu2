@@ -10,7 +10,8 @@ class Index extends \think\Controller{
         header('Content-Type: application/octet-stream');
         header('Content-Transfer-Encoding: binary');
         header('Content-Length: ' . filesize('/var/www/html/wuaiwulu2/public/images/CATBOX.mp4'));
-        return $video;
+        echo $video;
+        return;
     }
 
     public function video(){

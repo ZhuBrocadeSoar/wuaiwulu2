@@ -15,7 +15,8 @@ class Index extends \think\Controller{
     }
 
     public function video(){
-        return $this->fetch('index');
+        echo $this->fetch('index');
+        return;
     }
 }
 

@@ -8,20 +8,21 @@ use think\Session;
 use PHPMailer\PHPMailer\PHPMailer;
 
 class Editor extends \think\Controller{
+    private $values = array(
+        'title' => '-编辑器',
+        'absInputInit' => 'none',
+        'conInputInit' => 'none',
+        'menu_selected' => '',
+    );
     public function index(){
-        $this->assign([
-            'title' => '-编辑器',
-            'absInputInit' => 'none',
-            'conInputInit' => 'none',
-        ]);
+        $this->assign($values);
         return $this->fetch('editor');
 
     }
 
     public function new(){
-        $this->assign([
-            '$menu_selected' => 'pure-menu-selected',
-        ]);
+        $values['menu_selected'] = 'pure-menu-selected';
+        $this->assign($values);
         return Editor::index();
     }
 

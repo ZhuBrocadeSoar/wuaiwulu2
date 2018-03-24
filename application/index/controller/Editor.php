@@ -18,6 +18,11 @@ class Editor extends \think\Controller{
 
     }
 
+    public function new(){
+        Editor::index();
+        return;
+    }
+
 }
 
 ?>

@@ -19,6 +19,9 @@ class Editor extends \think\Controller{
     }
 
     public function new(){
+        $this->assign([
+            '$menu_selected' => 'pure-menu-selected',
+        ]);
         return Editor::index();
     }
 

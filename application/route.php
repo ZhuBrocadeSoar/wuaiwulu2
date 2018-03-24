@@ -23,5 +23,6 @@ return [
     'bbs$' => 'index/bbs/index',
     'msg$' => 'index/msg/index',
     'about$' => 'index/about/index',
+    'admin$' => 'index/admin/index',
 
 ];

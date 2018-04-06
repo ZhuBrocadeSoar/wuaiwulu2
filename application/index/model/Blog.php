@@ -13,6 +13,32 @@ class Blog extends Model{
         return date('Y-m-d', strtotime($d['create_time']));
     }
 
+    public function getPrevIdAttr($v, $d){
+        $i = $d['id'];
+        while(true){
+            if($this->get(--$i) == NULL){
+                return 0;
+            }else if($this->get($i)->delete_time == NULL){
+                return $i;
+            }
+        }
+    }
+
+    public function getNextIdAttr($v, $d){
+        $i = $d['id'];
+        while(true){
+            if($this->get(++$i) == NULL){
+                return 0;
+            }else if($this->get($i)->delete_time == NULL){
+                return $i;
+            }
+        }
+    }
+
+    public function getUrlAttr($v, $d){
+        return 'https://brocadesoar.cn/blog/' . $d['date_route'] . '/' . $d['title_route'];
+    }
+
     public function getTag1Attr($v){
         return base64_decode($v);
     }

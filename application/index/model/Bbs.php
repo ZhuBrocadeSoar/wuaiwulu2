@@ -4,7 +4,7 @@ namespace app\index\model;
 use think\Model;
 use traits\model\SoftDelete;
 
-class Comment extends Model{
+class Bbs extends Model{
     protected $autoWriteTimestamp = 'datetime';
     use SoftDelete;
     protected $deleteTime = 'delete_time';

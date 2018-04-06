@@ -16,21 +16,21 @@
             <!--<![endif]-->
             <link rel="stylesheet" href="https://purecss.io/combo/1.18.13?/css/main-grid.css&/css/main.css&/css/home.css&/css/rainbow/baby-blue.css" />
 
+            {load href="/static/css/amazeui.min.css" /}
 
-            <link rel="stylesheet" href="https://lab.lepture.com/editor/editor.css" />
-            <script type="text/javascript" src="https://lab.lepture.com/editor/editor.js"></script>
-            <script type="text/javascript" src="https://lab.lepture.com/editor/marked.js"></script>
-
-
+            {load href="/static/css/style.css" /}
+            {load href="/static/css/editormd.css" /}
+            <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.0.js"></script>
+            {load href="/static/js/editormd.js" /}
 
             <!--<script>
                 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-    ga('create', 'UA-41480445-1', 'purecss.io');
-    ga('send', 'pageview');
+                ga('create', 'UA-41480445-1', 'purecss.io');
+                ga('send', 'pageview');
             </script>-->
 
     </head>
@@ -67,6 +67,7 @@
 
                     <ul class="pure-menu-list">
                         <li class="pure-menu-item {$menu_selected}"><a href="/index/editor/new" class="pure-menu-link">发布博文</a></li>
+                        <li class="pure-menu-item"><a href="/index/editor/home" class="pure-menu-link">修改首页</a></li>
                     </ul>
 
                 </div>
@@ -81,34 +82,116 @@
                 </div>
 
                 <div class="content">
-                    <form class="pure-form" action="/index/editor/update">
+                    <form class="pure-form" onsubmit="return false">
                         <fieldset class="pure-group">
-                            <input name="title_route_in" type="text" class="pure-input-1" placeholder="Title for route(English Words and - Only)">
-                            <input name="title_view_in" type="text" class="pure-input-1" placeholder="Title for View(Chinese and other Char Enable)">
-                            <input name="tag1_in" type="text" class="pure-input-1" placeholder="Tag 1(Two Chinese Char Recommended)">
+                            <input id="title_route_in" name="title_route_in" type="text" class="pure-input-1" placeholder="Title for Route(English Words and - Only)" value="{$title_route}" autocomplete="off" />
+                            <input id="title_view_in" name="title_view_in" type="text" class="pure-input-1" placeholder="Title for View(Chinese and other Char Enable)" value="{$title_view}" autocomplete="off" />
+                            <input id="tag1_in" name="tag1_in" type="text" class="pure-input-1" placeholder="Tag 1(Two Chinese Char Recommended)" value="{$tag1}" autocomplete="off" />
+                            <input id="abs_in" name="abs_in" type="text" class="pure-input-1" placeholder="Abstract" value="{$abs}" autocomplete="off" />
+                            <label for="comment_enable_in">
+                                <input id="comment_enable_in" type="checkbox" /> 可评论
+                            </label>
                         </fieldset>
+                            <script>
+                                if({$disable}){
+                                    $("input#title_route_in").attr('readonly', 'readonly');
+                                }
+                                if({$comment_enable}){
+                                    $("input#comment_enable_in").attr('checked', 'checked');
+                                }else{
+                                    $("input#comment_enable_in").removeAttr('checked');
+                                }
+                            </script>
                         <fieldset class="pure-group">
-                            <label for="absInput">Abstract</label>
-                            <div class="pure-input-1">
-                                <textarea id="absInputEditor">{$absInputInit}</textarea>
-                            </div>
                             <label for="conInput">Content</label>
+                            <!--
                             <div class="pure-input-1">
                                 <textarea id="conInputEditor">{$conInputInit}</textarea>
                             </div>
+                            -->
+                            <div id="my_editormd">
+                                <textarea id="editor_text" style="display:none;">{$content}</textarea>
+                            </div>
                         </fieldset>
-                        <button type="submit" class="pure-button pure-input-1 pure-button-primary">发布</button>
+                        <div id="notices_div" class="pure-g" hidden>
+                            <div class="pure-u-1">
+                                <p id="notices_p" align="center"></p>
+                            </div>
+                        </div>
+                        <button id="post_button" class="pure-button pure-input-1 pure-button-primary">发布</button>
                     </form>
-            <script>
-                    editor1 = new Editor({
-                        element: document.getElementById('absInputEditor')
-                    });
-                    editor2 = new Editor({
-                        element: document.getElementById('conInputEditor')
-                    });
-                    editor1.render();
-                    editor2.render();
-            </script>
+                    <script>
+                        /*
+                        editor1 = new Editor({
+                            element: document.getElementById('absInputEditor')
+                        });
+                        editor1.render();
+                        window.location.href = '#';
+                        */
+                        $(function(){
+                            editormd("my_editormd",{
+                                height : 640,
+                                syncScrolling : "single",
+                                path : "{$two_level}../../../static/js/lib/",
+                                toolbarIcons : function(){
+                                    // console.log(editormd.toolbarModes['full']);
+                                    // return editormd.toolbarModes['full'];
+                                    return ['undo', 'redo', '|', 'image', 'datetime', 'pagebreak', 'goto-line', 'watch', 'preview', 'search', '|', 'help', 'info'];
+                                },
+                            });
+                        });
+                    </script>
+                    <script>
+                        $("#post_button").click(function(){
+                            var pattern_title_route = /^[a-zA-Z][0-9a-zA-Z-]*$/;
+                            var pattern_title_view = /^[a-zA-Z\u4e00-\u9fa5]/;
+                            var pattern_tag1 = /^[a-zA-Z\u4e00-\u9fa5][-a-zA-Z\u4e00-\u9fa5]*$/;
+                            var notices = '';
+                            if($("#tag1_in").val().match(pattern_tag1) == null){
+                                notices = 'Tag 1 不符合规则';
+                            }else if($("#title_view_in").val().match(pattern_title_view) == null){
+                                notices = 'Title for View 不符合规则';
+                            }else if($("#title_route_in").val().match(pattern_title_route) == null){
+                                notices = 'Title for Route 不符合规则';
+                            }else{
+                                notices = '';
+                            }
+                            if(notices != ''){
+                                // 不提交
+                                $("#notices_p").text(notices);
+                                $("#notices_div").removeAttr('hidden');
+                            }else{
+                                // 提交
+                                $("#notices_p").text(notices);
+                                $("#notices_div").attr('hidden', 'hidden');
+                                $.ajax({
+                                    type: 'post',
+                                    url: '/index/editor/{$new_or_update}Save',
+                                    data: {
+                                        date_route_in: '{$date_route}',
+                                        title_route_in: $("#title_route_in").val(),
+                                        title_view_in: $("#title_view_in").val(),
+                                        tag1_in: $("#tag1_in").val(),
+                                        abs_in: $("#abs_in").val(),
+                                        content_in: $("#editor_text").text(),
+                                        comment_enable_in: ((typeof($("input#comment_enable_in").attr('checked')) == 'undefined')?false:true),
+                                    },
+                                    success: function(d){
+                                        var dd = JSON.parse(d);
+                                        console.log(dd);
+                                        if(typeof(dd.success) == 'undefined'){
+                                            // some error
+                                            console.log(dd.errMsg);
+                                        }else{
+                                            // no error
+                                            console.log(dd.success);
+                                            window.location.href = dd.url;
+                                        }
+                                    },
+                                });
+                            }
+                        });
+                    </script>
                 </div>
 
                 <div class="footer">

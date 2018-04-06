@@ -25,6 +25,10 @@ class ComposerStaticInit87cb1b67d239d2313e2a1f9ccc423c29
             'Jenssegers\\Agent\\' => 17,
             'Jaybizzle\\CrawlerDetect\\' => 24,
         ),
+        'I' => 
+        array (
+            'Identicon\\' => 10,
+        ),
     );
 
     public static $prefixDirsPsr4 = array (
@@ -52,6 +56,10 @@ class ComposerStaticInit87cb1b67d239d2313e2a1f9ccc423c29
         array (
             0 => __DIR__ . '/..' . '/jaybizzle/crawler-detect/src',
         ),
+        'Identicon\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/yzalis/identicon/src/Identicon',
+        ),
     );
 
     public static $prefixesPsr0 = array (
@@ -74,7 +82,6 @@ class ComposerStaticInit87cb1b67d239d2313e2a1f9ccc423c29
     public static $classMap = array (
         'GeetestLib' => __DIR__ . '/..' . '/gee-team/gt-php-sdk/lib/class.geetestlib.php',
         'Mobile_Detect' => __DIR__ . '/..' . '/mobiledetect/mobiledetectlib/Mobile_Detect.php',
-        'MsgGeetestLib' => __DIR__ . '/..' . '/gee-team/gt-php-sdk/lib/class.geetestmsg.php',
     );
 
     public static function getInitializer(ClassLoader $loader)

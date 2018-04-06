@@ -15,7 +15,7 @@ use GeetestLib;
 use Jenssegers\Agent\Agent;
 
 class Admin extends \think\Controller{
-    public function isAdmin(){
+    public static function isAdmin(){
         Session::has('check');
         if(Admin::isSessionEnable(session_id())){
             return true;
@@ -24,7 +24,7 @@ class Admin extends \think\Controller{
         }
     }
 
-    private function isSessionEnable($session_id){
+    private static function isSessionEnable($session_id){
         $adminRecord = AdminRecord::get(AdminRecord::max('id'));
         if($adminRecord != NULL){
             if($adminRecord->session_id == $session_id){
@@ -157,13 +157,13 @@ class Admin extends \think\Controller{
             if(Request::instance()->has('code2', 'post') &&
                 !$codeLast->confirmed &&
                 !$codeLast->over_time &&
-                ($codeLast->code == Request::instance()->post('code2'))
+                ($codeLast->code == Request::instance()->param('code2'))
             ){
                 // 登记到admin_record
                 $adminLast = new AdminRecord;
                 Session::has('check');
                 $adminLast->session_id = session_id();
-                $adminLast->code = Request::instance()->post('code2');
+                $adminLast->code = Request::instance()->param('code2');
                 $adminLast->isUpdate(false)->save();
             }
             // 登记 confirmed
@@ -187,6 +187,57 @@ class Admin extends \think\Controller{
         $mail->addAddress('1422090554@qq.com');
         $mail->Subject = 'Your code for login';
         $mail->msgHTML('<h1>' . $code2 . '</h1>Hello Administrator,</br>Your code for login is:</br><h1>' . $code2 . '</h1>');
+        $mail->AltBody = 'ert';
+
+        if(!$mail->send()){
+            return 'errr';
+        }else{
+            return 'success';
+        }
+    }
+
+    public static function noteMe($date_route, $title_route, $level){
+        $mail = new PHPMailer;
+        $mail->isSMTP();
+        $mail->SMTPDebug = 0;
+        $mail->SMTPAuth = true;
+        $mail->Host = "smtp.163.com";
+        $mail->Port = 465;
+        $mail->SMTPSecure = 'ssl';
+        $mail->Username = MailAddr::get(1)->addr;
+        $mail->Password = MailAddr::get(1)->password;
+        $mail->setFrom(MailAddr::get(1)->addr);
+        $mail->addAddress('1422090554@qq.com');
+        $mail->Subject = 'A new comment';
+        // $mail->msgHTML('<h1>' . $code2 . '</h1>Hello Administrator,<br />Your code for login is:<br /><h1>' . $code2 . '</h1>');
+        $url = "https://brocadesoar.cn/blog/" . $date_route . "/" . $title_route . "#" . $level;
+        $mail->msgHTML('Hello Administrator,<br />You get a new comment from <a href="' . $url . '">here</a>');
+        $mail->AltBody = 'ert';
+
+        if(!$mail->send()){
+            return 'errr';
+        }else{
+            return 'success';
+        }
+    }
+
+    public static function bbsMe(){
+        $mail = new PHPMailer;
+        $mail->isSMTP();
+        $mail->SMTPDebug = 0;
+        $mail->SMTPAuth = true;
+        $mail->Host = "smtp.163.com";
+        $mail->Port = 465;
+        $mail->SMTPSecure = 'ssl';
+        $mail->Username = MailAddr::get(1)->addr;
+        $mail->Password = MailAddr::get(1)->password;
+        $mail->setFrom(MailAddr::get(1)->addr);
+        $mail->addAddress('1422090554@qq.com');
+        $mail->Subject = 'A new post on bbs';
+        // $mail->msgHTML('<h1>' . $code2 . '</h1>Hello Administrator,<br />Your code for login is:<br /><h1>' . $code2 . '</h1>');
+        // $url = "https://brocadesoar.cn/blog/" . $date_route . "/" . $title_route . "#" . $level;
+        // $mail->msgHTML('Hello Administrator,<br />You get a new comment from <a href="' . $url . '">here</a>');
+        $mail->msgHTML('Hello Administrator,<br />There is a new post on the bbs.');
         $mail->AltBody = 'ert';
 
         if(!$mail->send()){

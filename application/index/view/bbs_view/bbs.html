@@ -1,0 +1,644 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="Cache-Control" content="no-siteapp" />
+
+        <title>吾爱吾庐{$title}</title>
+
+        <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css" integrity=sha384-nn4HPE8lTHyVtfCBi5yW9d20FjT8BJwUXyWZT9InLYax14RDjBj46LmSztkmNP9w crossorigin=anonymous />
+        <!--[if lte IE 8]>
+            <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/grids-responsive-old-ie-min.css">
+        <![endif]-->
+        <!--[if gt IE 8]><!-->
+            <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/grids-responsive-min.css" />
+            <!--<![endif]-->
+            <link rel="stylesheet" href="https://purecss.io/combo/1.18.13?/css/main-grid.css&/css/main.css&/css/home.css&/css/rainbow/baby-blue.css" />
+
+            <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.0.js"></script>
+
+            {load href="/static/css/amazeui.min.css" /}
+            {load href="/static/css/editormd.min.css" /}
+            {load href="/static/js/lib/codemirror/codemirror.min.css" /}
+
+            {load href="/static/js/lib/marked.min.js" /}
+            {load href="/static/js/lib/codemirror/codemirror.min.js" /}
+            {load href="/static/js/lib/prettify.min.js" /}
+            {load href="/static/js/lib/raphael.min.js" /}
+            {load href="/static/js/lib/underscore.min.js" /}
+            {load href="/static/js/lib/sequence-diagram.min.js" /}
+            {load href="/static/js/lib/flowchart.min.js" /}
+            {load href="/static/js/lib/jquery.flowchart.min.js" /}
+            {load href="/static/js/editormd.min.js" /}
+
+
+
+            <!--<script>
+                (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-41480445-1', 'purecss.io');
+    ga('send', 'pageview');
+            </script>-->
+
+            <style>
+                .show{
+                    display: block;
+                }
+                .hide{
+                    display: none;
+                }
+            </style>
+
+
+    </head>
+
+    <body>
+
+
+        <script>
+            (function (root) {
+                /* -- Data -- */
+                root.YUI_config = {"version":"3.18.1","base":"http:\u002F\u002Fyui.yahooapis.com\u002F3.18.1\u002F","comboBase":"https:\u002F\u002Fyui-s.yahooapis.com\u002Fcombo?","comboSep":"&","root":"3.18.1\u002F","filter":"min","logLevel":"error","combine":true,"patches":[],"maxURLLength":2048,"groups":{"vendor":{"combine":true,"comboBase":"\u002Fcombo\u002F1.18.13?","base":"\u002F","root":"\u002F","modules":{"css-mediaquery":{"path":"vendor\u002Fcss-mediaquery.js"},"handlebars-runtime":{"path":"vendor\u002Fhandlebars.runtime.js"}}},"app":{"combine":true,"comboBase":"\u002Fcombo\u002F1.18.13?","base":"\u002Fjs\u002F","root":"\u002Fjs\u002F"}}};
+                root.app || (root.app = {});
+                root.app.yui = {"use":function () { return this._bootstrap('use', [].slice.call(arguments)); },"require":function () { this._bootstrap('require', [].slice.call(arguments)); },"ready":function (callback) { this.use(function () { callback(); }); },"_bootstrap":function bootstrap(method, args) { var self = this, d = document, head = d.getElementsByTagName('head')[0], ie = /MSIE/.test(navigator.userAgent), callback = [], config = typeof YUI_config != "undefined" ? YUI_config : {}; function flush() { var l = callback.length, i; if (!self.YUI && typeof YUI == "undefined") { throw new Error("YUI was not injected correctly!"); } self.YUI = self.YUI || YUI; for (i = 0; i < l; i++) { callback.shift()(); } } function decrementRequestPending() { self._pending--; if (self._pending <= 0) { setTimeout(flush, 0); } else { load(); } } function createScriptNode(src) { var node = d.createElement('script'); if (node.async) { node.async = false; } if (ie) { node.onreadystatechange = function () { if (/loaded|complete/.test(this.readyState)) { this.onreadystatechange = null; decrementRequestPending(); } }; } else { node.onload = node.onerror = decrementRequestPending; } node.setAttribute('src', src); return node; } function load() { if (!config.seed) { throw new Error('YUI_config.seed array is required.'); } var seed = config.seed, l = seed.length, i, node; if (!self._injected) { self._injected = true; self._pending = seed.length; } for (i = 0; i < l; i++) { node = createScriptNode(seed.shift()); head.appendChild(node); if (node.async !== false) { break; } } } callback.push(function () { var i; if (!self._Y) { self.YUI.Env.core.push.apply(self.YUI.Env.core, config.extendedCore || []); self._Y = self.YUI(); self.use = self._Y.use; if (config.patches && config.patches.length) { for (i = 0; i < config.patches.length; i += 1) { config.patches[i](self._Y, self._Y.Env._loader); } } } self._Y[method].apply(self._Y, args); }); self.YUI = self.YUI || (typeof YUI != "undefined" ? YUI : null); if (!self.YUI && !self._injected) { load(); } else if (self._pending <= 0) { setTimeout(flush, 0); } return this; }};
+                root.YUI_config || (root.YUI_config = {});
+                root.YUI_config.seed = ["https:\u002F\u002Fyui-s.yahooapis.com\u002Fcombo?3.18.1\u002Fyui\u002Fyui-min.js"];
+                root.YUI_config.groups || (root.YUI_config.groups = {});
+                root.YUI_config.groups.app || (root.YUI_config.groups.app = {});
+                root.YUI_config.groups.app.modules = {"start\u002Fapp":{"path":"start\u002Fapp.js","requires":["handlebars-runtime","yui","base-build","router","pjax-base","view","start\u002Fmodels\u002Fgrid","start\u002Fviews\u002Finput","start\u002Fviews\u002Foutput","start\u002Fviews\u002Fdownload"]},"start\u002Fmodels\u002Fgrid":{"path":"start\u002Fmodels\u002Fgrid.js","requires":["yui","querystring","base-build","model","model-sync-rest","start\u002Fmodels\u002Fmq"]},"start\u002Fmodels\u002Fmq":{"path":"start\u002Fmodels\u002Fmq.js","requires":["css-mediaquery","attribute","base-build","model","model-list"]},"start\u002Fviews\u002Fdownload":{"path":"start\u002Fviews\u002Fdownload.js","requires":["yui","base-build","querystring","view"]},"start\u002Fviews\u002Finput":{"path":"start\u002Fviews\u002Finput.js","requires":["base-build","start\u002Fmodels\u002Fmq","start\u002Fviews\u002Ftab"]},"start\u002Fviews\u002Foutput":{"path":"start\u002Fviews\u002Foutput.js","requires":["base-build","escape","start\u002Fviews\u002Ftab"]},"start\u002Fviews\u002Ftab":{"path":"start\u002Fviews\u002Ftab.js","requires":["yui","base-build","view"]}};
+            }(this));
+        </script>
+
+
+        <div id="layout">
+            <a href="#menu" id="menuLink" class="menu-link"><span></span></a>
+
+            <div id="menu">
+                <div class="pure-menu">
+                    <a href="/">
+                        <span class="pure-menu-heading">
+                            <img src="/favicon.ico" />
+                            吾爱吾庐
+                        </span>
+                    </a>
+
+                    <ul class="pure-menu-list">
+                        <li class="pure-menu-item"><a href="/blog" class="pure-menu-link">博客</a></li>
+                    </ul>
+
+
+                    <span class="pure-menu-heading">与我联系</span>
+
+                    <ul class="pure-menu-list">
+                        <li class="pure-menu-item pure-menu-selected"><a href="bbs" class="pure-menu-link">留言板</a></li>
+                        <li class="pure-menu-item"><a href="/about" class="pure-menu-link">传送门</a></li>
+                    </ul>
+
+                </div>
+
+            </div>
+
+
+            <div id="main">
+
+                <div class="header">
+                    <h1>留言板</h1>
+                    <h2></h2>
+                </div>
+
+                <div class="am-g">
+                    <div class="am-u-sm-centered">
+
+                        <ul class="am-comments-list am-comments-flip">
+
+                            <li class="am-comment">
+                                <div class="am-comment-main">
+                                    <header class="am-comment-hd">
+                                        <div class="am-comment-meta">
+                                            <form class="pure-form" onsubmit="return false">
+                                                <fieldset>
+                                                    <div class="pure-g">
+                                                        <div class="pure-u-1-3">
+                                                            <input class="pure-input-1" id="nick_in" name="nick_in" type="text" placeholder="昵称(必填)" />
+                                                        </div>
+                                                        <div class="pure-u-1-3">
+                                                            <input class="pure-input-1" id="site_in" name="site_in" type="text" placeholder="主页" />
+                                                        </div>
+                                                        <div class="pure-u-1-3">
+                                                            <input class="pure-input-1" id="email_in" name="email_in" type="email" placeholder="邮箱(必填)" />
+                                                        </div>
+                                                    </div>
+                                                </fieldset>
+                                            </form>
+                                        </div>
+                                    </header>
+                                    <div class="am-comment-bd">
+                                        <form class="pure-form" onsubmit="return false">
+                                            <fieldset>
+                                                <textarea class="pure-input-1" id="comment_in" style="resize: none;" placeholder="须知：您无需注册登录即可留言，但您的ip地址和有效邮箱地址将被记录备案（但不会被公示），您必须对您的言论负责。您的昵称和主页信息将与邮箱、IP地址信息绑定，也就是说邮箱和IP地址都没有变化时昵称和主页将保持之前的状态。留言支持markdown语法" rows="8"></textarea>
+                                            </fieldset>
+                                            <p align="center" id="notices" hidden></p>
+                                            <p align="center" id="wait" class="show">正在加载验证码......</p>
+                                            <p align="center" id="notice" class="hide">请先完成验证</p>
+                                            <p align="center"><button class="pure-button pure-button-primary" id="embed-submit">留言</button></p>
+                                            <script src="https://static.geetest.com/static/tools/gt.js"></script>
+
+                                            <script>
+                                                // 按钮动作，评论成功回调：重定向本页面带锚标记，评论失败回调：显示错误信息
+                                                function comment_check(){
+                                                    var pattern_email = /^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/;
+                                                    var pattern_site = /^[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/
+                                                    if($("input#email_in").val().match(pattern_email) == null){
+                                                        // email 不符合规则
+                                                        $("p#notices").text('邮箱地址看起来不正确');
+                                                        $("p#notices").removeAttr('hidden');
+                                                        return false;
+                                                    }else if($.trim($("input#nick_in").val()).length == 0){
+                                                        // 昵称为空
+                                                        $("p#notices").text('输入一个常用的昵称才能让大家认识你');
+                                                        $("p#notices").removeAttr('hidden');
+                                                        return false;
+                                                    }else if(($.trim($("input#site_in").val()).length != 0) && ($.trim($("input#site_in").val()).match(pattern_site) == null)){
+                                                        // 网站输入不正确
+                                                        $("p#notices").text('您输入的网站好像不正确呢(不能输入https://)');
+                                                        $("p#notices").removeAttr('hidden');
+                                                        return false;
+                                                    }else if($.trim($("textarea#comment_in").val()).length < 3){
+                                                        // 评论为空
+                                                        $("p#notices").text('评论也要认真点吧，至少2个字符^_^');
+                                                        $("p#notices").removeAttr('hidden');
+                                                        return false;
+                                                    }else{
+                                                        $("p#notices").attr('hidden', 'hidden');
+                                                        // 提交信息
+                                                        return true;
+                                                    }
+                                                }
+                                                function comment_get(){
+                                                    $.ajax({
+                                                        type: 'get',
+                                                        url: '/index/bbs_view/comment',
+                                                        data: {
+                                                            nick_in: $.trim($("input#nick_in").val()),
+                                                            site_in: $.trim($("input#site_in").val()),
+                                                            email_in: $.trim($("input#email_in").val()),
+                                                            comment_in: $.trim($("textarea#comment_in").val()),
+                                                        },
+                                                        success: function(d){
+                                                            var dd = JSON.parse(d);
+                                                            if(typeof(dd.success) == 'undefined'){
+                                                                // console.log(dd.errMsg);
+                                                                if(dd.errMsg == 'Comment Closed'){
+                                                                    $("p#notices").text('抱歉，管理员关闭了评论，发邮件给brocadesoar@163.com告诉他你要吐槽');
+                                                                    $("p#notices").removeAttr('hidden');
+                                                                }
+                                                            }else{
+                                                                // console.log(dd);
+                                                                $("p#notices").attr('hidden', 'hidden');
+                                                                window.location.reload();
+                                                            }
+                                                        },
+                                                    });
+                                                }
+                                                var handleBind = function(captchaObj){
+                                                    captchaObj.onReady(function(){
+                                                        $("#wait").hide();
+                                                    }).onSuccess(function(){
+                                                        var result = captchaObj.getValidate();
+                                                        if(!result){
+                                                            $("#notice").className = "show";
+                                                        }
+                                                        $.ajax({
+                                                            url: '/index/admin/captcha2',
+                                                            type: 'post',
+                                                            dataType: 'json',
+                                                            data: {
+                                                                geetest_challenge: result.geetest_challenge,
+                                                                geetest_validate: result.geetest_validate,
+                                                                geetest_seccode: result.geetest_seccode
+                                                            },
+                                                            success: function(d){
+                                                                if(d.status == 'success'){
+                                                                    // 验证成功
+                                                                    comment_get();
+                                                                }else if(d.status == 'fail'){
+                                                                    // 验证失败
+                                                                    captchaObj.reset();
+                                                                }
+                                                            }
+                                                        });
+                                                    });
+                                                    $('#embed-submit').click(function(){
+                                                        if(comment_check()){
+                                                            captchaObj.verify();
+                                                        }
+                                                    });
+                                                };
+                                                $.ajax({
+                                                    url: "/index/admin/captcha/" + (new Date()).getTime(),
+                                                    type: "get",
+                                                    dataType: "json",
+                                                    success: function(d){
+                                                        initGeetest({
+                                                            gt: d.gt,
+                                                            challenge: d.challenge,
+                                                            new_captcha: d.new_captcha,
+                                                            product: "bind",
+                                                            offline: !d.success,
+                                                            width: '150px'
+                                                        }, handleBind);
+                                                    }
+                                                });
+                                            </script>
+
+                                        </form>
+                                    </div>
+                                </div><!--am-comment-main-->
+                            </li><!--am-comments button post-->
+
+
+                            {volist name="comment_list" id="curr"}
+                            <li id="{$curr.level}" class="am-comment">
+                                <img alt="identicon" class="am-comment-avatar" width="48" height="48" src="{$curr.identicon_uri}" />
+                                <div class="am-comment-main">
+                                    <header class="am-comment-hd">
+                                        <div class="am-comment-meta">
+                                            {$curr.level}楼，{if condition="$curr.admin neq NULL"}<span style="background-color: gold">{/if}{if condition="$curr.site neq NULL"}<a href="http://{$curr.site}">{/if}{$curr.nick}{if condition="$curr.site neq NULL"}</a>{/if}{if condition="$curr.admin neq NULL"}</span>{/if} 发表于 {$curr.datetime} 
+                                        </div>
+                                    </header>
+                                    <div class="am-comment-bd">
+                                        <div class="pure-g">
+                                            <div class="pure-u-1" id="test-editormd-view2-comment-{$curr.level}">
+                                                <textarea id="append-text" style="display: none;">
+
+
+                                                    {$curr.comment}
+
+
+                                                </textarea>
+                                            </div>
+                                            <script>
+                                                $(function(){
+                                                    // console.log('comment markdowning');
+                                                    var testEditormdView2;
+                                                    testEditormdView2 = editormd.markdownToHTML("test-editormd-view2-comment-{$curr.level}", {
+                                                        // htmlDecode : "style, script, iframe",
+                                                        emoji : true,
+                                                        taskList : true,
+                                                        tex : true,
+                                                        flowChart : true,
+                                                        sequenceDiagram : true,
+                                                        previewCodeHighlight : false,
+                                                        gfm : true,
+                                                    });
+                                                });
+                                            </script>
+
+                                        </div>
+
+
+                                        <div class="am-g">
+                                            <div class="am-u-sm-centered">
+
+                                                <ul class="am-comments-list am-comments-flip">
+
+                                                    {volist name="curr['reply_list']" id="currr"}
+                                                    <li class="am-comment">
+                                                        <img alt="identicon" class="am-comment-avatar" width="24" height="24" src="{$currr.identicon_uri}" />
+                                                        <div class="am-comment-main">
+                                                            <header class="am-comment-hd">
+                                                                <div class="am-comment-meta">
+                                                                    {$currr.level}层，{if condition="$currr.admin neq NULL"}<span style="background-color: gold">{/if}{if condition="$currr.site neq NULL"}<a href="http://{$currr.site}">{/if}{$currr.nick}{if condition="$currr.site neq NULL"}</a>{/if}{if condition="$currr.admin neq NULL"}</span>{/if} 发表于 {$currr.datetime} 
+                                                                </div>
+                                                            </header>
+                                                            <div class="am-comment-bd" id="test-editormd-view2-reply-{$curr.level}-{$currr.level}">
+                                                                <textarea id="append-text-reply-{$curr.level}-{$currr.level}" style="display: none;">
+
+
+                                                                    {$currr.comment}
+
+
+                                                                </textarea>
+
+
+                                                            </div>
+                                                            <div class="pure-g">
+                                                                <div class="pure-u-1-2">
+                                                                    <button id="remove-reply-{$curr.comment_id}-{$currr.level}" data-commentid="{$curr.comment_id}" value="{$curr.level}" class="pure-button pure-button-primary" style="font-size: 80%;" hidden>删除</button>
+                                                                    <script>
+                                                                        if({$removeHidden}){
+                                                                            $("button#remove-reply-{$curr.comment_id}-{$currr.level}").removeAttr('hidden');
+                                                                        }
+                                                                    </script>
+                                                                    <script>
+                                                                        $("button#remove-reply-{$curr.comment_id}-{$currr.level}").click(function(){
+                                                                            console.log({$curr.comment_id});
+                                                                            console.log({$currr.reply_id});
+                                                                            $.ajax({
+                                                                                type: 'get',
+                                                                                url: 'https://brocadesoar.cn/index/bbs_view/removeReply',
+                                                                                data: {
+                                                                                    comment_id_remove : '{$curr.comment_id}',
+                                                                                    reply_id_remove : '{$currr.reply_id}',
+                                                                                },
+                                                                                success: function(d){
+                                                                                    var dd = JSON.parse(d);
+                                                                                    if(typeof(dd.success) == 'undefined'){
+                                                                                        console.log(dd.errMsg);
+                                                                                    }else{
+                                                                                        console.log(dd.success);
+                                                                                        window.location.reload();
+                                                                                    }
+                                                                                },
+                                                                            });
+                                                                        });
+                                                                    </script>
+                                                                </div>
+                                                            </div>
+
+                                                            <script>
+                                                                $(function(){
+                                                                    // console.log('reply markdowning');
+                                                                    var testEditormdView2;
+                                                                    testEditormdView2 = editormd.markdownToHTML("test-editormd-view2-reply-{$curr.level}-{$currr.level}", {
+                                                                        // htmlDecode : "span",
+                                                                        emoji : true,
+                                                                        taskList : true,
+                                                                        tex : true,
+                                                                        flowChart : true,
+                                                                        sequenceDiagram : true,
+                                                                        previewCodeHighlight : false,
+                                                                        gfm : true,
+                                                                    });
+                                                                });
+                                                            </script>
+
+
+                                                        </div>
+                                                    </li>
+                                                    {/volist}
+
+
+                                                    <li id="reply_form_{$curr.level}" class="am-comment myvoidclass" hidden>
+                                                    </li>
+
+
+
+                                                </ul><!--am-comments-list-->
+
+
+                                            </div><!--am-u-sm-centered-->
+                                        </div><!--am-g-->
+
+
+                                        <div id="reply_button" class="pure-g">
+                                            {if condition="$curr.level eq 0"}
+                                            <script>
+                                                $("div#reply_button").attr('hidden', 'hidden');
+                                            </script>
+                                            {/if}
+                                            <div class="pure-u-1-2">
+                                                <button id="reply" data-commentid="{$curr.comment_id}" value="{$curr.level}" class="pure-button pure-button-primary" style="font-size: 80%;">回复</button>
+                                            </div>
+                                            <div class="pure-u-1-2">
+                                                <button id="remove-{$curr.comment_id}" data-commentid="{$curr.comment_id}" value="{$curr.level}" class="pure-button pure-button-primary" style="font-size: 80%;" hidden>删除</button>
+                                                <script>
+                                                    if({$removeHidden}){
+                                                        $("button#remove-{$curr.comment_id}").removeAttr('hidden');
+                                                    }
+                                                </script>
+                                                <script>
+                                                    $("button#remove-{$curr.comment_id}").click(function(){
+                                                        $.ajax({
+                                                            type: 'get',
+                                                            url: 'https://brocadesoar.cn/index/bbs_view/removeComment',
+                                                            data: {
+                                                                comment_id_remove : '{$curr.comment_id}',
+                                                            },
+                                                            success: function(d){
+                                                                var dd = JSON.parse(d);
+                                                                if(typeof(dd.success) == 'undefined'){
+                                                                    console.log(dd.errMsg);
+                                                                }else{
+                                                                    console.log(dd.success);
+                                                                    window.location.reload();
+                                                                }
+                                                            },
+                                                        });
+                                                    });
+                                                </script>
+                                            </div>
+                                        </div>
+
+
+                                    </div><!--bd-->
+                                </div><!--main-->
+                            </li><!---->
+                            {/volist}
+
+
+                            <script>
+                                $("button#reply").click(function(){
+                                    // console.log($(this));
+                                    $.ajax({
+                                        type: 'post',
+                                        url: '/index/some_html/replyHtml',
+                                        data: {
+                                            level: $(this)[0].value,
+                                            comment_id_reply: $(this)[0].dataset.commentid,
+                                        },
+                                        success: function(d){
+                                            var dd = JSON.parse(d);
+                                            $("li.myvoidclass").html(' ');
+                                            $("li#reply_form_" + dd.level).html(dd.str_html);
+                                            $("li#reply_form_" + dd.level).removeAttr('hidden');
+                                            renderCaptcha();
+                                            // $("input#comment_id_reply").
+                                        },
+                                    });
+                                });
+                            </script>
+
+
+
+
+
+
+
+                            <script>
+                                function reply_check(){
+                                    var pattern_email = /^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/;
+                                    var pattern_site = /^[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/
+                                    if($("input#email_in_reply").val().match(pattern_email) == null){
+                                        // email 不符合规则
+                                        $("p#notices_reply").text('邮箱地址看起来不正确');
+                                        $("p#notices_reply").removeAttr('hidden');
+                                        return false;
+                                    }else if($.trim($("input#nick_in_reply").val()).length == 0){
+                                        // 昵称为空
+                                        $("p#notices_reply").text('输入一个常用的昵称才能让大家认识你');
+                                        $("p#notices_reply").removeAttr('hidden');
+                                        return false;
+                                    }else if(($.trim($("input#site_in_reply").val()).length != 0) && ($.trim($("input#site_in_reply").val()).match(pattern_site) == null)){
+                                        // 网站输入不正确
+                                        $("p#notices_reply").text('您输入的网站好像不正确呢(不能输入https://)');
+                                        $("p#notices_reply").removeAttr('hidden');
+                                        return false;
+                                    }else if($.trim($("textarea#comment_in_reply").val()).length < 3){
+                                        // 评论为空
+                                        $("p#notices_reply").text('评论也要认真点吧，至少2个字符^_^');
+                                        $("p#notices_reply").removeAttr('hidden');
+                                        return false;
+                                    }else{
+                                        $("p#notices_reply").attr('hidden', 'hidden');
+                                        // 提交信息
+                                        return true;
+                                    }
+                                }
+                                function reply_get(){
+                                    $.ajax({
+                                        type: 'get',
+                                        url: '/index/bbs_view/reply',
+                                        data: {
+                                            comment_id_reply: $.trim($("input#comment_id_reply").val()),
+                                            nick_in_reply: $.trim($("input#nick_in_reply").val()),
+                                            site_in_reply: $.trim($("input#site_in_reply").val()),
+                                            email_in_reply: $.trim($("input#email_in_reply").val()),
+                                            comment_in_reply: $.trim($("textarea#comment_in_reply").val()),
+                                        },
+                                        success: function(d){
+                                            var dd = JSON.parse(d);
+                                            console.log(dd);
+                                            if(typeof(dd.success) == 'undefined'){
+                                                // console.log(dd.errMsg);
+                                                if(dd.errMsg == 'Comment Closed'){
+                                                    $("p#notices_reply").text('抱歉，管理员关闭了评论，发邮件给brocadesoar@163.com告诉他你要吐槽');
+                                                    $("p#notices_reply").removeAttr('hidden');
+                                                }
+                                            }else{
+                                                // console.log(dd);
+                                                $("p#notices_reply").attr('hidden', 'hidden');
+                                                window.location.reload();
+                                            }
+                                        },
+                                    });
+                                }
+                            </script>
+                            <script>
+                                var handleBindReply = function(captchaObj){
+                                    captchaObj.onReady(function(){
+                                        // console.log('captchaObj onReady');
+                                        $("#wait_reply").hide();
+                                    }).onSuccess(function(){
+                                        var result = captchaObj.getValidate();
+                                        if(!result){
+                                            $("#notice_reply").className = "show";
+                                        }
+                                        $.ajax({
+                                            url: '/index/admin/captcha2',
+                                            type: 'post',
+                                            dataType: 'json',
+                                            data: {
+                                                geetest_challenge: result.geetest_challenge,
+                                                geetest_validate: result.geetest_validate,
+                                                geetest_seccode: result.geetest_seccode
+                                            },
+                                            success: function(d){
+                                                if(d.status == 'success'){
+                                                    // 验证成功
+                                                    reply_get();
+                                                }else if(d.status == 'fail'){
+                                                    // 验证失败
+                                                    captchaObj.reset();
+                                                }
+                                            }
+                                        });
+                                    });
+                                    $('#embed-submit-reply').click(function(){
+                                        if(reply_check()){
+                                            captchaObj.verify();
+                                        }
+                                    });
+                                };
+                                function renderCaptcha(){
+                                    // console.log('renderCaptchaed');
+                                    $.ajax({
+                                        url: "/index/admin/captcha/" + (new Date()).getTime(),
+                                        type: "get",
+                                        dataType: "json",
+                                        success: function(d){
+                                            initGeetest({
+                                                gt: d.gt,
+                                                challenge: d.challenge,
+                                                new_captcha: d.new_captcha,
+                                                product: "bind",
+                                                offline: !d.success,
+                                                width: '150px'
+                                            }, handleBindReply);
+                                        }
+                                    });
+                                }
+                            </script>
+
+
+                            <div class="footer">
+
+                                <div class="legal pure-g">
+                                    <div class="pure-u-1">
+
+                                        <span>
+                                            <a href="http://creativecommons.org/licenses/by-nc-nd/4.0/" rel="license"><img alt="知识共享许可协议" style="border-width:0"i src="/images/88x31.png" /></a>
+                                        </span>
+
+                                    </div>
+
+                                </div>
+
+                                <div class="legal pure-g">
+                                    <div class="pure-u-1">
+
+                                        <span>
+                                            本作品采用    <a href="http://creativecommons.org/licenses/by-nc-nd/4.0/" rel="license">知识共享署名-非商业性使用-禁止演绎 4.0 国际许可协议</a>    进行许可。
+                                        </span>
+
+                                    </div>
+                                </div>
+
+                                <div class="legal pure-g">
+                                    <div class="pure-u-1">
+                                        <span>
+                                            Template Powered by <a href="http://purecss.io" rel="nofollow">Purecss</a>|Site Build by <a href="http://brocadesoar.cn" rel="nofollow">ZhuBrocadeSoar</a>
+                                        </span>
+                                    </div>
+
+                                </div>
+
+                                <div class="legal pure-g">
+                                    <div class="pure-u-1">
+                                        <span>
+                                            浙ICP备17027825号-1
+                                            <a target=" blank " href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33078302100258" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;">
+                                                <img src="/images/beianlogo.png" style="float:left;" />浙公网安备 33078302100258号
+                                            </a>
+                                        </span>
+                                    </div>
+                                </div>
+
+                            </div>
+
+
+
+                    </div>
+                    <script src="https://purecss.io/combo/1.18.13?/js/ui.js&/js/rainbow/rainbow.min.js&/js/rainbow/language/generic.js&/js/rainbow/language/html.js&/js/rainbow/language/css.js&/js/rainbow/language/javascript.js&/js/rainbow/language/shell.js"></script>
+
+
+
+                </div>
+
+    </body>
+
+</html>

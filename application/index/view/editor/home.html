@@ -16,18 +16,23 @@
             <!--<![endif]-->
             <link rel="stylesheet" href="https://purecss.io/combo/1.18.13?/css/main-grid.css&/css/main.css&/css/home.css&/css/rainbow/baby-blue.css" />
 
+
             {load href="/static/css/amazeui.min.css" /}
+
+            {load href="/static/css/style.css" /}
+            {load href="/static/css/editormd.css" /}
+            <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.0.js"></script>
+            {load href="/static/js/editormd.js" /}
 
             <!--<script>
                 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-    ga('create', 'UA-41480445-1', 'purecss.io');
-    ga('send', 'pageview');
+                ga('create', 'UA-41480445-1', 'purecss.io');
+                ga('send', 'pageview');
             </script>-->
-
 
     </head>
 
@@ -63,7 +68,7 @@
 
                     <ul class="pure-menu-list">
                         <li class="pure-menu-item"><a href="/index/editor/new" class="pure-menu-link">发布博文</a></li>
-                        <li class="pure-menu-item"><a href="/index/editor/home" class="pure-menu-link">修改首页</a></li>
+                        <li class="pure-menu-item {$menu_selected}"><a href="/index/editor/home" class="pure-menu-link">修改首页</a></li>
                     </ul>
 
                 </div>
@@ -73,12 +78,56 @@
 
             <div id="main">
 
-                <div id="header">
-                    <h1><p align="center">管理员，欢迎回来</p></h1>
+                <div class="header">
+                    <h1><p align="center">修改首页</p></h1>
                 </div>
 
                 <div class="content">
-                </div>
+                    <form class="pure-form" onsubmit="return false">
+                        <fieldset class="pure-group">
+                            <input id="tagline_in" name="tagline_in" type="text" class="pure-input-1" placeholder="Tagline" value="{$tagline}" autocomplete="off" />
+                            <input id="art1_title_in" name="art1_title_in" type="text" class="pure-input-1" placeholder="Title of Art 1" value="{$art1_title}" autocomplete="off" />
+                            <textarea id="art1_content_in" name="art1_content_in" class="pure-input-1" placeholder="Content of Art 1" style="resize: none" rows="8">{$art1_content}</textarea>
+                            <input id="art2_title_in" name="art2_title_in" type="text" class="pure-input-1" placeholder="Title of Art 2" value="{$art2_title}" autocomplete="off" />
+                            <textarea id="art2_content_in" name="art2_content_in" class="pure-input-1" placeholder="Content of Art 2" style="resize: none" rows="8">{$art2_content}</textarea>
+                            <input id="art3_title_in" name="art3_title_in" type="text" class="pure-input-1" placeholder="Title of Art 3" value="{$art3_title}" autocomplete="off" />
+                            <textarea id="art3_content_in" name="art3_content_in" class="pure-input-1" placeholder="Content of Art 1" style="resize: none" rows="8">{$art3_content}</textarea>
+                            <input id="art4_title_in" name="art4_title_in" type="text" class="pure-input-1" placeholder="Title of Art 4" value="{$art4_title}" autocomplete="off" />
+                            <textarea id="art4_content_in" name="art4_content_in" class="pure-input-1" placeholder="Content of Art 1" style="resize: none" rows="8">{$art4_content}</textarea>
+                        </fieldset>
+                            <script>
+                            </script>
+                        <button id="post_button" class="pure-button pure-input-1 pure-button-primary">发布</button>
+                    </form>
+
+                    <script>
+                        $("button#post_button").click(function(){
+                            $.ajax({
+                                type: 'post',
+                                url: 'https://brocadesoar.cn/index/editor/homeSave',
+                                data: {
+                                    tagline_in: $("input#tagline_in").val(),
+                                    art1_title_in: $("input#art1_title_in").val(),
+                                    art1_content_in: $("textarea#art1_content_in").val(),
+                                    art2_title_in: $("input#art2_title_in").val(),
+                                    art2_content_in: $("textarea#art2_content_in").val(),
+                                    art3_title_in: $("input#art3_title_in").val(),
+                                    art3_content_in: $("textarea#art3_content_in").val(),
+                                    art4_title_in: $("input#art4_title_in").val(),
+                                    art4_content_in: $("textarea#art4_content_in").val(),
+                                },
+                                success: function(d){
+                                    var dd = JSON.parse(d);
+                                    if(typeof(dd.success) == 'undefined'){
+                                        console.log(dd.errMsg);
+                                    }else{
+                                        console.log(dd.success);
+                                        window.location.href = "https://brocadesoar.cn/";
+                                    }
+                                },
+                            });
+                        });
+                    </script>
 
                 <div class="footer">
 
@@ -106,7 +155,7 @@
                     <div class="legal pure-g">
                         <div class="pure-u-1">
                             <span>
-                            Template Powered by <a href="http://purecss.io" rel="nofollow">Purecss</a>|Site Build by <a href="http://brocadesoar.cn" rel="nofollow">ZhuBrocadeSoar</a>
+                                Template Powered by <a href="http://purecss.io" rel="nofollow">Purecss</a>|Site Build by <a href="http://brocadesoar.cn" rel="nofollow">ZhuBrocadeSoar</a>
                             </span>
                         </div>
 
@@ -115,10 +164,10 @@
                     <div class="legal pure-g">
                         <div class="pure-u-1">
                             <span>
-                            浙ICP备17027825号-1
-                            <a target=" blank " href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33078302100258" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;">
-                                <img src="/images/beianlogo.png" style="float:left;" />浙公网安备 33078302100258号
-                            </a>
+                                浙ICP备17027825号-1
+                                <a target=" blank " href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33078302100258" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;">
+                                    <img src="/images/beianlogo.png" style="float:left;" />浙公网安备 33078302100258号
+                                </a>
                             </span>
                         </div>
                     </div>

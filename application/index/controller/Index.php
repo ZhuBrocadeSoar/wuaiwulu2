@@ -4,29 +4,22 @@ namespace app\index\controller;
 use think\Db;
 use think\Request;
 use think\View;
+use app\index\model\Home;
 
 class Index extends \think\Controller{
     public function index(){
+        $home = Home::get(Home::max('id'));
         $this->assign([
             'title' => '',
-            'tagline' => '仰望星空：<br />创新源于模仿，成功源于实践。',
-            'short_art_1_title' => '写在首页',
-            'short_art_1_content' => '
-            早在2016年本科二年级的时候就做过这样的梦，我要建立一个自己的博客网站，也正是那一年，多亏参与了创客空间协会，勇敢地接触了VPS，从那时起，我有了自己的服务器，开始频繁地做起梦来。2017年二、三年级，朋友拉我做小程序，我鼓起勇气说，我试试，我用PHP写小程序后台代码。2018年3月正是当下，回想起前两年——初识PHP、多次尝试开发博客半途而废、学习ThinkPHP框架、找到Amaze UI前台框架、偶遇Purecss。从懵懂无知到一知半解，这一次的建站思路比以往任何一次都要清晰。这一次我能成功吗？创新源于模仿，成功源于实践。
-
-            ',
-            'short_art_2_title' => '专业',
-            'short_art_2_content' => '
-            我也曾想过，我是否后悔了当初选择的这个专业。但是我告诉自己，无需后悔。我仍然记得2015年填写志愿的那几天，当时对高中有那么不舍对大学有多么惧怕，当时一根筋想要用这恰好过一本线的分数读一个一本大学，我看到了“机械设计制造及其自动化”这个专业，一本，我觉得还行，机械，应该也是符合我的风格。所以我来了，浙江大学宁波理工学院。拿到录取通知书后，既不高兴也不难受。我开始投入到这个专业中，那个暑假，我自学了UG三维建模，那是我第一次与这个专业发生联系吧。本科的这三年，我变了，变得不爱读书了，态度差了。对专业的认识有那么些了解了，但我想，这完全不够吧。早就听说了，我们专业会分流成数控或者模具两个方向，"数控"这个词也许是我对这个专业仅剩的热情。
-            ',
-            'short_art_3_title' => '兴趣',
-            'short_art_3_content' => '
-            大概是一切用键盘写代码的玩意儿都是我的菜，高中时期课堂学习VB，自学C语言和Linux让我受益匪浅。感谢杰哥，我们的班助，二话不说地就带我走进Arduino，开始了我用Arduino作为主要生产资料的项目之路，光立方虽然失败又有点丑但它至少会亮对吧，气象盒子虽然布线令人作呕但是画电路设计PCB板(其实是叫学长画的PCB)成就感满满，CATBOX识别和出料控制的调试过程让我心里难受但是基本完成了甲方诺丁汉的需求，机械外骨骼参与机械创新竞赛到温州参赛大喜大悲忐忑不安初识了机械学习、信号分析和模式识别，写论文做演示文稿非得用LaTeX排版而不用Word/PowerPoint。学matlab/octave/php/OpenCV/OpenGL...，我感觉自己被自己的兴趣爱好给毁了，啥都要学、啥都没学会。
-            ',
-            'short_art_4_title' => '感情',
-            'short_art_4_content' => '
-            我认为我被我家长宠坏了，自幼显得有些孤僻，于亲戚，不知其称呼不与其招呼，只知其为亲也。于朋友，好长时间不见面，见面了似乎没有话题，闷闷的不说话。于……嗯，没有谈过恋爱不敢正视女神，每天担心以后要孤独终老。生活过的很邋遢，没有说走就走的旅行没有激情四射的战斗，没有电影没有馆子。2017年暑假去兰州参加比赛和去新加坡交流学习的两次远行，明明有好多人一起，但我总是一个人，我的照片只有风景和新加坡的道路文化，我的自助餐最多的是饭和肉，两口三口就吃饱。我的形象室友说像张震岳，但其实我根本不会唱歌。
-            ',
+            'tagline' => $home->tagline,
+            'short_art_1_title' => $home->art1_title,
+            'short_art_1_content' => $home->art1_content,
+            'short_art_2_title' => $home->art2_title,
+            'short_art_2_content' => $home->art2_content,
+            'short_art_3_title' => $home->art3_title,
+            'short_art_3_content' => $home->art3_content,
+            'short_art_4_title' => $home->art4_title,
+            'short_art_4_content' => $home->art4_content,
         ]);
         return $this->fetch('index');
     }

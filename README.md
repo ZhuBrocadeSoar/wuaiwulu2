@@ -22,6 +22,8 @@
 
 * [API手册](https://github.com/ZhuBrocadeSoar/wuaiwulu2/tree/master/application/callme/docs/api.md)
 
+* [WeChat App Demo](https://github.com/ZhuBrocadeSoar/wuaiwulu2/tree/master/application/callme/wechatApp)
+
 ## ningningmarket
 
 * 开发日志点击进入 [传送门](https://github.com/ZhuBrocadeSoar/wuaiwulu2/tree/master/application/ningningmarket/docs/log.md)

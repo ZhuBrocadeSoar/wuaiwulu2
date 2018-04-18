@@ -12,6 +12,10 @@ class About extends \think\Controller{
         ]);
         return $this->fetch('about');
     }
+
+    public function wangming(){
+        return $this->fetch('wangming');
+    }
 }
 
 ?>

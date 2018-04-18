@@ -1,0 +1,66 @@
+	<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>滑动效果---王明</title>
+</head>
+<style type="text/css">
+body,ul{
+	margin:0;
+	background-color: #ccc;
+}
+    ul{
+	padding: 0;
+    }
+	.box{
+	position: relative;
+	margin: 50px auto 0px;
+    background-color:#fff;
+    height: 600px;
+    width: 800px;
+	}
+	.box .list li{
+	position:absolute;
+	list-style: none;
+	width: 200px;
+	height: 600px;
+	transition: 0.8s;
+	}
+	.box .list li:nth-of-type(1){
+		background-image: url(https://brocadesoar.cn/images/1.jpg);
+		left: 0px;
+	}
+    .box .list li:nth-of-type(2){
+    	background-image: url(https://brocadesoar.cn/images/2.jpg);
+		left: 200px;
+		background-position:-200px;
+	}.box .list li:nth-of-type(3){
+		background-image: url(https://brocadesoar.cn/images/3.jpg);
+		left: 400px;
+		background-position:-400px 0;
+	
+	}.box .list li:nth-of-type(4){
+		left: 600px;
+		background-position:-600px 0;
+		background-image: url(https://brocadesoar.cn/images/4.jpg);
+	}
+
+	.box .list li:hover{
+		width: 800px;
+		z-index: 10;
+		left: 0;
+		background-position:0px;
+
+	}
+</style>
+<body>
+	<div class="box">
+		<ul class="list">
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+		</ul>
+	</div>
+</body>
+</html>

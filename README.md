@@ -16,6 +16,13 @@
 
 * 个人博客开发日志点击进入 [传送门](https://github.com/ZhuBrocadeSoar/wuaiwulu2/tree/master/application/index/docs/log.md)
 
+## 取个号
+
+* [开发日志](https://github.com/ZhuBrocadeSoar/wuaiwulu2/tree/master/application/callme/docs/log.md)
+
+* [API手册](https://github.com/ZhuBrocadeSoar/wuaiwulu2/tree/master/application/callme/docs/api.md)
+
 ## ningningmarket
 
 * 开发日志点击进入 [传送门](https://github.com/ZhuBrocadeSoar/wuaiwulu2/tree/master/application/ningningmarket/docs/log.md)
+

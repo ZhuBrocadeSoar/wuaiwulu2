@@ -33,6 +33,14 @@ Page({
       complete: function(res) {},
     })
   },
+// 发送wss消息
+  wsstest: function () {
+    console.log('ttt')
+    wx.sendSocketMessage({
+      data: ['hello server'],
+    })
+  },
+  
 
   onLoad: function () {
     console.log('onLoad')

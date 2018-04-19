@@ -17,4 +17,6 @@
 
   </form>
 
+  <button bindtap='wsstest'>发送wss消息</button>
+
 </view>

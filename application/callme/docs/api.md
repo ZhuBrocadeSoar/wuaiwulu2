@@ -41,8 +41,8 @@ url: wss://brocadesoar.cn:4431
 
 `IS\_SELLER (string)`
 
-|---|---|
 | 值|说明|
+|---|---|
 |true|商家列表有该id|
 |false|商家列表没有该id|
 

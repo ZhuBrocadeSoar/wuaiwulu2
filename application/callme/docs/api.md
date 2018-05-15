@@ -46,6 +46,33 @@ url: wss://brocadesoar.cn:4431
 |true|商家列表有该id|
 |false|商家列表没有该id|
 
+### list 获取内容列表(可能需要扩展)
+
+### picture 获取一张图片
+
+> todo 商家入驻相关
+## Signin
+
+### index 商家发出入驻申请的请求
+
+### list 管理员拉取申请列表
+
+### auth 管理员授权申请
+
+> todo 商家商品管理相关
+## ProductMan
+
+### enable 权限检查
+
+### list 获取商品列表
+
+### modify 修改
+
+### putOn 上架
+
+### putOff 下架
+
+> todo 交易相关
 ## Pay
 
 ### unifiedorder 统一下单
@@ -58,6 +85,12 @@ url: wss://brocadesoar.cn:4431
     "session\_id" : SESSION\_ID,
     "product\_id" : PRODUCT\_ID,
 }
+
+### list 获取订单列表
+
+### close 关闭订单
+
+### cash 提现
 
 ## Audio
 

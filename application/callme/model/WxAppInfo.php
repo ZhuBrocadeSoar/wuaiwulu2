@@ -10,7 +10,7 @@ class WxAppInfo extends Model{
     protected $deleteTime = 'delete_time';
 
     public function getIsOverTimeAttr($v, $d){
-        if(((time() - strtotime($d['update_time'])) > (int)$d['over_time']) || ($d['update_time'] == NULL)){
+        if(((time() - strtotime($d['update_time'])) > (int)$d['expires_in']) || ($d['update_time'] == NULL)){
             return true;
         }else{
             return false;

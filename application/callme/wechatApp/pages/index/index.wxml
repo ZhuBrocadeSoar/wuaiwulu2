@@ -18,5 +18,7 @@
   </form>
 
   <button bindtap='wsstest'>发送wss消息</button>
+  <button bindtap='wxpaytest'>支付</button>
+  <button bindtap='blueprint'>打印蓝牙搜索结果</button>
 
 </view>

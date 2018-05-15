@@ -46,27 +46,103 @@ url: wss://brocadesoar.cn:4431
 |true|商家列表有该id|
 |false|商家列表没有该id|
 
-### list 获取内容列表(可能需要扩展)
+### list 获取内容列表(可能需要扩展为具体的)
 
 ### picture 获取一张图片
+
+* url : https://brocadesoar.cn/callme/wx_session/picture
+
+* type : POST
+
+* fields : {
+    "session\_id" : SESSION\_ID,
+    "pic\_id" : PIC\_ID,
+}
+
+* return : 图片资源 或 {
+    "errmsg" : "No that Picture",
+}
 
 > todo 商家入驻相关
 ## Signin
 
 ### index 商家发出入驻申请的请求
 
+* url : https://brocadesoar.cn/callme/signin/index
+
+* type : POST
+
+* fields : {
+    "session\_id" : SESSION\_ID,
+    ...other infomation...
+}
+
+* return : {
+    "errmsg" : "ok",
+} 或 {
+    "errmsg" : ERRMSG,
+}
+
 ### list 管理员拉取申请列表
 
+* url : https://brocadesoar.cn/callme/signin/list
+
+* type : POST
+
+* fields : {
+    "session\_id" : SESSION\_ID,
+}
+
+* return : {
+    "list" : \[
+        {
+            ...
+        }, 
+        {
+            ...
+        }, 
+        ...
+    \],
+}
+
 ### auth 管理员授权申请
+
+* url : https://brocadesoar.cn/callme/signin/auth
+
+* type : POST
+
+* fields : {
+    "session\_id" : SESSION\_ID,
+    "seller\_id" : SELLER\_ID,
+}
+
+* return : {
+    "errmsg" : "ok",
+}
 
 > todo 商家商品管理相关
 ## ProductMan
 
-### enable 权限检查
-
 ### list 获取商品列表
 
+* url : https://brocadesoar.cn/callme/product_man/list
+
+* type : POST
+
+* fields : {
+    "session\_id" : session\_ID,
+}
+
 ### modify 修改
+
+* url : https://brocadesoar.cn/callme/product_man/modify
+
+* type : POST
+
+* fields : {
+    "session\_id" : SESSION\_ID,
+    ...other infomation...
+}
 
 ### putOn 上架
 

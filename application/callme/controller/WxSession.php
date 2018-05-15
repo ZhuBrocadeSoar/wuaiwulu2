@@ -4,6 +4,7 @@ namespace app\callme\controller;
 use app\callme\controller\WxApi;
 use think\Request;
 use app\callme\model\Session;
+use app\callme\model\Seller;
 
 class WxSession extends \think\Controller{
     public function index(){
@@ -26,10 +27,18 @@ class WxSession extends \think\Controller{
                 $aNewSession->session_id = sha1($sessionArr['session_key'] . date(DATE_ATOM, time()) );
                 $aNewSession->isUpdate(false)->save();
             }
+            $aSeller = Seller::get([
+                "openid" => $aNewSession->openid,
+            ]);
+            if($aSeller == NULL){
+                // 卖家列表没有该id
+                $is_seller = 'false';
+            }else{
+                $is_seller = 'true';
+            }
             return json_encode([
-                "debug_openid" => $aNewSession->openid,
-                "debug_session_key" => $aNewSession->session_key,
                 "session_id" => $aNewSession->session_id,
+                "is_seller" => $is_seller,
             ]);
         }
     }

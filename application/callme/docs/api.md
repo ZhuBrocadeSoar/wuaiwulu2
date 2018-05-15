@@ -10,11 +10,9 @@ url: wss://brocadesoar.cn:4431
 
 握手后，由小程序发送交互的第一条消息：
 
-```
-{
-    "session_id" : "SESSION_ID",
+* fields : {
+    "session\_id" : "SESSION\_ID",
 }
-```
 
 如果数据符合要求则保持连接，并确保25秒的心跳
 
@@ -36,7 +34,17 @@ url: wss://brocadesoar.cn:4431
 
 * return : {
     "session\_id" : SESSION\_ID,
+    "is\_seller" : IS\_SELLER,
 }
+
+* Cases :
+
+`IS\_SELLER (string)`
+
+|---|---|
+| 值|说明|
+|true|商家列表有该id|
+|false|商家列表没有该id|
 
 ## Pay
 

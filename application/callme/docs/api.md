@@ -1,5 +1,9 @@
 # 取个号 API
 
+## 流
+
+![流](http://on-img.com/chart_image/5afbd4c6e4b0026862677068.png)
+
 ## WebSocket
 
 url: wss://brocadesoar.cn:4431

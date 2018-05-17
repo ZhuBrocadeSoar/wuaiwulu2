@@ -14,9 +14,13 @@ url: wss://brocadesoar.cn:4431
 
 握手后，由小程序发送交互的第一条消息：
 
-* fields : {
+* fields : 
+```
+{
     "session\_id" : "SESSION\_ID",
 }
+    
+```
 
 如果数据符合要求则保持连接，并确保25秒的心跳
 
@@ -32,14 +36,22 @@ url: wss://brocadesoar.cn:4431
 
 * type : POST
 
-* fields : {
+* fields : 
+
+```
+{
     "code" : "CODE",
 }
+```
 
-* return : {
+* return : 
+
+```
+{
     "session\_id" : SESSION\_ID,
     "is\_seller" : IS\_SELLER,
 }
+```
 
 * Cases :
 
@@ -56,11 +68,18 @@ url: wss://brocadesoar.cn:4431
 
 * type : POST
 
-* fields : {
+* fields : 
+
+```
+{
     "session\_id" : SESSION\_ID,
 }
+```
 
-* return : {
+* return : 
+
+```
+{
     "ads\_img\_url" : \[
         URL,
         URL,
@@ -91,6 +110,7 @@ url: wss://brocadesoar.cn:4431
         {},
     \]
 }
+```
 
 ### picture 获取一张图片
 
@@ -98,13 +118,21 @@ url: wss://brocadesoar.cn:4431
 
 * type : GET
 
-* fields : {
+* fields : 
+
+```
+{
     "pic\_id" : PIC\_ID,
 }
+```
 
-* return : 图片资源 或 {
+* return : 图片资源 或 
+
+```
+{
     "errmsg" : "No that Picture",
 }
+```
 
 > todo 商家入驻相关
 ## Signin
@@ -115,16 +143,30 @@ url: wss://brocadesoar.cn:4431
 
 * type : POST
 
-* fields : {
+* fields :
+
+```
+{
     "session\_id" : SESSION\_ID,
     ...other infomation...
 }
+```
 
-* return : {
+* return : 
+
+```
+{
     "errmsg" : "ok",
-} 或 {
+} 
+```
+
+或
+
+```
+{
     "errmsg" : ERRMSG,
 }
+```
 
 ### list 管理员拉取申请列表
 
@@ -132,11 +174,18 @@ url: wss://brocadesoar.cn:4431
 
 * type : POST
 
-* fields : {
+* fields : 
+
+```
+{
     "session\_id" : SESSION\_ID,
 }
+```
 
-* return : {
+* return : 
+
+```
+{
     "list" : \[
         {
             ...
@@ -147,6 +196,7 @@ url: wss://brocadesoar.cn:4431
         ...
     \],
 }
+```
 
 ### auth 管理员授权申请
 
@@ -154,14 +204,22 @@ url: wss://brocadesoar.cn:4431
 
 * type : POST
 
-* fields : {
+* fields : 
+
+```
+{
     "session\_id" : SESSION\_ID,
     "seller\_id" : SELLER\_ID,
 }
+```
 
-* return : {
+* return : 
+
+```
+{
     "errmsg" : "ok",
 }
+```
 
 > todo 商家商品管理相关
 ## ProductMan
@@ -172,9 +230,13 @@ url: wss://brocadesoar.cn:4431
 
 * type : POST
 
-* fields : {
+* fields : 
+
+```
+{
     "session\_id" : session\_ID,
 }
+```
 
 ### modify 修改
 
@@ -182,10 +244,14 @@ url: wss://brocadesoar.cn:4431
 
 * type : POST
 
-* fields : {
+* fields : 
+
+```
+{
     "session\_id" : SESSION\_ID,
     ...other infomation...
 }
+```
 
 ### putOn 上架
 
@@ -200,10 +266,14 @@ url: wss://brocadesoar.cn:4431
 
 * type : POST
 
-* fields : {
+* fields : 
+
+```
+{
     "session\_id" : SESSION\_ID,
     "product\_id" : PRODUCT\_ID,
 }
+```
 
 ### list 获取订单列表
 

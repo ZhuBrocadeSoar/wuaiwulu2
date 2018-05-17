@@ -51,14 +51,14 @@ Page({
     });
   },
 
-    wxpaytest: function (){
+    wxpaytest1: function (){
       console.log(md5('33333'))
         console.log("dd");
         wx.request({
           url: 'https://brocadesoar.cn/callme/wx_pay/unifiedorder',
           data: {
             session_id: wx.getStorageSync('session_id'),
-            product_id: 'PRODUCT_ID',
+            product_id: 1,
           },
           header: {},
           method: 'POST',
@@ -91,6 +91,170 @@ Page({
           fail: function(res) {},
           complete: function(res) {},
         })
+    },
+    wxpaytest2: function () {
+      console.log(md5('33333'))
+      console.log("dd");
+      wx.request({
+        url: 'https://brocadesoar.cn/callme/wx_pay/unifiedorder',
+        data: {
+          session_id: wx.getStorageSync('session_id'),
+          product_id: 2,
+        },
+        header: {},
+        method: 'POST',
+        dataType: 'json',
+        responseType: 'text',
+        success: function (res) {
+          console.log(res.data);
+          if (typeof (res.data.errmsg) == 'undefined') {
+            // 成功
+            wx.requestPayment({
+              timeStamp: res.data.timeStamp,
+              nonceStr: res.data.nonceStr,
+              package: res.data.package,
+              signType: res.data.signType,
+              paySign: res.data.paySign,
+              success: function (res) {
+                console.log('paysuccess');
+              },
+              fail: function (res) {
+                console.log(res);
+              },
+              complete: function (res) { },
+            })
+          } else {
+            // 失败
+            console.log(res.data);
+          }
+
+        },
+        fail: function (res) { },
+        complete: function (res) { },
+      })
+    },
+    wxpaytest3: function () {
+      console.log(md5('33333'))
+      console.log("dd");
+      wx.request({
+        url: 'https://brocadesoar.cn/callme/wx_pay/unifiedorder',
+        data: {
+          session_id: wx.getStorageSync('session_id'),
+          product_id: 3,
+        },
+        header: {},
+        method: 'POST',
+        dataType: 'json',
+        responseType: 'text',
+        success: function (res) {
+          console.log(res.data);
+          if (typeof (res.data.errmsg) == 'undefined') {
+            // 成功
+            wx.requestPayment({
+              timeStamp: res.data.timeStamp,
+              nonceStr: res.data.nonceStr,
+              package: res.data.package,
+              signType: res.data.signType,
+              paySign: res.data.paySign,
+              success: function (res) {
+                console.log('paysuccess');
+              },
+              fail: function (res) {
+                console.log(res);
+              },
+              complete: function (res) { },
+            })
+          } else {
+            // 失败
+            console.log(res.data);
+          }
+
+        },
+        fail: function (res) { },
+        complete: function (res) { },
+      })
+    },
+    wxpaytest4: function () {
+      console.log(md5('33333'))
+      console.log("dd");
+      wx.request({
+        url: 'https://brocadesoar.cn/callme/wx_pay/unifiedorder',
+        data: {
+          session_id: wx.getStorageSync('session_id'),
+          product_id: 4,
+        },
+        header: {},
+        method: 'POST',
+        dataType: 'json',
+        responseType: 'text',
+        success: function (res) {
+          console.log(res.data);
+          if (typeof (res.data.errmsg) == 'undefined') {
+            // 成功
+            wx.requestPayment({
+              timeStamp: res.data.timeStamp,
+              nonceStr: res.data.nonceStr,
+              package: res.data.package,
+              signType: res.data.signType,
+              paySign: res.data.paySign,
+              success: function (res) {
+                console.log('paysuccess');
+              },
+              fail: function (res) {
+                console.log(res);
+              },
+              complete: function (res) { },
+            })
+          } else {
+            // 失败
+            console.log(res.data);
+          }
+
+        },
+        fail: function (res) { },
+        complete: function (res) { },
+      })
+    },
+    wxpaytest5: function () {
+      console.log(md5('33333'))
+      console.log("dd");
+      wx.request({
+        url: 'https://brocadesoar.cn/callme/wx_pay/unifiedorder',
+        data: {
+          session_id: wx.getStorageSync('session_id'),
+          product_id: 5,
+        },
+        header: {},
+        method: 'POST',
+        dataType: 'json',
+        responseType: 'text',
+        success: function (res) {
+          console.log(res.data);
+          if (typeof (res.data.errmsg) == 'undefined') {
+            // 成功
+            wx.requestPayment({
+              timeStamp: res.data.timeStamp,
+              nonceStr: res.data.nonceStr,
+              package: res.data.package,
+              signType: res.data.signType,
+              paySign: res.data.paySign,
+              success: function (res) {
+                console.log('paysuccess');
+              },
+              fail: function (res) {
+                console.log(res);
+              },
+              complete: function (res) { },
+            })
+          } else {
+            // 失败
+            console.log(res.data);
+          }
+
+        },
+        fail: function (res) { },
+        complete: function (res) { },
+      })
     },
   blueprint: function(){
     wx.getBluetoothDevices({

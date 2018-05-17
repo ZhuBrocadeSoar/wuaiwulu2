@@ -50,16 +50,55 @@ url: wss://brocadesoar.cn:4431
 |true|商家列表有该id|
 |false|商家列表没有该id|
 
-### list 获取内容列表(可能需要扩展为具体的)
+### content 获取第一个渲染用数据包
 
-### picture 获取一张图片
-
-* url : https://brocadesoar.cn/callme/wx_session/picture
+* url : https://brocadesoar.cn/callme/wx_session/content
 
 * type : POST
 
 * fields : {
     "session\_id" : SESSION\_ID,
+}
+
+* return : {
+    "ads\_img\_url" : \[
+        URL,
+        URL,
+        URL,
+    \],
+    "history" : \[
+        {
+            "product\_id" : PRODUCT\_ID,
+            "product\_img\_url" : PRODUCT\_IMG\_URL,
+            "product\_name" : PRODUCT\_NAME,
+        },
+        {},
+        {},
+        {},
+        {},
+    \],
+    "random" : \[
+        {
+            "product\_id" : PRODUCT\_ID,
+            "product\_img\_url" : PRODUCT\_IMG\_URL,
+            "product\_name" : PRODUCT\_NAME,
+            "user\_img\_url" : USER\_IMG\_URL,
+        },
+        {},
+        {},
+        {},
+        {},
+        {},
+    \]
+}
+
+### picture 获取一张图片
+
+* url : https://brocadesoar.cn/callme/wx_session/picture
+
+* type : GET
+
+* fields : {
     "pic\_id" : PIC\_ID,
 }
 

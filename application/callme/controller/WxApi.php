@@ -4,6 +4,7 @@ namespace app\callme\controller;
 use app\callme\model\WxAppInfo;
 use app\callme\model\Session;
 use app\callme\model\Order;
+use app\callme\model\Product;
 use think\Request;
 
 class WxApi extends \think\Controller{
@@ -230,7 +231,7 @@ class WxApi extends \think\Controller{
         $spbill_create_ip = Request::instance()->server('REMOTE_ADDR');
         // $time_expire;
         // $time_start;
-        $total_fee = 1; // 读写cm_product获得,单位分
+        $total_fee = Product::get($product_id)->total_fee; // 读写cm_product获得,单位分
         $trade_type = "JSAPI";
         // 读写cm_order
         $anOrder = new Order;

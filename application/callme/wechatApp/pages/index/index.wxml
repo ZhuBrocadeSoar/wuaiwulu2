@@ -18,7 +18,12 @@
   </form>
 
   <button bindtap='wsstest'>发送wss消息</button>
-  <button bindtap='wxpaytest'>支付</button>
+  <button bindtap='wxpaytest1'>支付商品1</button>
+  <button bindtap='wxpaytest2'>支付商品2</button>
+  <button bindtap='wxpaytest3'>支付商品3</button>
+  <button bindtap='wxpaytest4'>支付商品4</button>
+  <button bindtap='wxpaytest5'>支付商品5</button>
+  
   <button bindtap='blueprint'>打印蓝牙搜索结果</button>
 
 </view>

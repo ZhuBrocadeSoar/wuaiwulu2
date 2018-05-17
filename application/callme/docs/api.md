@@ -84,7 +84,7 @@ url: wss://brocadesoar.cn:4431
         URL,
         URL,
         URL,
-    \],
+    ],
     "history" : [
         {
             "product_id" : PRODUCT_ID,
@@ -95,7 +95,7 @@ url: wss://brocadesoar.cn:4431
         {},
         {},
         {},
-    \],
+    ],
     "random" : [
         {
             "product_id" : PRODUCT_ID,
@@ -108,7 +108,7 @@ url: wss://brocadesoar.cn:4431
         {},
         {},
         {},
-    \]
+    ]
 }
 ```
 
@@ -194,7 +194,7 @@ url: wss://brocadesoar.cn:4431
             ...
         }, 
         ...
-    \],
+    ],
 }
 ```
 

@@ -80,12 +80,12 @@ url: wss://brocadesoar.cn:4431
 
 ```
 {
-    "ads_img_url" : \[
+    "ads_img_url" : [
         URL,
         URL,
         URL,
     \],
-    "history" : \[
+    "history" : [
         {
             "product_id" : PRODUCT_ID,
             "product_img_url" : PRODUCT_IMG_URL,
@@ -96,7 +96,7 @@ url: wss://brocadesoar.cn:4431
         {},
         {},
     \],
-    "random" : \[
+    "random" : [
         {
             "product_id" : PRODUCT_ID,
             "product_img_url" : PRODUCT_IMG_URL,
@@ -186,7 +186,7 @@ url: wss://brocadesoar.cn:4431
 
 ```
 {
-    "list" : \[
+    "list" : [
         {
             ...
         }, 

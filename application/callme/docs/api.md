@@ -10,14 +10,14 @@ url: wss://brocadesoar.cn:4431
 
 数据格式：JSON字符串
 
-握手前，登录到服务端获取session\_id并存储
+握手前，登录到服务端获取session_id并存储
 
 握手后，由小程序发送交互的第一条消息：
 
 * fields : 
 ```
 {
-    "session\_id" : "SESSION\_ID",
+    "session_id" : "SESSION_ID",
 }
     
 ```
@@ -48,14 +48,14 @@ url: wss://brocadesoar.cn:4431
 
 ```
 {
-    "session\_id" : SESSION\_ID,
-    "is\_seller" : IS\_SELLER,
+    "session_id" : SESSION_ID,
+    "is_seller" : IS_SELLER,
 }
 ```
 
 * Cases :
 
-`IS\_SELLER (string)`
+`IS_SELLER (string)`
 
 | 值|说明|
 |---|---|
@@ -72,7 +72,7 @@ url: wss://brocadesoar.cn:4431
 
 ```
 {
-    "session\_id" : SESSION\_ID,
+    "session_id" : SESSION_ID,
 }
 ```
 
@@ -80,16 +80,16 @@ url: wss://brocadesoar.cn:4431
 
 ```
 {
-    "ads\_img\_url" : \[
+    "ads_img_url" : \[
         URL,
         URL,
         URL,
     \],
     "history" : \[
         {
-            "product\_id" : PRODUCT\_ID,
-            "product\_img\_url" : PRODUCT\_IMG\_URL,
-            "product\_name" : PRODUCT\_NAME,
+            "product_id" : PRODUCT_ID,
+            "product_img_url" : PRODUCT_IMG_URL,
+            "product_name" : PRODUCT_NAME,
         },
         {},
         {},
@@ -98,10 +98,10 @@ url: wss://brocadesoar.cn:4431
     \],
     "random" : \[
         {
-            "product\_id" : PRODUCT\_ID,
-            "product\_img\_url" : PRODUCT\_IMG\_URL,
-            "product\_name" : PRODUCT\_NAME,
-            "user\_img\_url" : USER\_IMG\_URL,
+            "product_id" : PRODUCT_ID,
+            "product_img_url" : PRODUCT_IMG_URL,
+            "product_name" : PRODUCT_NAME,
+            "user_img_url" : USER_IMG_URL,
         },
         {},
         {},
@@ -122,7 +122,7 @@ url: wss://brocadesoar.cn:4431
 
 ```
 {
-    "pic\_id" : PIC\_ID,
+    "pic_id" : PIC_ID,
 }
 ```
 
@@ -147,7 +147,7 @@ url: wss://brocadesoar.cn:4431
 
 ```
 {
-    "session\_id" : SESSION\_ID,
+    "session_id" : SESSION_ID,
     ...other infomation...
 }
 ```
@@ -178,7 +178,7 @@ url: wss://brocadesoar.cn:4431
 
 ```
 {
-    "session\_id" : SESSION\_ID,
+    "session_id" : SESSION_ID,
 }
 ```
 
@@ -208,8 +208,8 @@ url: wss://brocadesoar.cn:4431
 
 ```
 {
-    "session\_id" : SESSION\_ID,
-    "seller\_id" : SELLER\_ID,
+    "session_id" : SESSION_ID,
+    "seller_id" : SELLER_ID,
 }
 ```
 
@@ -234,7 +234,7 @@ url: wss://brocadesoar.cn:4431
 
 ```
 {
-    "session\_id" : session\_ID,
+    "session_id" : session_ID,
 }
 ```
 
@@ -248,7 +248,7 @@ url: wss://brocadesoar.cn:4431
 
 ```
 {
-    "session\_id" : SESSION\_ID,
+    "session_id" : SESSION_ID,
     ...other infomation...
 }
 ```
@@ -270,8 +270,8 @@ url: wss://brocadesoar.cn:4431
 
 ```
 {
-    "session\_id" : SESSION\_ID,
-    "product\_id" : PRODUCT\_ID,
+    "session_id" : SESSION_ID,
+    "product_id" : PRODUCT_ID,
 }
 ```
 

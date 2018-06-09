@@ -1,14 +1,21 @@
 # 取个号 API
 
-## 目录
+## 传送门
 
 [流](#1)
+[WebSocket](#2)
+[Session 用户状态维持](#3)
+[信息查询](#4)
+[商家入驻](#5)
+[修改店铺信息和商品信息](#6)
+[Pay 交易](#7)
+[Audio 语言合成接口](#8)
 
-<h2 id='1'></h2>## 流
+<h2 id='1'>流</h2>
 
 ![流](http://on-img.com/chart_image/5afbd4c6e4b0026862677068.png)
 
-## WebSocket
+<h2 id='2'>WebSocket</h2>
 
 url: wss://brocadesoar.cn:4431
 
@@ -32,7 +39,7 @@ url: wss://brocadesoar.cn:4431
 
 超过心跳时间服务端主动关闭连接
 
-## Session 用户状态维持
+<h2 id='3'>Session 用户状态维持</h2>
 
 ### login 登录
 
@@ -66,7 +73,7 @@ url: wss://brocadesoar.cn:4431
 |true|商家列表有该id|
 |false|商家列表没有该id|
 
-## 信息查询
+<h2 id='4'>信息查询</h2>
 
 ### content 获取第一个渲染用数据包
 
@@ -279,7 +286,7 @@ url: wss://brocadesoar.cn:4431
 }
 ```
 
-## 商家入驻
+<h2 id='5'>商家入驻</h2>
 
 ### register 入驻注册
 
@@ -356,7 +363,7 @@ url: wss://brocadesoar.cn:4431
 
 * return : SUCCESS_INFO
 
-## 修改店铺信息和商品信息
+<h2 id='6'>修改店铺信息和商品信息</h2>
 
 ### updateSellerPicture 更新店铺图片
 
@@ -402,7 +409,7 @@ url: wss://brocadesoar.cn:4431
 
 * return : SUCCESS_INFO
 
-## Pay 交易
+<h2 id='7'>Pay 交易</h2>
 
 ### unifiedorder 统一下单
 
@@ -439,7 +446,7 @@ url: wss://brocadesoar.cn:4431
 
 ### cash 提现
 
-## Audio 语言合成接口
+<h2 id='8'>Audio 语言合成接口</h2>
 
 ### getAudioUrl 获得合成语音url
 

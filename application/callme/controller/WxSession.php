@@ -9,7 +9,9 @@ use app\callme\model\Picture;
 use app\callme\model\Ads;
 use app\callme\model\Order;
 use app\callme\model\Product;
+use app\callme\model\ProductHistory;
 use app\callme\model\User;
+use app\callme\model\DiningHall;
 
 class WxSession extends \think\Controller{
     public function index(){
@@ -44,6 +46,7 @@ class WxSession extends \think\Controller{
             return json_encode([
                 "session_id" => $aNewSession->session_id,
                 "is_seller" => $is_seller,
+                "debug_openid" => $sessionArr['openid'],
             ]);
         }
     }
@@ -57,6 +60,9 @@ class WxSession extends \think\Controller{
                 "errmsg" => "Session Time Out",
             ]);
         }else{
+            // 开发者可调用
+            if(!Auth::checkPass($session->openid, ['develop']))
+                return Auth::permissionDenided();
             $data = [
                 "keyword1" => [
                     "value" => "word1",
@@ -106,22 +112,32 @@ class WxSession extends \think\Controller{
                 "errmsg" => "Session Time Out",
             ]);
         }else{
+            // 无调用限制
             $staticUrl = "https://brocadesoar.cn/callme/";
-            $pictureUrl = $staticUrl . "picture/";
+            $pictureUrl = $staticUrl . "wx_session/picture/";
             $history = Order::all(function($query){
                 $query
                     ->where('openid', Session::get(["session_id" => Request::instance()->param('session_id')])->openid)
                     ->where('pay_state', 'done')
+                    ->where('offer_state', 'done')
                     ->order('id', 'desc')
                     ->limit(5);
             });
             $historyPackage = [];
-            foreach($history as $val){
-                $product = Product::get($val->product_id);
+            foreach($history as $orderInHistory){
+                $foodList = [];
+                foreach($orderInHistory->product_id as $product_id){
+                    $product = ProductHistory::get($product_id);
+                    $foodList[] = [
+                        "product_name" => $product->name,
+                        "product_id" => $product->id,
+                        "product_img_url" => $pictureUrl . "$product->pic_id",
+
+                    ];
+                }
                 $historyPackage[] = [
-                    "product_name" => $product->name,
-                    "product_id" => $product->id,
-                    "product_img_url" => $pictureUrl . "$product->pic_id",
+                    "food_list" => $foodList,
+                    "food_quantity" => $orderInHistory->product_qu,
                 ];
             }
             $min = 1;
@@ -130,17 +146,28 @@ class WxSession extends \think\Controller{
             for($i = $min; $i <= $max; $i++){
                 if(Order::get($i)->pay_state == 'done') $orderIdArray[] = $i;
             }
-            $orderIdArrayRandomIndex = array_rand($orderIdArray, 6);
+            if(count($orderIdArray) == 0){
+                $orderIdArrayRandomIndex = [];
+            }else{
+                $orderIdArrayRandomIndex = array_rand($orderIdArray, 6);
+            }
             $randomPackage = [];
             foreach($orderIdArrayRandomIndex as $val){
                 $order = Order::get($orderIdArray[$val]);
-                $product = Product::get($order->product_id);
+                $foodList = [];
+                foreach($order->product_id as $product_id){
+                    $product = ProductHistory::get($product_id);
+                    $foodList[] = [
+                        "product_name" => $product->name,
+                        "product_id" => $product->id,
+                        "product_img_url" => $pictureUrl . "$product->pic_id",
+                    ];
+                }
                 $user = User::get(["openid" => $order->openid]);
                 $randomPackage[] = [
                     "user_img_url" => $pictureUrl . "$user->pic_id",
-                    "product_name" => $product->name,
-                    "product_id" => $product->id,
-                    "product_img_url" => $pictureUrl . "$product->pic_id",
+                    "food_list" => $foodList,
+                    "food_quantity" => $orderInHistory->product_qu,
                 ];
             }
             // dump($historyPackage);
@@ -155,6 +182,149 @@ class WxSession extends \think\Controller{
                 "random" => $randomPackage,
             ];
             return json_encode($retval);
+        }
+    }
+
+    public function history(){
+        $session = Session::get([
+            'session_id' => Request::instance()->param('session_id'),
+        ]);
+        if($session == NULL){
+            return json_encode([
+                "errmsg" => "Session Time Out",
+            ]);
+        }else{
+            // 无调用限制
+            $staticUrl = "https://brocadesoar.cn/callme/";
+            $pictureUrl = $staticUrl . "wx_session/picture";
+            $historyDone = Order::all(function($query){
+                $query
+                    ->where('openid', Session::get(["session_id" => Request::instance()->param('session_id')])->openid)
+                    ->where('pay_state', 'done')
+                    ->where('offer_state', 'done')
+                    ->order('id', 'desc');
+            });
+            $historyDonePackage = [];
+            foreach($historyDone as $orderInHistoryDone){
+                $foodList = [];
+                foreach($orderInHistoryDone->product_id as $product_id){
+                    $product = ProductHistory::get($product_id);
+                    $foodList[] = [
+                        "create_time" => $product->create_time,
+                        "seller_name" => Seller::get($product->seller_id)->name,
+                        "product_name" => $product->name,
+                        "product_id" => $product->id,
+                        "product_img_url" => $pictureUrl . "$product->pic_id",
+                        "product_total_fee" => $product->total_fee,
+                    ];
+                }
+                $historyDonePackage[] = [
+                    "food_list" => $foodList,
+                    "food_quantity" => $orderInHistoryDone->product_qu,
+                ];
+            }
+            $historyWait = Order::all(function($query){
+                $query
+                    ->where('openid', Session::get(["session_id" => Request::instance()->param('session_id')])->openid)
+                    ->where('pay_state', 'done')
+                    ->where('offer_state', 'wait')
+                    ->order('id', 'desc');
+            });
+            $historyWaitPackage = [];
+            foreach($historyWait as $orderInHistoryWait){
+                $foodList = [];
+                foreach($orderInHistoryWait->product_id as $product_id){
+                    $product = ProductHistory::get($product_id);
+                    $foodList[] = [
+                        "create_time" => $product->create_time,
+                        "seller_name" => Seller::get($product->seller_id)->name,
+                        "product_name" => $product->name,
+                        "product_id" => $product->id,
+                        "product_img_url" => $pictureUrl . "$product->pic_id",
+                        "product_total_fee" => $product->total_fee,
+                    ];
+                }
+                $historyWaitPackage[] = [
+                    "food_list" => $foodList,
+                    "food_quantity" => $orderInHistoryWait->product_qu,
+                ];
+            }
+            $retval = [
+                "history_done" => $historyDonePackage,
+                "history_wait" => $historyWaitPackage,
+            ];
+            return json_encode($retval);
+        }
+    }
+
+    public function shop(){
+        $session = Session::get([
+            'session_id' => Request::instance()->param('session_id'),
+        ]);
+        if($session == NULL){
+            return json_encode([
+                "errmsg" => "Session Time Out",
+            ]);
+        }else{
+            // 无调用限制
+            if(Request::instance()->param('seller_id')){
+                $seller = Seller::get(Request::instance()->param('seller_id'));
+            }else{
+                $seller = Seller::get(["openid" => $session->openid]);
+            }
+            if($seller == NULL){
+                return json_encode([
+                    "errmsg" => "No That Seller",
+                ]);
+            }else{
+                // 搜集返回该商家店面信息
+                $labels = [];
+                $seller_name = $seller->name;
+                $seller_img_url = "https://brocadesoar.cn/callme/wx_session/picture/" . $seller->pic_id;
+                $product_list = $seller->product_list;
+                if($product_list[0] == 0){
+                    unset($product_list[0]);
+                    $product_list = array_values($product_list);
+                }
+                $products = [];
+                foreach($product_list as $val){
+                    $product = Product::get($val);
+                    $products[] = [
+                        "product_id" => $val,
+                        "name" => $product->name,
+                        "total_fee" => $product->total_fee,
+                        "inventory" => $product->inventory,
+                        "img_url" => "https://brocadesoar.cn/callme/wx_session/picture/" . $product->pic_id,
+                        "label" => $product->label,
+                    ];
+                    $labels[] = $product->label;
+                }
+                $labels = array_values(array_unique($labels));
+                return json_encode([
+                    "labels" => $labels,
+                    "seller_name" => $seller_name,
+                    "seller_img_url" => $seller_img_url,
+                    "seller_menu_list" => $products,
+                ]);
+            }
+        }
+    }
+
+    public function diningHall(){
+        $session = Session::get([
+            'session_id' => Request::instance()->param('session_id'),
+        ]);
+        if($session == NULL){
+            return json_encode([
+                "errmsg" => "Session Time Out",
+            ]);
+        }else{
+            // 无调用限制
+            $hall = DiningHall::get(Request::instance()->param('dining_hall_id'));
+            return json_encode([
+                "name" => $hall->name,
+                "seller_list" => $hall->seller_list,
+            ]);
         }
     }
 
@@ -174,10 +344,14 @@ class WxSession extends \think\Controller{
         }
     }
 
+    /*
     public function debug_picture_add(){
         $pic = new Picture;
         $picConn = curl_init();
-        curl_setopt($picConn, CURLOPT_URL, "http://on-img.com/chart_image/5afbd4c6e4b0026862677068.png?_=1526540715672");
+        $url = "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1526576243509&di=a34ed2e935370f58a71711e48901b162&imgtype=0&src=http%3A%2F%2Fimgsrc.baidu.com%2Fimgad%2Fpic%2Fitem%2Ff7246b600c3387447d2db0ff5b0fd9f9d62aa04d.jpg";
+        $url = "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1526576243506&di=559e2fdafe65e9ed13686db46b793631&imgtype=0&src=http%3A%2F%2Fimgsrc.baidu.com%2Fimage%2Fc0%253Dpixel_huitu%252C0%252C0%252C294%252C40%2Fsign%3D76d2668bda58ccbf0fb1bd7a70a0d952%2F4610b912c8fcc3ce06f1060a9945d688d43f20d2.jpg";
+        $url = "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1526576243505&di=381c125030660ce11ac1e95f01eb60ac&imgtype=0&src=http%3A%2F%2Fimg.pconline.com.cn%2Fimages%2Fupload%2Fupc%2Ftx%2Fitbbs%2F1707%2F06%2Fc35%2F52048301_1499354066454_mthumb.jpg";
+        curl_setopt($picConn, CURLOPT_URL, $url);
         curl_setopt($picConn, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($picConn, CURLOPT_HEADER, false);
         $picStrSource = curl_exec($picConn);
@@ -190,6 +364,7 @@ class WxSession extends \think\Controller{
             "debug_len_base64" => strlen(base64_encode($picStrSource)),
         ]);
     }
+     */
 
 }
 

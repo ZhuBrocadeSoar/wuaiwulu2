@@ -11,19 +11,24 @@
 
 <view>
 
-  <form bindsubmit='formSub' report-submit="true">
-
-    <button form-type='submit'>提交</button>
-
-  </form>
 
   <button bindtap='wsstest'>发送wss消息</button>
+  
+  <button bindtap='wxpaytest6'>支付商品1,3,5</button>
   <button bindtap='wxpaytest1'>支付商品1</button>
-  <button bindtap='wxpaytest2'>支付商品2</button>
-  <button bindtap='wxpaytest3'>支付商品3</button>
-  <button bindtap='wxpaytest4'>支付商品4</button>
-  <button bindtap='wxpaytest5'>支付商品5</button>
   
   <button bindtap='blueprint'>打印蓝牙搜索结果</button>
+  <button bindtap='shop2'>shop2</button>
+  <button bindtap='contenttest'>content</button>
+  <button bindtap='historytest'>history</button>
+  <button bindtap='updatetest1'>修改</button>
+  <button bindtap='updatetest2'>修改店铺图片</button>
+  <button bindtap='updatetest3'>修改店铺名字</button>
+  <button bindtap='updatetest4'>删除商品</button>
+  <button bindtap='dininghalltest'>食堂1</button>
+  <button bindtap='registertest'>注册</button>
+  <button bindtap='registerlisttest'>注册列表</button>
+  <button bindtap='registerconfirmtest'>审核通过</button>
+  <button bindtap='debugdininghalladdtest'>新增一个食堂</button>
 
 </view>

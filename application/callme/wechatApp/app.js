@@ -25,22 +25,7 @@ App({
               wx.setStorageSync('session_id', res.data.session_id)
               console.log(wx.getStorageSync('session_id'))
 
-              // 获取内容
-              wx.request({
-                url: 'https://brocadesoar.cn/callme/wx_session/content',
-                data: {
-                  session_id : wx.getStorageSync('session_id'),
-                },
-                header: {},
-                method: 'POST',
-                dataType: 'json',
-                responseType: 'text',
-                success: function(res) {
-                  console.log(res.data);
-                },
-                fail: function(res) {},
-                complete: function(res) {},
-              })
+             
 
               // 建立wss连接
               wx.onSocketOpen(function (res) {

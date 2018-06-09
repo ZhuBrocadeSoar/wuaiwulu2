@@ -1,6 +1,10 @@
 # 取个号 API
 
-## 流
+## 目录
+
+[流](#1)
+
+<h2 id='1'></h2>## 流
 
 ![流](http://on-img.com/chart_image/5afbd4c6e4b0026862677068.png)
 
@@ -28,7 +32,7 @@ url: wss://brocadesoar.cn:4431
 
 超过心跳时间服务端主动关闭连接
 
-## Session
+## Session 用户状态维持
 
 ### login 登录
 
@@ -62,6 +66,8 @@ url: wss://brocadesoar.cn:4431
 |true|商家列表有该id|
 |false|商家列表没有该id|
 
+## 信息查询
+
 ### content 获取第一个渲染用数据包
 
 * url : https://brocadesoar.cn/callme/wx_session/content
@@ -87,9 +93,20 @@ url: wss://brocadesoar.cn:4431
     ],
     "history" : [
         {
-            "product_id" : PRODUCT_ID,
-            "product_img_url" : PRODUCT_IMG_URL,
-            "product_name" : PRODUCT_NAME,
+            "food_list" : [
+                {
+                    "product_id" : PRODUCT_ID,
+                    "product_img_url" : PRODUCT_IMG_URL,
+                    "product_name" : PRODUCT_NAME,
+                },
+                {},
+                {}
+            ],
+            "food_quantity" : [
+                2,
+                1,
+                1,
+            ],
         },
         {},
         {},
@@ -98,10 +115,19 @@ url: wss://brocadesoar.cn:4431
     ],
     "random" : [
         {
-            "product_id" : PRODUCT_ID,
-            "product_img_url" : PRODUCT_IMG_URL,
-            "product_name" : PRODUCT_NAME,
-            "user_img_url" : USER_IMG_URL,
+            "food_list" : [
+                {
+                    "product_id" : PRODUCT_ID,
+                    "product_img_url" : PRODUCT_IMG_URL,
+                    "product_name" : PRODUCT_NAME,
+                    "user_img_url" : USER_IMG_URL,
+                }
+            ],
+            "food_quantity" : [
+                2,
+                1,
+                1,
+            ],
         },
         {},
         {},
@@ -109,6 +135,125 @@ url: wss://brocadesoar.cn:4431
         {},
         {},
     ]
+}
+```
+
+### shop 获取某商家店面信息
+
+* url : https://brocadesoar.cn/callme/wx_session/shop
+
+* type : POST
+
+* fields :
+
+```
+{
+    "session_id" : SESSION_ID,
+    "seller_id" : SELLER_ID
+}
+```
+
+* return :
+
+```
+{
+    "labels" : [
+        "label1",
+        "label2"
+    ],
+    "seller_img_url" : SELLER_IMG_URL,
+    "seller_menu_list" : [
+        {
+            "img_url" : IMG_URL,
+            "inventory" : INVENTORY,
+            "label" : LABEL,
+            "name" : NAME,
+            "product_id" : PRODUCT_ID,
+            "total_fee" : TOTAL_FEE
+        },
+        {},
+        {}
+    ],
+    "seller_name" : SELLER_NAME
+}
+```
+
+### history 获取用户历史订单
+
+* url : https://brocadesoar.cn/callme/wx_session/history
+
+* type : POST
+
+* fields :
+
+```
+{
+    "session_id" : SESSION_ID,
+}
+
+```
+
+* return :
+
+```
+{
+    "history_done" : [
+        {
+            "food_list" : [
+                {
+                    "create_time" : CREATE_TIME,
+                    "product_id" : PRODUCT_ID,
+                    "product_img_url" : PRODUCT_IMG_URL,
+                    "product_name" : PRODUCT_NAME,
+                    "product_total_fee" : PRODUCT_TOTAL_FEE,
+                    "product_name" : PRODUCT_NAME,
+                },
+                {},
+                {},
+            ],
+            "food_quantity" : [
+                2,
+                1,
+                1,
+            ],
+        },
+        {},
+        {},
+    ],
+    "history_wait" : [
+        {},
+        {},
+        {},
+    ]
+}
+```
+
+### diningHall 获取某食堂的商家列表
+
+* url : https://brocadesoar.cn/callme/wx_session/diningHall
+
+* type : POST
+
+* fields :
+
+```
+{
+    "session_id" : SESSION_ID,
+    "dining_hall_id" : DINING_HALL_ID,
+}
+```
+
+* return :
+
+```
+{
+    "name" : NAME_OF_DINING_HALL,
+    "seller_list" : [
+        1,
+        3,
+        5,
+        OTHER_SELLER_ID
+    ],
 }
 ```
 
@@ -134,12 +279,11 @@ url: wss://brocadesoar.cn:4431
 }
 ```
 
-> todo 商家入驻相关
-## Signin
+## 商家入驻
 
-### index 商家发出入驻申请的请求
+### register 入驻注册
 
-* url : https://brocadesoar.cn/callme/signin/index
+* url : https://brocadesoar.cn/callme/seller_man/register
 
 * type : POST
 
@@ -148,37 +292,27 @@ url: wss://brocadesoar.cn:4431
 ```
 {
     "session_id" : SESSION_ID,
-    ...other infomation...
+    "owner_tell" : OWNER_TELL,
+    "owner_name" : OWNER_NAME,
+    "seller_NAME" : SELLER_NAME,
+    "dining_hall_id" : DINING_HALL_ID,
 }
 ```
 
-* return : 
+* return : SUCCESS_INFO
 
-```
-{
-    "errmsg" : "ok",
-} 
-```
+### registerList 获取注册列表
 
-或
-
-```
-{
-    "errmsg" : ERRMSG,
-}
-```
-
-### list 管理员拉取申请列表
-
-* url : https://brocadesoar.cn/callme/signin/list
+* url : https://brocadesoar.cn/callme/seller_man/registerList
 
 * type : POST
 
-* fields : 
+* fields :
 
 ```
 {
     "session_id" : SESSION_ID,
+    // "pass_state" : PASS_STATE,
 }
 ```
 
@@ -186,79 +320,89 @@ url: wss://brocadesoar.cn:4431
 
 ```
 {
-    "list" : [
+    "register_list" : [
         {
-            ...
-        }, 
-        {
-            ...
-        }, 
-        ...
-    ],
+            "create_time" : CREATE_TIME,
+            "owner_name" : OWNER_NAME,
+            "owner_tell" : OWNER_TELL,
+            "pass_state" : PASS_STATE,
+            "register_id" : REGISTER_ID,
+            "seller_name" : SELLER_NAME,
+            "staff_list" : [
+                ARRAY_OF_USER_ID_OF_STAFF
+            ],
+            "update_time" : UPDATE_TIME
+        },
+        {},
+        {},
+    ]
 }
 ```
 
-### auth 管理员授权申请
+### registerConfirm
 
-* url : https://brocadesoar.cn/callme/signin/auth
+* url : https://brocadesoar.cn/callme/seller_man/registerConfirm
 
 * type : POST
 
-* fields : 
+* fields :
 
 ```
 {
     "session_id" : SESSION_ID,
-    "seller_id" : SELLER_ID,
+    "register_id" : REGISTER_ID,
 }
 ```
 
-* return : 
+* return : SUCCESS_INFO
+
+## 修改店铺信息和商品信息
+
+### updateSellerPicture 更新店铺图片
+
+* url : https://brocadesoar.cn/callme/product_man/updateSellerPicture
+
+* type : POST(Upload a file)
+
+* filename of upload : picture
+
+* fields :
 
 ```
 {
-    "errmsg" : "ok",
+    "session_id" : SESSION_ID
 }
 ```
 
-> todo 商家商品管理相关
-## ProductMan
+* return : SUCCESS_INFO
 
-### list 获取商品列表
+### updateSellerName 更新店铺名字，考虑到审核问题暂不开放
 
-* url : https://brocadesoar.cn/callme/product_man/list
+### update 新增或和修改商品信息
 
-* type : POST
+* url : https://brocadesoar.cn/callme/product_man/update
 
-* fields : 
+* type : POST(Upload a file)
 
-```
-{
-    "session_id" : session_ID,
-}
-```
+* filename of upload : picture
 
-### modify 修改
-
-* url : https://brocadesoar.cn/callme/product_man/modify
-
-* type : POST
-
-* fields : 
+* fields :
 
 ```
 {
     "session_id" : SESSION_ID,
-    ...other infomation...
+    // "product_id" : PRODUCT_ID,
+    "product_name" : PRODUCT_NAME,
+    "product_total_fee" : PRODUCT_TOTAL_FEE,
+    "product_inventory" : PRODUCT_INVENTORY,
+    "product_label" : PRODUCT_LABEL,
+    "is_picture_changed" : IS_PICTURE_CHANGED,
 }
 ```
 
-### putOn 上架
+* return : SUCCESS_INFO
 
-### putOff 下架
-
-> todo 交易相关
-## Pay
+## Pay 交易
 
 ### unifiedorder 统一下单
 
@@ -271,7 +415,21 @@ url: wss://brocadesoar.cn:4431
 ```
 {
     "session_id" : SESSION_ID,
-    "product_id" : PRODUCT_ID,
+    "product_id" : STRING_OF_PRODUCT_ID_ARRAY_WITH_COMMA,
+    "product_qu" : STRING_OF_PRODUCT_QU_ARRAY_WITH_COMMA,
+}
+```
+
+* return : 
+
+```
+{
+    "appid" : APPID,
+    "nonceStr" : NONCESTR,
+    "package" : PACKAGE,
+    "paySign" : PAYSIGN,
+    "signType" : "MD5",
+    "timeStamp" : TIMESTAMP,
 }
 ```
 
@@ -281,7 +439,7 @@ url: wss://brocadesoar.cn:4431
 
 ### cash 提现
 
-## Audio
+## Audio 语言合成接口
 
 ### getAudioUrl 获得合成语音url
 

@@ -4,7 +4,7 @@ namespace app\callme\model;
 use think\Model;
 use traits\model\SoftDelete;
 
-class Product extends Model{
+class ProductHistory extends Model{
     protected $autoWriteTimestamp = 'datetime';
     use SoftDelete;
     protected $deleteTime = 'delete_time';
@@ -32,6 +32,7 @@ class Product extends Model{
     public function setLabelAttr($v){
         return base64_encode($v);
     }
+
 }
 
 ?>

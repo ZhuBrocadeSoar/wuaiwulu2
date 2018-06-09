@@ -24,7 +24,15 @@ class WxPay extends \think\Controller{
             return;
         }else{
             // 通过所有检查
-            $retval = WxApi::unifiedorder($session->openid, Request::instance()->param('product_id'));
+            $product_id = explode(',', Request::instance()->param('product_id'));
+            foreach($product_id as &$val){
+                $val = intval($val);
+            }
+            $product_qu = explode(',', Request::instance()->param('product_qu'));
+            foreach($product_qu as &$val){
+                $val = intval($val);
+            }
+            $retval = WxApi::unifiedorder($session->openid, $product_id, $product_qu);
             // dump($retval);
             if($retval['return_code'] != 'SUCCESS'){
                 $errmsg = $retval['return_msg'];

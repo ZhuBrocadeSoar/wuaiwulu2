@@ -192,7 +192,8 @@ class WxApi extends \think\Controller{
         // $body,
         // $total_fee,
         $openid,
-        $product_id,
+        $product_id, // It is an array
+        $product_qu, // It is an array
         // $appid,
         // $mch_id,
         $device_info = 'String(32)',
@@ -231,7 +232,15 @@ class WxApi extends \think\Controller{
         $spbill_create_ip = Request::instance()->server('REMOTE_ADDR');
         // $time_expire;
         // $time_start;
-        $total_fee = Product::get($product_id)->total_fee; // 读写cm_product获得,单位分
+        // 计算该订单的total_fee 并记录历史产品位置
+        //
+        $total_fee = 0;
+        $product_history_id = [];
+        foreach($product_id as $key => $val){
+            $total_fee += Product::get($val)->total_fee * $product_qu[$key]; // 单位分
+            $product_history_id[] = Product::get($val)->history_id;
+        }
+        // $total_fee = Product::get($product_id)->total_fee; // 读写cm_product获得,单位分
         $trade_type = "JSAPI";
         // 读写cm_order
         $anOrder = new Order;
@@ -239,10 +248,13 @@ class WxApi extends \think\Controller{
             'openid' => $openid,
             // 'nonce_str' => $nonce_str,
             'spbill_create_ip' => $spbill_create_ip,
-            'product_id' => $product_id,
+            'product_id' => implode(',', $product_history_id),
+            'product_qu' => implode(',', $product_qu),
             'total_fee' => $total_fee,
             'pay_state' =>'unifiedorder',
         ]);
+        // var_dump(implode(',', $product_history_id));
+        // var_dump(implode(',', $product_qu));
         $anOrder->isUpdate(false)->save();
         $theOrder = Order::get($anOrder->id);
         // 生成out_trade_no

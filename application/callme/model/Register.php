@@ -4,12 +4,12 @@ namespace app\callme\model;
 use think\Model;
 use traits\model\SoftDelete;
 
-class DiningHall extends Model{
+class Register extends Model{
     protected $autoWriteTimestamp = 'datetime';
     use SoftDelete;
     protected $deleteTime = 'delete_time';
 
-    public function getSellerListAttr($v){
+    public function getStaffListAttr($v){
         $list = explode(',', $v);
         foreach($list as &$val){
             $val = intval($val);
@@ -17,11 +17,19 @@ class DiningHall extends Model{
         return $list;
     }
 
-    public function getNameAttr($v){
+    public function getOwnerNameAttr($v){
         return base64_decode($v);
     }
 
-    public function setNameAttr($v){
+    public function setOwnerNameAttr($v){
+        return base64_encode($v);
+    }
+
+    public function getSellerNameAttr($v){
+        return base64_decode($v);
+    }
+
+    public function setSellerNameAttr($v){
         return base64_encode($v);
     }
 

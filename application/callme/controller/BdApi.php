@@ -7,6 +7,7 @@ use app\callme\model\Order;
 use think\Request;
 
 class BdApi extends \think\Controller{
+    // 静态调用
     public static function accessToken(){
         $appInfo = BdAppInfo::get(1);
         if($appInfo->is_over_time){
@@ -40,6 +41,7 @@ class BdApi extends \think\Controller{
         return $token;
     }
 
+    // 静态调用
     public static function getAudioUrl($tex, $spd = 5, $pit = 5, $vol = 5, $per = 0){
         $url = "http://tsn.baidu.com/text2audio?";
         $url = $url . "tex=$tex";
